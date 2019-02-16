@@ -20,6 +20,9 @@ public class Player {
     /** the player's current amount of credits */
     private int credits;
 
+    /** the player's current ship */
+    private Ship.type ship;
+
     /**
      *
      * Constructor for a new Player Character
@@ -32,13 +35,15 @@ public class Player {
      * @param initCredit the initial amount of Credits the character starts the game with
      */
 
-    public Player (String charName, int pilotPt, int engPt, int tradePt, int fightPt, int initCredit) {
+    public Player (String charName, int pilotPt, int engPt, int tradePt, int fightPt,
+                   int initCredit) {
     name = charName;
     pilotSkill = pilotPt;
     engSkill = engPt;
     tradeSkill = tradePt;
     fightSkill = fightPt;
     credits = initCredit;
+    ship = Ship.type.GNAT;
     }
 
     /**
@@ -57,6 +62,8 @@ public class Player {
 
     public int getCredits() { return credits; }
 
+    public Ship.type getShip() { return ship; }
+
     public void setName(String name) { this.name = name; }
 
     public void setPilotSkill(int pilotSkill) { this.pilotSkill = pilotSkill; }
@@ -69,6 +76,8 @@ public class Player {
 
     public void setCredits(int credits) { this.credits = credits; }
 
+    public void setShip(Ship.type ship) { this.ship = ship; }
+
     /**
      * Basic toString method that could be useful in debugging
      * @return A String representation of the Player Character
@@ -77,7 +86,7 @@ public class Player {
     @Override
     public String toString() {
         return String.format("Player %s: Pilot Skill: %d, Engineer Skill: %d, Trade Skill: %d, " +
-                "Fight Skill: %d, Current Credits: %d.", name, pilotSkill, engSkill, tradeSkill,
-                fightSkill, credits);
+                "Fight Skill: %d, Current Credits: %d, Current Ship: %s.", name, pilotSkill,
+                engSkill, tradeSkill, fightSkill, credits, ship);
     }
 }
