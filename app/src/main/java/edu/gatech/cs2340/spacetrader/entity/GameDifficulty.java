@@ -15,7 +15,7 @@ public enum GameDifficulty {
     /**
      * Constructor for the enumeration
      *
-     * @param difficulty   full name of the course
+     * @param difficulty   full name of the difficulty
      */
     GameDifficulty(String difficulty) {
         this.difficulty = difficulty;
@@ -23,13 +23,13 @@ public enum GameDifficulty {
 
     /**
      *
-     * @return   the full course name
+     * @return   the full difficulty name
      */
     public String getDifficulty() { return difficulty; }
 
     /**
      *
-     * @return the display string representation of the course
+     * @return the display string representation of the difficulty
      */
     public String toString() { return difficulty; }
 
