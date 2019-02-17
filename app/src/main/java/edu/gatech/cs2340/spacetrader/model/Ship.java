@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.spacetrader.model;
 
+import edu.gatech.cs2340.spacetrader.entity.ShipType;
+
 public class Ship {
 
     private String name;
