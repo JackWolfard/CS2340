@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.spacetrader.model;
 
+import edu.gatech.cs2340.spacetrader.entity.ShipType;
+
 public class Player {
 
     /** the player's name */
@@ -21,7 +23,7 @@ public class Player {
     private int credits;
 
     /** the player's current ship */
-    private Ship.type ship;
+    private Ship ship;
 
     /**
      *
@@ -43,7 +45,7 @@ public class Player {
     tradeSkill = tradePt;
     fightSkill = fightPt;
     credits = initCredit;
-    ship = Ship.type.GNAT;
+    ship = new Ship("Gnat", ShipType.GN);
     }
 
     /**
@@ -62,7 +64,7 @@ public class Player {
 
     public int getCredits() { return credits; }
 
-    public Ship.type getShip() { return ship; }
+    public Ship getShip() { return ship; }
 
     public void setName(String name) { this.name = name; }
 
@@ -76,7 +78,7 @@ public class Player {
 
     public void setCredits(int credits) { this.credits = credits; }
 
-    public void setShip(Ship.type ship) { this.ship = ship; }
+    public void setShip(Ship ship) { this.ship = ship; }
 
     /**
      * Basic toString method that could be useful in debugging
