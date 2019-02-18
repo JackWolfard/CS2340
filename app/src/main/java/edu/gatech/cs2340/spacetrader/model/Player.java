@@ -45,7 +45,7 @@ public class Player {
     tradeSkill = tradePt;
     fightSkill = fightPt;
     credits = initCredit;
-    ship = new Ship("Gnat", ShipType.GN);
+    ship = new Ship(ShipType.GN);
     }
 
     /**

@@ -17,7 +17,7 @@ public enum GameDifficulty {
      *
      * @param difficulty   full name of the difficulty
      */
-    GameDifficulty(String difficulty) {
+    private GameDifficulty(String difficulty) {
         this.difficulty = difficulty;
     }
 

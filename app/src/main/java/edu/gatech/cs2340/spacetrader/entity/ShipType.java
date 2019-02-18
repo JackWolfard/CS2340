@@ -13,7 +13,7 @@ public enum ShipType {
      *
      * @param name   full name of the ship type
      */
-    ShipType(String name) {
+    private ShipType(String name) {
         this.name = name;
     }
 
