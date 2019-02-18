@@ -7,9 +7,16 @@ public class Ship {
     private String name;
     private ShipType shipType;
 
-    Ship(String name, ShipType shipType) {
+    public Ship(String name, ShipType shipType) {
         this.name = name;
         this.shipType = shipType;
     }
 
+    public Ship(ShipType shipType) {
+        this(shipType.getShipType(), shipType);
+    }
+
+    public String toString() {
+        return String.format("%s of model %s", name, shipType);
+    }
 }
