@@ -3,11 +3,17 @@ package edu.gatech.cs2340.spacetrader.view;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+<<<<<<< HEAD
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+=======
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.EditText;
+>>>>>>> master
 
 import edu.gatech.cs2340.spacetrader.entity.GameDifficulty;
 import edu.gatech.cs2340.spacetrader.viewmodel.ConfigurationViewModel;
@@ -19,18 +25,28 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     private ConfigurationViewModel configVM;
 
+<<<<<<< HEAD
     private EditText nameField;
     private EditText pilotField;
     private EditText engineerField;
     private EditText traderField;
     private EditText fighterField;
     private Spinner difficultySpinner;
+=======
+    private EditText nameEntry;
+    private EditText pilotPt;
+    private EditText engineerPt;
+    private EditText traderPt;
+    private EditText fighterPt;
+    private Spinner difficultySelect;
+>>>>>>> master
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.config);
 
+<<<<<<< HEAD
         nameField = findViewById(R.id.enter_name);
         pilotField = findViewById(R.id.pilot_point_entry);
         engineerField = findViewById(R.id.engineer_point_entry);
@@ -44,6 +60,14 @@ public class ConfigurationActivity extends AppCompatActivity {
         difficultySpinner.setAdapter(difficultyAdapter);
 
         viewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
+=======
+        nameEntry = findViewById(R.id.enter_name);
+        pilotPt = findViewById(R.id.pilot_point_entry);
+        engineerPt = findViewById(R.id.engineer_point_entry);
+        traderPt = findViewById(R.id.trader_point_entry);
+        fighterPt = findViewById(R.id.fighter_point_entry);
+        difficultySelect = findViewById(R.id.difficulty_spinner);
+>>>>>>> master
     }
 
     public void onAddPressed(View view) {

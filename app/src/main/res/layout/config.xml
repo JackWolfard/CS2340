@@ -1,15 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <EditText
+        android:id="@+id/trader_point_entry"
+        android:layout_width="26dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="number"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:text="0"
+        android:textAlignment="textEnd"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/trader_label"
+        app:layout_constraintTop_toBottomOf="@+id/points_label" />
+
+    <EditText
+        android:id="@+id/fighter_point_entry"
+        android:layout_width="26dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="number"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:text="0"
+        android:textAlignment="textEnd"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/fighter_label"
+        app:layout_constraintTop_toBottomOf="@+id/trader_point_entry" />
+
+    <EditText
+        android:id="@+id/engineer_point_entry"
+        android:layout_width="26dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="number"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:text="0"
+        android:textAlignment="textEnd"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/engineer_label"
+        app:layout_constraintTop_toBottomOf="@+id/pilot_point_entry" />
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/name_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="100dp" />
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Name"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/enter_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/enter_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="160dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/points_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="44dp"
+        android:text="Distribute Skill Points (max 16)"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter_name" />
+
+    <TextView
+        android:id="@+id/pilot_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="56dp"
+        android:text="Pilot"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/points_label" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="731dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintGuide_begin="205dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="365dp" />
+
+    <TextView
+        android:id="@+id/engineer_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="28dp"
+        android:text="Engineer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pilot_label" />
+
+    <TextView
+        android:id="@+id/trader_label"
+        android:layout_width="45dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="56dp"
+        android:text="Trader"
+        app:layout_constraintStart_toEndOf="@+id/pilot_point_entry"
+        app:layout_constraintTop_toTopOf="@+id/points_label" />
+
+    <TextView
+        android:id="@+id/fighter_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="28dp"
+        android:text="Fighter"
+        app:layout_constraintStart_toEndOf="@+id/engineer_point_entry"
+        app:layout_constraintTop_toBottomOf="@+id/trader_label" />
+
+    <TextView
+        android:id="@+id/difficulty_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Set Difficulty"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/engineer_label" />
+
+    <Spinner
+        android:id="@+id/difficulty_spinner"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/difficulty_label"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/pilot_point_entry"
+        android:layout_width="26dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="number"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:text="0"
+        android:textAlignment="textEnd"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/pilot_label"
+        app:layout_constraintTop_toBottomOf="@+id/points_label" />
+
+    <Button
+        android:id="@+id/done_button"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Done"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/difficulty_spinner" />
 </android.support.constraint.ConstraintLayout>
