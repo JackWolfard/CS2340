@@ -12,8 +12,15 @@ public class Game {
      * values before the player is created or loaded
      */
     public Game() {
-        //link the values from the spinner into this constructor
-        //link values from spinners into player constructor
+        player = null;
+        difficulty = GameDifficulty.B;
+    }
 
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public void setDifficulty(GameDifficulty difficulty) {
+        this.difficulty = difficulty;
     }
 }

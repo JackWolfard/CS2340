@@ -23,4 +23,8 @@ public class Model {
         game = new Game();
     }
 
+    public Game getGame() {
+        return game;
+    }
+
 }

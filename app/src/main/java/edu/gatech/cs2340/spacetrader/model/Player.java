@@ -34,18 +34,16 @@ public class Player {
      * @param engPt the starting Engineer Skill points of the character
      * @param tradePt the starting Trading Skill points of the character
      * @param fightPt the starting Fighting Skill points of the character
-     * @param initCredit the initial amount of Credits the character starts the game with
      */
 
-    public Player (String charName, int pilotPt, int engPt, int tradePt, int fightPt,
-                   int initCredit) {
-    name = charName;
-    pilotSkill = pilotPt;
-    engSkill = engPt;
-    tradeSkill = tradePt;
-    fightSkill = fightPt;
-    credits = initCredit;
-    ship = new Ship(ShipType.GN);
+    public Player(String charName, int pilotPt, int engPt, int tradePt, int fightPt) {
+        name = charName;
+        pilotSkill = pilotPt;
+        engSkill = engPt;
+        tradeSkill = tradePt;
+        fightSkill = fightPt;
+        credits = 1000;
+        ship = new Ship(ShipType.GN);
     }
 
     /**
