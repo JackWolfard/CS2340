@@ -3,6 +3,7 @@ package edu.gatech.cs2340.spacetrader.viewmodel;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import edu.gatech.cs2340.spacetrader.entity.GameDifficulty;
 import edu.gatech.cs2340.spacetrader.model.Game;
@@ -25,5 +26,6 @@ public class ConfigurationViewModel extends AndroidViewModel {
         game.setDifficulty(difficulty);
         Player player = new Player(name, pilotPt, engPt, tradePt, fightPt);
         game.setPlayer(player);
+        Log.d("Edit", player.toString());
     }
 }
