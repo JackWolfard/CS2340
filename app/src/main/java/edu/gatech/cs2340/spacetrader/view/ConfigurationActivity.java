@@ -51,16 +51,23 @@ public class ConfigurationActivity extends AppCompatActivity {
     public void onAddPressed(View view) {
         Log.d("Edit", "Create Player Pressed");
         GameDifficulty difficulty = (GameDifficulty) difficultySpinner.getSelectedItem();
+        int totalPointsUsed = convertToInt(pilotField) +
+                convertToInt(engineerField) + convertToInt(traderField) + convertToInt(fighterField);
+
         if (nameField.getText().toString().length() == 0) {
             Toast toast = Toast.makeText(getApplicationContext(), "Enter a valid name", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.TOP, 0, 0);
             toast.show();
-        } else {
-            viewModel.initGame(difficulty, nameField.getText().toString(), convertToInt(pilotField),
-                    convertToInt(engineerField), convertToInt(traderField), convertToInt(fighterField));
-            Toast toast = Toast.makeText(getApplicationContext(), "Successfully created player", Toast.LENGTH_SHORT);
+        } else if (totalPointsUsed != 16) {
+            Toast toast = Toast.makeText(getApplicationContext(), "Point selection does not add up to 16", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.TOP, 0, 0);
             toast.show();
+        } else {
+                viewModel.initGame(difficulty, nameField.getText().toString(), convertToInt(pilotField),
+                        convertToInt(engineerField), convertToInt(traderField), convertToInt(fighterField));
+                Toast toast = Toast.makeText(getApplicationContext(), "Successfully created player", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.TOP, 0, 0);
+                toast.show();
         }
     }
 

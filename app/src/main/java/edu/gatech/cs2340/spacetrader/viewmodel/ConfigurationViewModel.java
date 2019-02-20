@@ -24,6 +24,7 @@ public class ConfigurationViewModel extends AndroidViewModel {
                           int tradePt, int fightPt) {
         Game game = model.getGame();
         game.setDifficulty(difficulty);
+
         Player player = new Player(name, pilotPt, engPt, tradePt, fightPt);
         game.setPlayer(player);
         Log.d("Edit", player.toString());

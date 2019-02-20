@@ -50,7 +50,6 @@ dependencies {
 
     // optional - Guava support for Room, including Optional and ListenableFuture
     implementation "android.arch.persistence.room:guava:$room_version"
-
     // Test helpers
     testImplementation "android.arch.persistence.room:testing:$room_version"
 
