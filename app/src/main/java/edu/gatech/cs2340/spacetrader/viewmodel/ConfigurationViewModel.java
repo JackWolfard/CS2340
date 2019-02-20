@@ -28,5 +28,6 @@ public class ConfigurationViewModel extends AndroidViewModel {
         Player player = new Player(name, pilotPt, engPt, tradePt, fightPt);
         game.setPlayer(player);
         Log.d("Edit", player.toString());
+        Log.d("Edit", game.toString());
     }
 }

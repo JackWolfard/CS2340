@@ -23,4 +23,9 @@ public class Game {
     public void setDifficulty(GameDifficulty difficulty) {
         this.difficulty = difficulty;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Game with Player: %s, Difficulty: %s.", player.getName(), difficulty.getDifficulty());
+    }
 }

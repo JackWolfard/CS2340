@@ -16,6 +16,10 @@ public class Ship {
         this(shipType.getShipType(), shipType);
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String toString() {
         return String.format("%s of model %s", name, shipType);
     }
