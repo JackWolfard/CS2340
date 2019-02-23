@@ -22,6 +22,13 @@ public class SolarSystem {
 
     private int resourceLevel;
 
+    private String[] techLevelNames = new String[]{"Pre-Agriculture", "Agriculture", "Medieval",
+            "Renaissance", "Early Industrial", "Industrial", "Post-Industrial", "Hi-Tech"};
+
+    private String[] resourceLevelNames = new String[]{"NOSPECIALRESOURCES", "MINERALRICH",
+            "MINERALPOOR", "DESERT", "LOTSOFWATER", "RICHSOIL", "POORSOIL", "RICHFAUNA", "LIFELESS",
+            "WEIRDMUSHROOMS", "LOTSOFHERBS", "ARTISTIC", "WARLIKE"};
+
     /**
      * The Constructor Method for a Solar System with a random Tech and Resource Level
      * @param planet the Planet contained in the Solar System
@@ -49,6 +56,10 @@ public class SolarSystem {
         return sysStarMap;
     }
 
-
+    @Override
+    public String toString() {
+        return String.format("A Solar System called %s with technology level: %s and resource level: %s.",
+                name, techLevelNames[techLevel], resourceLevelNames[resourceLevel]);
+    }
 
 }

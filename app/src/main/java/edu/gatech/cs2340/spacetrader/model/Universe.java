@@ -2,6 +2,7 @@ package edu.gatech.cs2340.spacetrader.model;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Random;
 
 
 /**
@@ -15,7 +16,7 @@ public class Universe {
      *      coordinates as keys.
      */
 
-    private HashMap<SolarSystem,Integer> starMap;
+    private HashMap<SolarSystem, int[]> starMap;
 
     /** the Linked List of created Solar Systems used to add them into the starMap */
 
@@ -38,9 +39,25 @@ public class Universe {
 
     public void generateUniverse() {
         for (int j = 0; j < sysList.size(); j++) {
+            Random rand = new Random();
+            int[] coord = new int[]{rand.nextInt(151), rand.nextInt(101)};
             SolarSystem solSys = sysList.get(j);
-            starMap.put(solSys, 1);
+            starMap.put(solSys, coord);
         }
+    }
+
+    /**
+     * Getter for starMap
+     * @return a HashMap
+     */
+    public HashMap<SolarSystem, int[]> getStarMap() {
+        return starMap;
+    }
+
+    // Not finished yet
+    @Override
+    public String toString() {
+        return String.format("A universe with ");
     }
 
 }
