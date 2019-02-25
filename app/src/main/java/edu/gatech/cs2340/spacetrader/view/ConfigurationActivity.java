@@ -66,6 +66,9 @@ public class ConfigurationActivity extends AppCompatActivity {
                 viewModel.initGame(difficulty, nameField.getText().toString(), convertToInt(pilotField),
                         convertToInt(engineerField), convertToInt(traderField), convertToInt(fighterField));
                 Toast toast = Toast.makeText(getApplicationContext(), "Successfully created player", Toast.LENGTH_SHORT);
+
+                setContentView(R.layout.transition);
+
                 toast.setGravity(Gravity.TOP, 0, 0);
                 toast.show();
         }
