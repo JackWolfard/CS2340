@@ -26,18 +26,18 @@ public class Universe {
      * Creates a Universe containing Solar Systems to be used in the game
      */
 
-    public Universe() {
-        generateUniverse();
-    }
-
     /**
      * generates a Universe based on the Linked List of Solar Systems
      */
-
     // This Method needs implementation of the x,y location
     // I used the constant of 1 for now just so it would compile
-
+    public Universe() {
+        generateUniverse();
+    }
     public void generateUniverse() {
+        if (sysList == null) {
+            System.out.print("System is null");
+        }
         for (int j = 0; j < sysList.size(); j++) {
             Random rand = new Random();
             int[] coord = new int[]{rand.nextInt(151), rand.nextInt(101)};
@@ -57,7 +57,7 @@ public class Universe {
     // Not finished yet
     @Override
     public String toString() {
-        return String.format("A universe with ");
+        return String.format("A universe with " + starMap.toString());
     }
 
 }

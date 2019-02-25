@@ -25,7 +25,7 @@ public class Planet {
      * Generates a Linked List representation of 10 different Planets
      */
 
-    public void generatePlanets() {
+    public static void generatePlanets() {
 
         planetList.add(new Planet("Deshaan"));
         planetList.add(new Planet("Kumuro"));

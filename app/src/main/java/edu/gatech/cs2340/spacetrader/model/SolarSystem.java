@@ -5,6 +5,7 @@ import java.util.Random;
 
 public class SolarSystem {
 
+
     /** the name of the Solar System */
 
     private String name;
@@ -50,6 +51,7 @@ public class SolarSystem {
      */
 
     public static LinkedList generateSystem() {
+        Planet.generatePlanets();
         for (int i = 0; i < Planet.getPlanetList().size(); i++) {
             sysStarMap.add(new SolarSystem(Planet.getPlanetList().get(i)));
         }
