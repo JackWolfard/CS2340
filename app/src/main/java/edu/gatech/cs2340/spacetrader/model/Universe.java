@@ -57,7 +57,12 @@ public class Universe {
     // Not finished yet
     @Override
     public String toString() {
-        return String.format("A universe with " + starMap.toString());
+        String backhalf = "";
+        SolarSystem[] keys = (SolarSystem[]) starMap.keySet().toArray();
+        for (int i = 0; i < keys.length; i++) {
+            backhalf = keys[i].toString() + "/n";
+        }
+        return String.format("A universe with the solar systems: " + backhalf);
     }
 
 }
