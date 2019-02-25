@@ -61,7 +61,9 @@ public class Universe {
         Set<SolarSystem> keys = starMap.keySet();
         Iterator<SolarSystem> iterator = keys.iterator();
         while (iterator.hasNext()) {
-            backhalf = backhalf + iterator.next().toString() + "\n";
+            SolarSystem ss = iterator.next();
+            int[] coord = starMap.get(ss);
+            backhalf = backhalf + ss.toString() + " at location: (" + coord[0] + ", " + coord[1] + ").\n";
         }
         return String.format("A universe with the solar systems: \n" + backhalf);
     }

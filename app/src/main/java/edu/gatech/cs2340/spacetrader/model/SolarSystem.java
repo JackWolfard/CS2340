@@ -59,9 +59,10 @@ public class SolarSystem {
         return sysStarMap;
     }
 
+
     @Override
     public String toString() {
-        return String.format("A Solar System called %s with technology level: %s and resource level: %s.",
+        return String.format("A Solar System called %s with technology level: %s and resource level: %s",
                 name, techLevelNames[techLevel], resourceLevelNames[resourceLevel]);
     }
 
