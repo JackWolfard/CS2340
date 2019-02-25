@@ -1,8 +1,10 @@
 package edu.gatech.cs2340.spacetrader.model;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.Set;
 
 
 /**
@@ -13,10 +15,10 @@ public class Universe {
 
     /**
      * The actual "Universe" used in the game, a HashMap with the Planets as Keys and their
-     *      coordinates as keys.
+     *      coordinates as values.
      */
 
-    private HashMap<SolarSystem, int[]> starMap;
+    private HashMap<SolarSystem, int[]> starMap = new HashMap<SolarSystem, int[]>();
 
     /** the Linked List of created Solar Systems used to add them into the starMap */
 
@@ -34,10 +36,8 @@ public class Universe {
     public Universe() {
         generateUniverse();
     }
+
     public void generateUniverse() {
-        if (sysList == null) {
-            System.out.print("System is null");
-        }
         for (int j = 0; j < sysList.size(); j++) {
             Random rand = new Random();
             int[] coord = new int[]{rand.nextInt(151), rand.nextInt(101)};
@@ -58,11 +58,12 @@ public class Universe {
     @Override
     public String toString() {
         String backhalf = "";
-        SolarSystem[] keys = (SolarSystem[]) starMap.keySet().toArray();
-        for (int i = 0; i < keys.length; i++) {
-            backhalf = keys[i].toString() + "/n";
+        Set<SolarSystem> keys = starMap.keySet();
+        Iterator<SolarSystem> iterator = keys.iterator();
+        while (iterator.hasNext()) {
+            backhalf = backhalf + iterator.next().toString() + "\n";
         }
-        return String.format("A universe with the solar systems: " + backhalf);
+        return String.format("A universe with the solar systems: \n" + backhalf);
     }
 
 }

@@ -17,7 +17,7 @@ public class Game {
     public Game() {
         player = null;
         difficulty = GameDifficulty.B;
-        universe = new Universe();
+        universe = null;
     }
 
     public void setPlayer(Player player) {

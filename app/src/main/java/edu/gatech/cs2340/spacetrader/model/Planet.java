@@ -6,11 +6,11 @@ public class Planet {
 
     /** The name of the Planet */
 
-    private static String name;
+    private String name;
 
     /** the Linked List Representation of the 10 Planets used in the Solar System */
 
-    private static LinkedList<Planet> planetList = new LinkedList<>();
+    private LinkedList<Planet> planetList = new LinkedList<>();
 
     /**
      * Constructor method to create a new Planet with a name
@@ -18,14 +18,18 @@ public class Planet {
      */
 
     public Planet(String planetName) {
-        name = planetName;
+        this.name = planetName;
+    }
+
+    public Planet() {
+        generatePlanets();
     }
 
     /**
      * Generates a Linked List representation of 10 different Planets
      */
 
-    public static void generatePlanets() {
+    public void generatePlanets() {
 
         planetList.add(new Planet("Deshaan"));
         planetList.add(new Planet("Kumuro"));
@@ -45,12 +49,12 @@ public class Planet {
      * @return A Linked List of Planets
      */
 
-    public static LinkedList<Planet> getPlanetList() { return planetList; }
+    public LinkedList<Planet> getPlanetList() { return planetList; }
 
     /**
      * Returns the planet's Name
      * @return the Planet's Name
      */
 
-    public static String getName() { return name; }
+    public String getName() { return name; }
 }

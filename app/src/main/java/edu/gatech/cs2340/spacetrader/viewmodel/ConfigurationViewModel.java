@@ -11,7 +11,7 @@ import edu.gatech.cs2340.spacetrader.entity.GameDifficulty;
 import edu.gatech.cs2340.spacetrader.model.Game;
 import edu.gatech.cs2340.spacetrader.model.Model;
 import edu.gatech.cs2340.spacetrader.model.Player;
-import edu.gatech.cs2340.spacetrader.model.SolarSystem;
+import edu.gatech.cs2340.spacetrader.model.Universe;
 
 
 public class ConfigurationViewModel extends AndroidViewModel {
@@ -28,9 +28,10 @@ public class ConfigurationViewModel extends AndroidViewModel {
         Game game = model.getGame();
         game.setDifficulty(difficulty);
         Player player = new Player(name, pilotPt, engPt, tradePt, fightPt);
+        Universe universe = new Universe();
         game.setPlayer(player);
         Log.d("Edit", player.toString());
         Log.d("Edit", game.toString());
-        Log.d("Edit", game.getUniverse().toString());
+        Log.d("Edit", universe.toString());
     }
 }

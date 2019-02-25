@@ -13,7 +13,7 @@ public class SolarSystem {
     /** a Linked List representation of the 10 different Solar Systems, with each containing
      * one planet of the same name */
 
-    private static LinkedList<SolarSystem> sysStarMap;
+    private static LinkedList<SolarSystem> sysStarMap = new LinkedList<SolarSystem>();
 
     /** the Tech Level of a Solar System */
 
@@ -50,10 +50,11 @@ public class SolarSystem {
      * @return a Linked List representation of the Solar Systems
      */
 
-    public static LinkedList generateSystem() {
-        Planet.generatePlanets();
-        for (int i = 0; i < Planet.getPlanetList().size(); i++) {
-            sysStarMap.add(new SolarSystem(Planet.getPlanetList().get(i)));
+    public static LinkedList<SolarSystem> generateSystem() {
+        Planet planet = new Planet();
+        LinkedList<Planet> listOfPlanets = planet.getPlanetList();
+        for (int i = 0; i < listOfPlanets.size(); i++) {
+            sysStarMap.add(new SolarSystem(listOfPlanets.get(i)));
         }
         return sysStarMap;
     }
