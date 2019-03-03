@@ -93,4 +93,24 @@ public class MarketPlace
         }
     }
 
+    //The Sell Method needs a way to know what planet the Player is currently on
+
+//    public void sellGoods(Player player, Goods item) {
+//        int val = item.getValue();
+//        int ipl = item.getPriceIncreasePerLevel();
+//        //int techLevel = current planets tech level
+//        int mtlp = item.getMinLevelProd();
+//        int var = item.getVariance();
+//        if (techLevel - mtlp < 0) {
+//            throw new IndexOutOfBoundsException("That item cannot be sold on this planet.");
+//        }
+//        //int price = val + (ipl * (techLevel - mtlp)) + var;
+//        if (player.getShip().getCargoList().contains(item)) {
+//            player.setCredits(player.getCredits() + val);
+//            player.getShip().removeFromCargo(item);
+//        } else {
+//            throw new IndexOutOfBoundsException("You do not currently have that " +
+//                    "item in your Cargo Hold");
+//        }
+//    }
 }
