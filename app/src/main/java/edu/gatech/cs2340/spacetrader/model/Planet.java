@@ -1,6 +1,10 @@
 package edu.gatech.cs2340.spacetrader.model;
 
 import java.util.LinkedList;
+import java.util.Random;
+
+import edu.gatech.cs2340.spacetrader.entity.ResourceLevel;
+import edu.gatech.cs2340.spacetrader.entity.TechLevel;
 
 public class Planet {
 
@@ -12,6 +16,14 @@ public class Planet {
 
     private LinkedList<Planet> planetList = new LinkedList<>();
 
+    /** the Tech Level of a Solar System */
+
+    private int techLevel;
+
+    /** the Resource Level of a Solar System */
+
+    private int resourceLevel;
+
     /**
      * Constructor method to create a new Planet with a name
      * @param planetName The name given to the created Planet
@@ -19,6 +31,10 @@ public class Planet {
 
     public Planet(String planetName) {
         this.name = planetName;
+        Random rand = new Random();
+        techLevel = rand.nextInt(8) - 1;
+        resourceLevel = rand.nextInt(13);
+        MarketPlace market = new MarketPlace(TechLevel.values()[techLevel], ResourceLevel.values()[resourceLevel]);
     }
 
     public Planet() {
@@ -57,4 +73,16 @@ public class Planet {
      */
 
     public String getName() { return name; }
+    /**
+     * Returns the planet's Name
+     * @return the Planet's Name
+     */
+
+    public int getTechLevel() { return techLevel; }
+    /**
+     * Returns the planet's Name
+     * @return the Planet's Name
+     */
+
+    public int getResourceLevel() { return resourceLevel; }
 }

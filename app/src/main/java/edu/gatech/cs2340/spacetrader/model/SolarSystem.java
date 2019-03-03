@@ -31,13 +31,11 @@ public class SolarSystem {
      */
 
     public SolarSystem(Planet planet) {
-        Random rand = new Random();
+
 
         name = planet.getName();
-
-        techLevel = rand.nextInt(8);
-
-        resourceLevel = rand.nextInt(13);
+        techLevel = planet.getTechLevel();
+        resourceLevel = planet.getResourceLevel();
     }
 
     /**
