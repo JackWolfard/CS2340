@@ -10,7 +10,7 @@ public class MarketPlace
 {
     private HashMap<Goods, Integer> inventory = new HashMap<Goods, Integer>();
     private HashMap<Goods, Integer> cost = new HashMap<Goods, Integer>();
-
+    private HashMap<Goods, Integer> sell = new HashMap<Goods, Integer>();
 
 
     public MarketPlace(TechLevel tech, ResourceLevel resource) {
@@ -27,28 +27,31 @@ public class MarketPlace
             if (planetTechLevel == item.getHighestTechFreq()) {
                 quantity = quantity * 2;
             }
-            inventory.put(item, quantity);
-            //calculate base price
-            int variance = rand.nextInt(item.getVariance() + 1) - 1;
-            Integer price = item.getValue() + (item.getPriceIncreasePerLevel() * (tech.getTechLevel() - item.getMinLevelProd())) + variance;
+            if (quantity != 0) {
+                inventory.put(item, quantity);
+                //calculate base price
+                int variance = rand.nextInt(item.getVariance());
+                Integer price = item.getValue() + (item.getPriceIncreasePerLevel() * (tech.getTechLevel() - item.getMinLevelProd())) + variance;
 
-            String resourceLevel = resource.toString();
-            String radicalInc = item.getPriceIncreaseEvent();
-            String abundance = item.getPriceDecreaseEvent();
-            String expensive = item.getExpensiveEvent();
+                String resourceLevel = resource.toString();
+                String radicalInc = item.getPriceIncreaseEvent();
+                String abundance = item.getPriceDecreaseEvent();
+                String expensive = item.getExpensiveEvent();
 
-            //calculate price modifiers
-            if (resourceLevel.equals(radicalInc)) {
-                price = price * 3;
+                //calculate price modifiers
+                if (resourceLevel.equals(radicalInc)) {
+                    price = price * 3;
+                }
+                if (abundance != null && abundance.equals(resourceLevel)) {
+                    price = (int) java.lang.Math.floor(price * .2);
+                }
+                if (expensive != null && expensive.equals(resourceLevel)) {
+                    price = (int) java.lang.Math.floor(price * 1.5);
+                }
+                Integer sellPrice = (int) java.lang.Math.floor(price*.9);
+                cost.put(item, price);
+                sell.put(item,sellPrice);
             }
-            if (abundance != null && abundance.equals(resourceLevel)) {
-                price = (int) java.lang.Math.floor(price * .2);
-            }
-            if (expensive != null && expensive.equals(resourceLevel)) {
-                price = (int) java.lang.Math.floor(price * 1.5);
-            }
-
-            cost.put(item, price);
         }
     }
 
@@ -68,49 +71,67 @@ public class MarketPlace
             if (planetTechLevel == item.getHighestTechFreq()) {
                 quantity = quantity*2;
             }
-            inventory.put(item, quantity);
-            //calculate base price
-            int variance = rand.nextInt(item.getVariance() + 1) - 1;
-            Integer price = item.getValue() + (item.getPriceIncreasePerLevel()*(tech.getTechLevel()-item.getMinLevelProd())) +variance;
+            if (quantity != 0) {
+                inventory.put(item, quantity);
+                //calculate base price
+                int variance = rand.nextInt(item.getVariance());
+                Integer price = item.getValue() + (item.getPriceIncreasePerLevel() * (tech.getTechLevel() - item.getMinLevelProd())) + variance;
 
-            String resourceLevel = resource.toString();
-            String radicalInc = item.getPriceIncreaseEvent();
-            String abundance = item.getPriceDecreaseEvent();
-            String expensive = item.getExpensiveEvent();
+                String resourceLevel = resource.toString();
+                String radicalInc = item.getPriceIncreaseEvent();
+                String abundance = item.getPriceDecreaseEvent();
+                String expensive = item.getExpensiveEvent();
 
-            //calculate price modifiers
-            if (resourceLevel.equals(radicalInc)) {
-                price = price * 3;
-            }
-            if (abundance != null && abundance.equals(resourceLevel)) {
-                price = (int) java.lang.Math.floor(price * .2);
-            }
-            if (expensive != null && expensive.equals(resourceLevel)) {
-                price = (int) java.lang.Math.floor(price *1.5);
-            }
+                //calculate price modifiers
+                if (resourceLevel.equals(radicalInc)) {
+                    price = price * 3;
+                }
+                if (abundance != null && abundance.equals(resourceLevel)) {
+                    price = (int) java.lang.Math.floor(price * .2);
+                }
+                if (expensive != null && expensive.equals(resourceLevel)) {
+                    price = (int) java.lang.Math.floor(price * 1.5);
+                }
 
-            cost.put(item, price);
+                Integer sellPrice = (int) java.lang.Math.floor(price*.9);
+                cost.put(item, price);
+                sell.put(item,sellPrice);
+            }
         }
     }
 
-    //The Sell Method needs a way to know what planet the Player is currently on
 
-//    public void sellGoods(Player player, Goods item) {
-//        int val = item.getValue();
-//        int ipl = item.getPriceIncreasePerLevel();
-//        //int techLevel = current planets tech level
-//        int mtlp = item.getMinLevelProd();
-//        int var = item.getVariance();
-//        if (techLevel - mtlp < 0) {
-//            throw new IndexOutOfBoundsException("That item cannot be sold on this planet.");
-//        }
-//        //int price = val + (ipl * (techLevel - mtlp)) + var;
-//        if (player.getShip().getCargoList().contains(item)) {
-//            player.setCredits(player.getCredits() + val);
-//            player.getShip().removeFromCargo(item);
-//        } else {
-//            throw new IndexOutOfBoundsException("You do not currently have that " +
-//                    "item in your Cargo Hold");
-//        }
-//    }
+    public void sellGoods(Player player, Goods item) {
+        int price = sell.get(item);
+        if (player.getShip().getCargoList().contains(item)) {
+            player.setCredits(player.getCredits() + price);
+            player.getShip().removeFromCargo(item);
+            int currentInventory = inventory.get(item);
+            inventory.put(item, currentInventory + 1);
+        } else {
+            throw new IndexOutOfBoundsException("You do not currently have that " +
+                    "item in your Cargo Hold");
+        }
+     }
+
+    public void BuyGoods(Player player, Goods item) {
+        int price = cost.get(item);
+        if (player.getShip().isFull()) {
+            throw new IndexOutOfBoundsException("You do not currently enough " +
+                    "space in your cargohold to purchase this item.");
+        }
+        if (player.getCredits() < price) {
+            player.setCredits(player.getCredits() - price);
+            player.getShip().addToCargo(item);
+            int currentInventory = inventory.get(item);
+            if (currentInventory -1 == 0) {
+                inventory.remove(item);
+            } else {
+                inventory.put(item, currentInventory - 1);
+            }
+        } else {
+            throw new IndexOutOfBoundsException("You do not currently enough " +
+                    "credits to purchase this item.");
+        }
+    }
 }

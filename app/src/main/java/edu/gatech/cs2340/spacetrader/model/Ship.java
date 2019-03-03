@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.spacetrader.model;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import edu.gatech.cs2340.spacetrader.entity.Goods;
@@ -34,8 +35,12 @@ public class Ship {
         }
     }
 
-    public LinkedList getCargoList() {
+    public LinkedList<Goods> getCargoList() {
         return cargoList;
+    }
+
+    public boolean isFull() {
+        return cargoList.size() == cargoHold;
     }
 
     public void setName(String name) {

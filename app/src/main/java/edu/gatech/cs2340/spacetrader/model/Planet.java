@@ -32,7 +32,7 @@ public class Planet {
     public Planet(String planetName) {
         this.name = planetName;
         Random rand = new Random();
-        techLevel = rand.nextInt(8) - 1;
+        techLevel = rand.nextInt(7);
         resourceLevel = rand.nextInt(13);
         MarketPlace market = new MarketPlace(TechLevel.values()[techLevel], ResourceLevel.values()[resourceLevel]);
     }
