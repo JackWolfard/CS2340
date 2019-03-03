@@ -2,7 +2,8 @@ package edu.gatech.cs2340.spacetrader.model;
 
 import java.util.LinkedList;
 import java.util.Random;
-
+import edu.gatech.cs2340.spacetrader.entity.TechLevel;
+import edu.gatech.cs2340.spacetrader.entity.ResourceLevel;
 public class SolarSystem {
 
 
@@ -23,12 +24,6 @@ public class SolarSystem {
 
     private int resourceLevel;
 
-    private String[] techLevelNames = new String[]{"Pre-Agriculture", "Agriculture", "Medieval",
-            "Renaissance", "Early Industrial", "Industrial", "Post-Industrial", "Hi-Tech"};
-
-    private String[] resourceLevelNames = new String[]{"NOSPECIALRESOURCES", "MINERALRICH",
-            "MINERALPOOR", "DESERT", "LOTSOFWATER", "RICHSOIL", "POORSOIL", "RICHFAUNA", "LIFELESS",
-            "WEIRDMUSHROOMS", "LOTSOFHERBS", "ARTISTIC", "WARLIKE"};
 
     /**
      * The Constructor Method for a Solar System with a random Tech and Resource Level
@@ -63,7 +58,7 @@ public class SolarSystem {
     @Override
     public String toString() {
         return String.format("A Solar System called %s with technology level: %s and resource level: %s",
-                name, techLevelNames[techLevel], resourceLevelNames[resourceLevel]);
+                name, TechLevel.values()[techLevel], ResourceLevel.values()[resourceLevel]);
     }
 
 }
