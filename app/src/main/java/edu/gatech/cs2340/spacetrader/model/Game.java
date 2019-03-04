@@ -17,7 +17,7 @@ public class Game {
     public Game() {
         player = null;
         difficulty = GameDifficulty.B;
-        universe = null;
+        universe = new Universe();
     }
 
     public void setPlayer(Player player) {
@@ -28,8 +28,8 @@ public class Game {
         this.difficulty = difficulty;
     }
 
-    public HashMap<SolarSystem, int[]> getUniverse() {
-        return universe.getStarMap();
+    public Universe getUniverse() {
+        return universe;
     }
 
     @Override

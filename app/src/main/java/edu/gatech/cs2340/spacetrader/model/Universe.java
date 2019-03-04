@@ -24,7 +24,25 @@ public class Universe {
 
     private LinkedList<SolarSystem> sysList = SolarSystem.generateSystem();
 
-    /**
+    private SolarSystem currentSolarsystem;
+    private Planet currentPlanet;
+
+    public SolarSystem getCurrentSolarsystem() {
+        return currentSolarsystem;
+    }
+
+    public void setCurrentSolarsystem(SolarSystem currentSolarsystem) {
+        this.currentSolarsystem = currentSolarsystem;
+    }
+
+    public Planet getCurrentPlanet() {
+        return currentPlanet;
+    }
+
+    public void setCurrentPlanet(Planet currentPlanet) {
+        this.currentPlanet = currentPlanet;
+    }
+/**
      * Creates a Universe containing Solar Systems to be used in the game
      */
 
@@ -54,7 +72,6 @@ public class Universe {
         return starMap;
     }
 
-    // Not finished yet
     @Override
     public String toString() {
         String backhalf = "";

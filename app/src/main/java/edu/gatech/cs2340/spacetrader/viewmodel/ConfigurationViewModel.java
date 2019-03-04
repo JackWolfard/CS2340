@@ -31,7 +31,7 @@ public class ConfigurationViewModel extends AndroidViewModel {
         game.setDifficulty(difficulty);
         Player player = new Player(name, pilotPt, engPt, tradePt, fightPt);
         player.setShip(new Ship(ShipType.GN));
-        Universe universe = new Universe();
+        Universe universe = game.getUniverse();
         game.setPlayer(player);
         Log.d("Edit", player.toString());
         Log.d("Edit", game.toString());

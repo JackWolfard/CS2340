@@ -31,8 +31,6 @@ public class SolarSystem {
      */
 
     public SolarSystem(Planet planet) {
-
-
         name = planet.getName();
         techLevel = planet.getTechLevel();
         resourceLevel = planet.getResourceLevel();
