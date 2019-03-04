@@ -142,11 +142,7 @@ public class MarketPlace
             player.setCredits(player.getCredits() - price);
             player.getShip().addToCargo(item);
             int currentInventory = inventory.get(item);
-            if (currentInventory -1 == 0) {
-                inventory.remove(item);
-            } else {
-                inventory.put(item, currentInventory - 1);
-            }
+            inventory.put(item, currentInventory - 1);
         } else {
             throw new IndexOutOfBoundsException("You do not currently enough " +
                     "credits to purchase this item.");

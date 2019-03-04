@@ -24,6 +24,8 @@ public class Planet {
 
     private int resourceLevel;
 
+    private MarketPlace market;
+
     /**
      * Constructor method to create a new Planet with a name
      * @param planetName The name given to the created Planet
@@ -34,7 +36,7 @@ public class Planet {
         Random rand = new Random();
         techLevel = rand.nextInt(7);
         resourceLevel = rand.nextInt(13);
-        MarketPlace market = new MarketPlace(TechLevel.values()[techLevel], ResourceLevel.values()[resourceLevel]);
+        market = new MarketPlace(TechLevel.values()[techLevel], ResourceLevel.values()[resourceLevel]);
     }
 
     public Planet() {
