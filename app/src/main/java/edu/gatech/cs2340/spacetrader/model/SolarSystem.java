@@ -11,6 +11,10 @@ public class SolarSystem {
 
     private String name;
 
+    /** the First planet in the solarsystem */
+
+    private Planet planet;
+
     /** a Linked List representation of the 10 different Solar Systems, with each containing
      * one planet of the same name */
 
@@ -31,9 +35,18 @@ public class SolarSystem {
      */
 
     public SolarSystem(Planet planet) {
+
         name = planet.getName();
         techLevel = planet.getTechLevel();
         resourceLevel = planet.getResourceLevel();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
@@ -57,4 +70,7 @@ public class SolarSystem {
                 name, TechLevel.values()[techLevel], ResourceLevel.values()[resourceLevel]);
     }
 
+    public Planet getPlanet() {
+        return planet;
+    }
 }

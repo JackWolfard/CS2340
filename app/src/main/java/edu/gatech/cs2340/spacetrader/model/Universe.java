@@ -53,6 +53,8 @@ public class Universe {
     // I used the constant of 1 for now just so it would compile
     public Universe() {
         generateUniverse();
+        currentSolarsystem = sysList.get(0);
+        currentPlanet = sysList.get(0).getPlanet();
     }
 
     public void generateUniverse() {
