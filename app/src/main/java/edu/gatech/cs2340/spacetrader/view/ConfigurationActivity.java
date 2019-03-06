@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.content.Intent;
 
 import edu.gatech.cs2340.spacetrader.entity.GameDifficulty;
 import edu.gatech.cs2340.spacetrader.viewmodel.ConfigurationViewModel;
@@ -63,16 +64,17 @@ public class ConfigurationActivity extends AppCompatActivity {
             toast.setGravity(Gravity.TOP, 0, 0);
             toast.show();
         } else {
-                viewModel.initGame(difficulty, nameField.getText().toString(), convertToInt(pilotField),
-                        convertToInt(engineerField), convertToInt(traderField), convertToInt(fighterField));
-                Toast toast = Toast.makeText(getApplicationContext(), "Successfully created player", Toast.LENGTH_SHORT);
+            viewModel.initGame(difficulty, nameField.getText().toString(), convertToInt(pilotField),
+                    convertToInt(engineerField), convertToInt(traderField), convertToInt(fighterField));
+            Toast toast = Toast.makeText(getApplicationContext(), "Successfully created player", Toast.LENGTH_SHORT);
 
-                //setContentView(R.layout.transition);
-                setContentView(R.layout.planet);
+            Intent intent = new Intent(ConfigurationActivity.this, PlanetActivity.class);
+            ConfigurationActivity.this.startActivity(intent);
+            setContentView(R.layout.planet);
 
 
-                toast.setGravity(Gravity.TOP, 0, 0);
-                toast.show();
+            toast.setGravity(Gravity.TOP, 0, 0);
+            toast.show();
         }
     }
 

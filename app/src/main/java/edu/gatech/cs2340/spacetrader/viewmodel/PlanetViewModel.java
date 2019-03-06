@@ -8,10 +8,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
+import edu.gatech.cs2340.spacetrader.entity.ResourceLevel;
+import edu.gatech.cs2340.spacetrader.entity.TechLevel;
 import edu.gatech.cs2340.spacetrader.model.Game;
 import edu.gatech.cs2340.spacetrader.model.Model;
 import edu.gatech.cs2340.spacetrader.model.SolarSystem;
 import edu.gatech.cs2340.spacetrader.model.Universe;
+import edu.gatech.cs2340.spacetrader.model.Planet;
 
 public class PlanetViewModel extends AndroidViewModel {
 
@@ -22,16 +25,15 @@ public class PlanetViewModel extends AndroidViewModel {
         model = Model.getInstance();
     }
 
-    public void initPlanetView() {
-
+    public String[] initPlanetView() {
+        String[] info = new String[3];
         Game game = model.getGame();
         Universe universe = game.getUniverse();
-        HashMap<SolarSystem, int[]> starMap = universe.getStarMap();
-        Set<SolarSystem> keySet = starMap.keySet();
-        Iterator<SolarSystem> iterator = keySet.iterator();
-        SolarSystem ss1 = iterator.next();
-
-        //do something with ss1 to make the attributes of the solar system/planet show up on the planet screen
+        Planet currentPlanet = universe.getCurrentPlanet();
+        info[0] = currentPlanet.getName();
+        info[1] = TechLevel.values()[currentPlanet.getTechLevel()].toString();
+        info[2] = ResourceLevel.values()[currentPlanet.getResourceLevel()].toString();
+        return info;
     }
 
 }

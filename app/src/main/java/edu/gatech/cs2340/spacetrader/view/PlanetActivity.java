@@ -14,8 +14,6 @@ public class PlanetActivity extends AppCompatActivity {
 
     private PlanetViewModel viewModel;
 
-    private PlanetViewModel configVM;
-
     private TextView planetName;
     private TextView resourceLevelNum;
     private TextView techLevelNum;
@@ -25,16 +23,22 @@ public class PlanetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.planet);
 
+        viewModel = ViewModelProviders.of(this).get(PlanetViewModel.class);
+
         planetName = findViewById(R.id.planetName);
         resourceLevelNum = findViewById(R.id.resourceLevelNum);
         techLevelNum = findViewById(R.id.techLevelNum);
 
-        planetName.setText("Deshaan");
-        resourceLevelNum.setText("Temporary");
-        techLevelNum.setText("Temporary");
+        initTextFields();
 
-        viewModel = ViewModelProviders.of(this).get(PlanetViewModel.class);
+    }
 
+    public void initTextFields() {
+        String[] info = viewModel.initPlanetView();
+
+        planetName.setText(info[0]);
+        techLevelNum.setText(info[1]);
+        resourceLevelNum.setText(info[2]);
     }
 
     public void onMarketPressed(View view) {

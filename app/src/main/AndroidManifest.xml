@@ -18,6 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name="edu.gatech.cs2340.spacetrader.view.PlanetActivity"
+            android:label="Current Planet"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
