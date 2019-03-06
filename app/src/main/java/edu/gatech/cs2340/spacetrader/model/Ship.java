@@ -1,8 +1,6 @@
 package edu.gatech.cs2340.spacetrader.model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 import edu.gatech.cs2340.spacetrader.entity.Goods;
 import edu.gatech.cs2340.spacetrader.entity.ShipType;
