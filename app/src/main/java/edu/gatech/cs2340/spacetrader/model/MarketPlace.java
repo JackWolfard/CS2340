@@ -105,7 +105,7 @@ public class MarketPlace
         //get price of good
         int price = sell.get(item);
         //make sure player has good in inventory
-        if (player.getShip().getCargoList().contains(item)) {
+        if (player.getShip().getCargoList().get(item) > 0) {
             player.setCredits(player.getCredits() + price);
             player.getShip().removeFromCargo(item);
             //get current inventory if 0 need to added item and create pricing for it
