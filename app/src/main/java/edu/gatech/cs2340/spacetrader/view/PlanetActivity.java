@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.spacetrader.view;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -41,8 +42,10 @@ public class PlanetActivity extends AppCompatActivity {
         resourceLevelNum.setText(info[2]);
     }
 
-    public void onMarketPressed(View view) {
-        Log.d("Edit", "Create Player Pressed");
+    public void onGoPressed(View view) {
+        Log.d("Edit", "Go to marketplace pressed");
 
+        Intent intent = new Intent(PlanetActivity.this, MarketActivity.class);
+        PlanetActivity.this.startActivity(intent);
     }
 }

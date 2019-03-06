@@ -68,13 +68,11 @@ public class ConfigurationActivity extends AppCompatActivity {
                     convertToInt(engineerField), convertToInt(traderField), convertToInt(fighterField));
             Toast toast = Toast.makeText(getApplicationContext(), "Successfully created player", Toast.LENGTH_SHORT);
 
-            Intent intent = new Intent(ConfigurationActivity.this, PlanetActivity.class);
-            ConfigurationActivity.this.startActivity(intent);
-            setContentView(R.layout.planet);
-
-
             toast.setGravity(Gravity.TOP, 0, 0);
             toast.show();
+
+            Intent intent = new Intent(ConfigurationActivity.this, PlanetActivity.class);
+            ConfigurationActivity.this.startActivity(intent);
         }
     }
 

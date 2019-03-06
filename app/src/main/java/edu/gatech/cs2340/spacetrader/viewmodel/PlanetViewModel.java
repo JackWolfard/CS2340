@@ -4,15 +4,10 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
-
 import edu.gatech.cs2340.spacetrader.entity.ResourceLevel;
 import edu.gatech.cs2340.spacetrader.entity.TechLevel;
 import edu.gatech.cs2340.spacetrader.model.Game;
 import edu.gatech.cs2340.spacetrader.model.Model;
-import edu.gatech.cs2340.spacetrader.model.SolarSystem;
 import edu.gatech.cs2340.spacetrader.model.Universe;
 import edu.gatech.cs2340.spacetrader.model.Planet;
 
@@ -37,4 +32,3 @@ public class PlanetViewModel extends AndroidViewModel {
     }
 
 }
-
