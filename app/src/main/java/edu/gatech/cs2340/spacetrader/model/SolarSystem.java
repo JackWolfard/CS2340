@@ -35,7 +35,7 @@ public class SolarSystem {
      */
 
     public SolarSystem(Planet planet) {
-
+        this.planet = planet;
         name = planet.getName();
         techLevel = planet.getTechLevel();
         resourceLevel = planet.getResourceLevel();
