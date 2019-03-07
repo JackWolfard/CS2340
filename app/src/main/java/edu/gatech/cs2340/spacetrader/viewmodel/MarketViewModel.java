@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Set;
 
 import edu.gatech.cs2340.spacetrader.entity.Goods;
@@ -27,7 +26,7 @@ public class MarketViewModel extends AndroidViewModel {
     }
 
     public ArrayList<ArrayList<String>> initMarket() {
-        ArrayList<ArrayList<String>> info = new ArrayList<ArrayList<String>>(4);
+        ArrayList<ArrayList<String>> info = new ArrayList<>(4);
         Game game = model.getGame();
         Universe universe = game.getUniverse();
         Planet currentPlanet = universe.getCurrentPlanet();
@@ -43,13 +42,11 @@ public class MarketViewModel extends AndroidViewModel {
         HashMap<Goods, Integer> sell = market.getSell();
 
         Set<Goods> goodsSet = inventory.keySet();
-        Iterator<Goods> iterator = goodsSet.iterator();
-        while (iterator.hasNext()) {
-            Goods good = iterator.next();
+        for (Goods good : goodsSet) {
             goodNames.add(good.getName());
-            quantities.add(inventory.get(good).toString());
-            prices.add(cost.get(good).toString());
-            sellPrices.add(sell.get(good).toString());
+            quantities.add(String.valueOf(inventory.get(good)));
+            prices.add(String.valueOf(cost.get(good)));
+            sellPrices.add(String.valueOf(sell.get(good)));
         }
 
         info.add(goodNames);
@@ -60,6 +57,7 @@ public class MarketViewModel extends AndroidViewModel {
         return info;
 
     }
+
 
     public int initCredits() {
         Game game = model.getGame();

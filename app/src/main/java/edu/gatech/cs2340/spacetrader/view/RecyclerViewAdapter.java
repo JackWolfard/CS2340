@@ -15,25 +15,26 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import edu.gatech.cs2340.spacetrader.R;
-import edu.gatech.cs2340.spacetrader.view.MarketActivity;
 import edu.gatech.cs2340.spacetrader.entity.Goods;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private static final String TAG = "RecyclerViewAdapter";
 
-    private ArrayList<String> goodNames = new ArrayList<>();
-    private ArrayList<String> quantities = new ArrayList<>();
-    private ArrayList<String> prices = new ArrayList<>();
-    private ArrayList<String> sellPrices = new ArrayList<>();
+    private ArrayList<String> goodNames;
+    private ArrayList<String> quantities;
+    private ArrayList<String> prices;
+    private ArrayList<String> sellPrices;
     private Context mContext;
+    private MarketActivity marketActivity;
 
-    public RecyclerViewAdapter(Context mContext, ArrayList<String> goodNames, ArrayList<String> quantities, ArrayList<String> prices, ArrayList<String> sellPrices) {
+    public RecyclerViewAdapter(Context mContext, ArrayList<String> goodNames, ArrayList<String> quantities, ArrayList<String> prices, ArrayList<String> sellPrices, MarketActivity marketActivity) {
         this.mContext = mContext;
         this.goodNames = goodNames;
         this.quantities = quantities;
         this.prices = prices;
         this.sellPrices = sellPrices;
+        this.marketActivity = marketActivity;
     }
 
     @NonNull
@@ -57,12 +58,36 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 if (MarketActivity.isBuy) {
-
+                    try {
+                        marketActivity.buyGood(Goods.valueOf(goodNames.get(i).toUpperCase()));
+                        Toast toast = Toast.makeText(mContext, goodNames.get(i) + " bought", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.TOP, 0, 0);
+                        toast.show();
+                        marketActivity.refresh();
+                    } catch (IndexOutOfBoundsException e) {
+                        Toast toast = Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.TOP, 0, 0);
+                        toast.show();
+                    }
+                } else if (MarketActivity.isSell) {
+                    try {
+                        marketActivity.sellGood(Goods.valueOf(goodNames.get(i).toUpperCase()));
+                        Toast toast = Toast.makeText(mContext, goodNames.get(i) + " sold", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.TOP, 0, 0);
+                        toast.show();
+                        marketActivity.refresh();
+                    } catch (IndexOutOfBoundsException e) {
+                        Toast toast = Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.TOP, 0, 0);
+                        toast.show();
+                    }
+                } else {
+                    Toast toast = Toast.makeText(mContext, "Select buy or sell", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP, 0, 0);
+                    toast.show();
                 }
 
-                Toast toast = Toast.makeText(mContext, goodNames.get(i), Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.TOP, 0, 0);
-                toast.show();
+
             }
         });
     }

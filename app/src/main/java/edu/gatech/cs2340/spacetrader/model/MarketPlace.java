@@ -138,7 +138,7 @@ public class MarketPlace
                     "space in your cargohold to purchase this item.");
         }
         // make sure player has enough credit for purchase
-        if (player.getCredits() < price) {
+        if (player.getCredits() >= price) {
             player.setCredits(player.getCredits() - price);
             player.getShip().addToCargo(item);
             int currentInventory = inventory.get(item);

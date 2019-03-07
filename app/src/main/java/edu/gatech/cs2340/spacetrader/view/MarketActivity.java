@@ -29,7 +29,6 @@ public class MarketActivity extends AppCompatActivity {
     private ArrayList<String> prices;
     private ArrayList<String> sellPrices;
 
-    private TextView credits;
     private Button buyButton;
     private Button sellButton;
 
@@ -42,7 +41,7 @@ public class MarketActivity extends AppCompatActivity {
 
         viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
 
-        credits = findViewById(R.id.creditText);
+        TextView credits = findViewById(R.id.creditText);
         buyButton = findViewById(R.id.buyButton);
         sellButton = findViewById(R.id.sellButton);
 
@@ -59,10 +58,14 @@ public class MarketActivity extends AppCompatActivity {
 
     }
 
+    public void refresh() {
+        startActivity(new Intent(MarketActivity.this, MarketActivity.class));
+    }
+
     private void initRecyclerView() {
         Log.d(TAG, "initRecyclerView: init recyclerview");
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, goodNames, quantities, prices, sellPrices);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, goodNames, quantities, prices, sellPrices, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
