@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:padding="15dp"
+    android:id="@+id/parentLayout">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:id="@+id/goodName"
+        android:textColor="#000"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:textSize="15sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quantity"
+        android:id="@+id/quantityText"
+        android:textColor="#000"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="120dp"
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price"
+        android:id="@+id/priceText"
+        android:textColor="#000"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="210dp"
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sell"
+        android:id="@+id/sellText"
+        android:textColor="#000"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="300dp"
+        android:textSize="15sp" />
+
+</RelativeLayout>

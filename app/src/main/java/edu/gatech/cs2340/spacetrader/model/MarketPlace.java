@@ -129,7 +129,7 @@ public class MarketPlace
      * @param player The player buying the good
      * @param item The good being bought
      */
-    public void BuyGoods(Player player, Goods item) {
+    public void buyGoods(Player player, Goods item) {
         //get cost of the good
         int price = cost.get(item);
         //check if their is space in cargo hold
@@ -147,5 +147,17 @@ public class MarketPlace
             throw new IndexOutOfBoundsException("You do not currently enough " +
                     "credits to purchase this item.");
         }
+    }
+
+    public HashMap<Goods, Integer> getInventory() {
+        return inventory;
+    }
+
+    public HashMap<Goods, Integer> getCost() {
+        return cost;
+    }
+
+    public HashMap<Goods, Integer> getSell() {
+        return sell;
     }
 }

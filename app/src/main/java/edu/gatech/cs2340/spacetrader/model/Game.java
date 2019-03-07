@@ -32,6 +32,10 @@ public class Game {
         return universe;
     }
 
+    public Player getPlayer() {
+        return player;
+    }
+
     @Override
     public String toString() {
         return String.format("Game with Player: %s, Difficulty: %s.", player.getName(), difficulty.getDifficulty());

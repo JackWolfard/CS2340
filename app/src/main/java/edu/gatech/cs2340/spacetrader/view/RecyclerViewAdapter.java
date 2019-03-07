@@ -1,0 +1,93 @@
+package edu.gatech.cs2340.spacetrader.view;
+
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.util.Log;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+import edu.gatech.cs2340.spacetrader.R;
+import edu.gatech.cs2340.spacetrader.view.MarketActivity;
+import edu.gatech.cs2340.spacetrader.entity.Goods;
+
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+
+    private static final String TAG = "RecyclerViewAdapter";
+
+    private ArrayList<String> goodNames = new ArrayList<>();
+    private ArrayList<String> quantities = new ArrayList<>();
+    private ArrayList<String> prices = new ArrayList<>();
+    private ArrayList<String> sellPrices = new ArrayList<>();
+    private Context mContext;
+
+    public RecyclerViewAdapter(Context mContext, ArrayList<String> goodNames, ArrayList<String> quantities, ArrayList<String> prices, ArrayList<String> sellPrices) {
+        this.mContext = mContext;
+        this.goodNames = goodNames;
+        this.quantities = quantities;
+        this.prices = prices;
+        this.sellPrices = sellPrices;
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_listitem, parent, false);
+        ViewHolder holder = new ViewHolder(view);
+        return holder;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
+        Log.d(TAG, "onBindViewHolder: called.");
+
+        viewHolder.goodName.setText(goodNames.get(i));
+        viewHolder.quantityText.setText(quantities.get(i));
+        viewHolder.priceText.setText(prices.get(i));
+        viewHolder.sellText.setText(sellPrices.get(i));
+
+        viewHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (MarketActivity.isBuy) {
+
+                }
+
+                Toast toast = Toast.makeText(mContext, goodNames.get(i), Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.TOP, 0, 0);
+                toast.show();
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return goodNames.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
+        TextView goodName;
+        TextView quantityText;
+        TextView priceText;
+        TextView sellText;
+        RelativeLayout parentLayout;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            goodName = itemView.findViewById(R.id.goodName);
+            quantityText = itemView.findViewById(R.id.quantityText);
+            priceText = itemView.findViewById(R.id.priceText);
+            sellText = itemView.findViewById(R.id.sellText);
+            parentLayout = itemView.findViewById(R.id.parentLayout);
+        }
+    }
+
+}

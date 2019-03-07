@@ -87,4 +87,8 @@ public class Planet {
      */
 
     public int getResourceLevel() { return resourceLevel; }
+
+    public MarketPlace getMarket() {
+        return market;
+    }
 }
