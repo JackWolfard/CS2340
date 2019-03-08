@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
-
+import java.util.Collections;
 import edu.gatech.cs2340.spacetrader.entity.Goods;
 import edu.gatech.cs2340.spacetrader.model.Game;
 import edu.gatech.cs2340.spacetrader.model.Model;
@@ -43,7 +43,9 @@ public class MarketViewModel extends AndroidViewModel {
         HashMap<Goods, Integer> sell = market.getSell();
 
         Set<Goods> goodsSet = inventory.keySet();
-        for (Goods good : goodsSet) {
+        ArrayList<Goods> sortedSet = new ArrayList<>(goodsSet);
+        Collections.sort(sortedSet);
+        for (Goods good : sortedSet) {
             goodNames.add(good.getName());
             quantities.add(String.valueOf(inventory.get(good)));
             prices.add(String.valueOf(cost.get(good)));

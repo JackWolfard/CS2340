@@ -40,7 +40,7 @@ public class MarketPlace
             int planetTechLevel = tech.getTechLevel();
             //calculate quantity modifiers
             if (planetTechLevel >= item.getMinLevelProd()) {
-                quantity = rand.nextInt(3);
+                quantity = rand.nextInt(3) + 1;
             }
             if (planetTechLevel == item.getHighestTechFreq()) {
                 quantity = quantity * 2;
