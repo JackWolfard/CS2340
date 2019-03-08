@@ -22,7 +22,7 @@
         android:id="@+id/quantityText"
         android:textColor="#000"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="120dp"
+        android:layout_marginLeft="80dp"
         android:textSize="15sp" />
 
     <TextView
@@ -32,7 +32,7 @@
         android:id="@+id/priceText"
         android:textColor="#000"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="210dp"
+        android:layout_marginLeft="150dp"
         android:textSize="15sp" />
 
     <TextView
@@ -40,6 +40,16 @@
         android:layout_height="wrap_content"
         android:text="Sell"
         android:id="@+id/sellText"
+        android:textColor="#000"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="230dp"
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Owned"
+        android:id="@+id/amountOwnedText"
         android:textColor="#000"
         android:layout_centerVertical="true"
         android:layout_marginLeft="300dp"

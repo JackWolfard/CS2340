@@ -28,7 +28,9 @@ public class MarketActivity extends AppCompatActivity {
     private ArrayList<String> quantities;
     private ArrayList<String> prices;
     private ArrayList<String> sellPrices;
+    private ArrayList<String> amountOwned;
 
+    private Button backButton;
     private Button buyButton;
     private Button sellButton;
 
@@ -42,6 +44,7 @@ public class MarketActivity extends AppCompatActivity {
         viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
 
         TextView credits = findViewById(R.id.creditText);
+        backButton = findViewById(R.id.backButton);
         buyButton = findViewById(R.id.buyButton);
         sellButton = findViewById(R.id.sellButton);
         TextView inventory = findViewById(R.id.inventoryText);
@@ -52,10 +55,20 @@ public class MarketActivity extends AppCompatActivity {
         quantities = info.get(1);
         prices = info.get(2);
         sellPrices = info.get(3);
+        amountOwned = info.get(4);
 
         credits.setText(String.valueOf(viewModel.initCredits()));
-        isBuy = false;
-        isSell = false;
+
+        backButton.setBackgroundResource(android.R.drawable.btn_default);
+        sellButton.setBackgroundResource(android.R.drawable.btn_default);
+        buyButton.setBackgroundResource(android.R.drawable.btn_default);
+        if (isBuy) {
+            buyButton.setBackgroundColor(Color.GREEN);
+            sellButton.setBackgroundResource(android.R.drawable.btn_default);
+        } else if (isSell) {
+            sellButton.setBackgroundColor(Color.GREEN);
+            buyButton.setBackgroundResource(android.R.drawable.btn_default);
+        }
 
         int[] inventoryInfo = viewModel.initInventory();
         inventory.setText(String.valueOf(inventoryInfo[1]) + "/" + String.valueOf(inventoryInfo[0]));
@@ -73,7 +86,7 @@ public class MarketActivity extends AppCompatActivity {
     private void initRecyclerView() {
         Log.d(TAG, "initRecyclerView: init recyclerview");
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, goodNames, quantities, prices, sellPrices, this);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, goodNames, quantities, prices, sellPrices, amountOwned, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

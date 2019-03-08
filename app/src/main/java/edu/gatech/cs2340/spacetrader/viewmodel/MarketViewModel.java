@@ -3,6 +3,7 @@ package edu.gatech.cs2340.spacetrader.viewmodel;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -20,6 +21,8 @@ import edu.gatech.cs2340.spacetrader.model.Ship;
 
 public class MarketViewModel extends AndroidViewModel {
 
+    private static final String TAG = "MarketViewModel";
+
     private Model model;
 
     public MarketViewModel(@NonNull Application application) {
@@ -28,20 +31,24 @@ public class MarketViewModel extends AndroidViewModel {
     }
 
     public ArrayList<ArrayList<String>> initMarket() {
-        ArrayList<ArrayList<String>> info = new ArrayList<>(4);
+        ArrayList<ArrayList<String>> info = new ArrayList<>(5);
         Game game = model.getGame();
         Universe universe = game.getUniverse();
+        Player player = game.getPlayer();
         Planet currentPlanet = universe.getCurrentPlanet();
         MarketPlace market = currentPlanet.getMarket();
+        Ship ship = player.getShip();
 
         ArrayList<String> goodNames = new ArrayList<>();
         ArrayList<String> quantities = new ArrayList<>();
         ArrayList<String> prices = new ArrayList<>();
         ArrayList<String> sellPrices = new ArrayList<>();
+        ArrayList<String> amountOwned = new ArrayList<>();
 
         HashMap<Goods, Integer> inventory = market.getInventory();
         HashMap<Goods, Integer> cost = market.getCost();
         HashMap<Goods, Integer> sell = market.getSell();
+        HashMap<Goods, Integer> shipCargo = ship.getCargoList();
 
         Set<Goods> goodsSet = inventory.keySet();
         ArrayList<Goods> sortedSet = new ArrayList<>(goodsSet);
@@ -53,12 +60,14 @@ public class MarketViewModel extends AndroidViewModel {
             quantities.add(String.valueOf(inventory.get(good)));
             prices.add(String.valueOf(cost.get(good)));
             sellPrices.add(String.valueOf(sell.get(good)));
+            amountOwned.add(String.valueOf(shipCargo.get(good)));
         }
 
         info.add(goodNames);
         info.add(quantities);
         info.add(prices);
         info.add(sellPrices);
+        info.add(amountOwned);
 
         return info;
 

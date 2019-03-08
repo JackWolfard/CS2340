@@ -69,4 +69,5 @@ public class Ship {
     public int getCurrentsize() {
         return currentsize;
     }
+
 }

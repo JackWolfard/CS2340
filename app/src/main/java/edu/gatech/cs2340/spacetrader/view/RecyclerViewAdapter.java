@@ -25,15 +25,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ArrayList<String> quantities;
     private ArrayList<String> prices;
     private ArrayList<String> sellPrices;
+    private ArrayList<String> amountOwned;
     private Context mContext;
     private MarketActivity marketActivity;
 
-    public RecyclerViewAdapter(Context mContext, ArrayList<String> goodNames, ArrayList<String> quantities, ArrayList<String> prices, ArrayList<String> sellPrices, MarketActivity marketActivity) {
+    public RecyclerViewAdapter(Context mContext, ArrayList<String> goodNames, ArrayList<String> quantities, ArrayList<String> prices, ArrayList<String> sellPrices, ArrayList<String> amountOwned, MarketActivity marketActivity) {
         this.mContext = mContext;
         this.goodNames = goodNames;
         this.quantities = quantities;
         this.prices = prices;
         this.sellPrices = sellPrices;
+        this.amountOwned = amountOwned;
         this.marketActivity = marketActivity;
     }
 
@@ -53,6 +55,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         viewHolder.quantityText.setText(quantities.get(i));
         viewHolder.priceText.setText(prices.get(i));
         viewHolder.sellText.setText(sellPrices.get(i));
+        viewHolder.amountOwnedText.setText(amountOwned.get(i));
 
         viewHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +106,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView quantityText;
         TextView priceText;
         TextView sellText;
+        TextView amountOwnedText;
         RelativeLayout parentLayout;
 
         public ViewHolder(@NonNull View itemView) {
@@ -111,6 +115,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             quantityText = itemView.findViewById(R.id.quantityText);
             priceText = itemView.findViewById(R.id.priceText);
             sellText = itemView.findViewById(R.id.sellText);
+            amountOwnedText = itemView.findViewById(R.id.amountOwnedText);
             parentLayout = itemView.findViewById(R.id.parentLayout);
         }
     }
