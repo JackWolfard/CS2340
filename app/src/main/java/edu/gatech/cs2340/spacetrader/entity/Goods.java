@@ -1,16 +1,16 @@
 package edu.gatech.cs2340.spacetrader.entity;
-
+import java.util.Comparator;
 public enum Goods {
-    WATER("Water", 30, 0, 0, 2, 3, 4, "DROUGHT", "LOTSOFWATER", "DESERT", 30, 50),
-    FURS("Furs",250, 0,0,0,10,10,"COLD","RICHFAUNA","LIFELESS",230,280),
-    FOOD("Food",100, 1,0,1,5,5,"CROPFAIL","RICHSOIL","POORSOIL",90,160),
-    ORE("Ore",350,2,2,3,20,10,"WAR","MINERALRICH","MINERALPOOR",350,420),
-    GAMES("Games",250,3,1,6,-10,5,"BOREDOM","ARTISTIC",null,160,270),
     FIREARMS("Firearms", 1250, 3,1,5,-75,100, "WAR", "WARLIKE",null,600,1100),
-    MEDICINE("Medicine", 650, 4, 1,6,-20, 10, "PLAGUE", "LOTSOFHERBS", null, 400,700),
-    MACHINES("Machines", 900, 4,3,5, -30, 5, "LACKOFWORKERS", null, null, 600,800),
+    FOOD("Food",100, 1,0,1,5,5,"CROPFAIL","RICHSOIL","POORSOIL",90,160),
+    FURS("Furs",250, 0,0,0,10,10,"COLD","RICHFAUNA","LIFELESS",230,280),
+    GAMES("Games",250,3,1,6,-10,5,"BOREDOM","ARTISTIC",null,160,270),
+    ORE("Ore",350,2,2,3,20,10,"WAR","MINERALRICH","MINERALPOOR",350,420),
     NARCOTICS("Narcotics", 3500, 5,0,5,-125, 150, "BOREDOM", "WEIRDMUSHROOMS", null, 2000, 3000),
-    ROBOTS("Robots", 5000, 6,4,7, -150, 100, "LACKOFWORKERS", null, null, 3500, 5000);
+    MACHINES("Machines", 900, 4,3,5, -30, 5, "LACKOFWORKERS", null, null, 600,800),
+    MEDICINE("Medicine", 650, 4, 1,6,-20, 10, "PLAGUE", "LOTSOFHERBS", null, 400,700),
+    ROBOTS("Robots", 5000, 6,4,7, -150, 100, "LACKOFWORKERS", null, null, 3500, 5000),
+    WATER("Water", 30, 0, 0, 2, 3, 4, "DROUGHT", "LOTSOFWATER", "DESERT", 30, 50);
 
     /** the name of the good*/
     private final String name;
@@ -105,5 +105,24 @@ public enum Goods {
 
     public int getMaxSpaceTrade() {
         return maxSpaceTrade;
+    }
+    public goodsComparator getComp() {
+        goodsComparator comp = new goodsComparator();
+        return comp;
+    }
+}
+
+class goodsComparator implements Comparator<Goods>
+{
+
+    public int compare(Goods g1,Goods g2)
+    {
+        if (g1.getName().compareTo(g2.getName()) == 0) {
+            return 0;
+        } else if (g1.getName().compareTo(g2.getName()) < 0) {
+            return -1;
+        } else {
+            return 1;
+        }
     }
 }

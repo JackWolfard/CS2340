@@ -5,6 +5,7 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.Collections;
@@ -44,7 +45,9 @@ public class MarketViewModel extends AndroidViewModel {
 
         Set<Goods> goodsSet = inventory.keySet();
         ArrayList<Goods> sortedSet = new ArrayList<>(goodsSet);
-        Collections.sort(sortedSet);
+        Goods getComp = sortedSet.get(0);
+        Comparator<Goods> goodsComp = getComp.getComp();
+        sortedSet.sort(goodsComp);
         for (Goods good : sortedSet) {
             goodNames.add(good.getName());
             quantities.add(String.valueOf(inventory.get(good)));
@@ -87,7 +90,6 @@ public class MarketViewModel extends AndroidViewModel {
 
         market.buyGoods(player, good);
     }
-
     public void sellGood(Goods good) {
         Game game = model.getGame();
         Player player = game.getPlayer();
