@@ -24,6 +24,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="250dp"
         android:text="Planet Name"
+        android:textColor="#000"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

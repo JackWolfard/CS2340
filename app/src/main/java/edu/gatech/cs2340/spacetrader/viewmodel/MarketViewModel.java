@@ -15,6 +15,7 @@ import edu.gatech.cs2340.spacetrader.model.Universe;
 import edu.gatech.cs2340.spacetrader.model.Player;
 import edu.gatech.cs2340.spacetrader.model.Planet;
 import edu.gatech.cs2340.spacetrader.model.MarketPlace;
+import edu.gatech.cs2340.spacetrader.model.Ship;
 
 public class MarketViewModel extends AndroidViewModel {
 
@@ -63,6 +64,16 @@ public class MarketViewModel extends AndroidViewModel {
         Game game = model.getGame();
         Player player = game.getPlayer();
         return player.getCredits();
+    }
+
+    public int[] initInventory() {
+        int[] info = new int[2];
+        Game game = model.getGame();
+        Player player = game.getPlayer();
+        Ship ship = player.getShip();
+        info[0] = ship.getCargoHold();
+        info[1] = ship.getCurrentsize();
+        return info;
     }
 
     public void buyGood(Goods good) {

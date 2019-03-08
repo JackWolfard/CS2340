@@ -44,6 +44,7 @@ public class MarketActivity extends AppCompatActivity {
         TextView credits = findViewById(R.id.creditText);
         buyButton = findViewById(R.id.buyButton);
         sellButton = findViewById(R.id.sellButton);
+        TextView inventory = findViewById(R.id.inventoryText);
 
         ArrayList<ArrayList<String>> info = viewModel.initMarket();
 
@@ -53,13 +54,20 @@ public class MarketActivity extends AppCompatActivity {
         sellPrices = info.get(3);
 
         credits.setText(String.valueOf(viewModel.initCredits()));
+        isBuy = false;
+        isSell = false;
+
+        int[] inventoryInfo = viewModel.initInventory();
+        inventory.setText(String.valueOf(inventoryInfo[1]) + "/" + String.valueOf(inventoryInfo[0]));
 
         initRecyclerView();
 
     }
 
     public void refresh() {
+
         startActivity(new Intent(MarketActivity.this, MarketActivity.class));
+        this.overridePendingTransition(0, 0);
     }
 
     private void initRecyclerView() {

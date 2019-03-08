@@ -139,9 +139,12 @@ public class MarketPlace
         }
         // make sure player has enough credit for purchase
         if (player.getCredits() >= price) {
+            int currentInventory = inventory.get(item);
+            if (currentInventory <= 0) {
+                throw new IndexOutOfBoundsException("This market is out of stock on this good.");
+            }
             player.setCredits(player.getCredits() - price);
             player.getShip().addToCargo(item);
-            int currentInventory = inventory.get(item);
             inventory.put(item, currentInventory - 1);
         } else {
             throw new IndexOutOfBoundsException("You do not currently enough " +

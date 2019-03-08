@@ -61,4 +61,12 @@ public class Ship {
     public String toString() {
         return String.format("%s of model %s", name, shipType);
     }
+
+    public int getCargoHold() {
+        return cargoHold;
+    }
+
+    public int getCurrentsize() {
+        return currentsize;
+    }
 }
