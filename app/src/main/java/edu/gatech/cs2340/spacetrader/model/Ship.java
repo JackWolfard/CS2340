@@ -11,13 +11,16 @@ public class Ship {
     private ShipType shipType;
     private int cargoHold;
     private int currentsize;
+    private int currentMileage;
     private HashMap<Goods, Integer> inventory = new HashMap<Goods, Integer>();
 
     public Ship(String name, ShipType shipType) {
         this.name = name;
         this.shipType = shipType;
+        this.currentMileage = shipType.getTravelDistance();
         initializeCargoHold();
         currentsize = 0;
+
     }
     public void initializeCargoHold() {
         for (int i = 0; i < 10; i++) {
