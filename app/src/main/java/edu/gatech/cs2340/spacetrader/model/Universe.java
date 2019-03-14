@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.spacetrader.model;
 
+import edu.gatech.cs2340.spacetrader.model.Ship;
 import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -22,8 +23,9 @@ public class Universe {
 
     private HashMap<SolarSystem, int[]> starMap = new HashMap<SolarSystem, int[]>();
     /** the Linked List of created Solar Systems used to add them into the starMap */
-
     private LinkedList<SolarSystem> sysList = SolarSystem.generateSystem();
+    /** Hashmap that is used for the travel UI*/
+    private HashMap<SolarSystem, Integer> travelMap = new HashMap<SolarSystem, Integer>();
     private int[][] distanceArray = new int[sysList.size()][sysList.size()];
     private SolarSystem currentSolarsystem;
     private Planet currentPlanet;
@@ -69,7 +71,39 @@ public class Universe {
     }
 
     /**
+     * updates a hashmap to contain all the planets that can be reached from current planet.
+     * @param ship with specific remaining fuel left
+     * @return hashmap of reachable planets
+     */
+    public HashMap<SolarSystem, Integer> aboutToTravel(Ship ship) {
+        travelMap.clear();
+        int index = sysList.indexOf(currentSolarsystem);
+        for (int i=0; i<sysList.size(); i++) {
+            int distance = distanceArray[index][i];
+            if (distance <= ship.getCurrentMileage()) {
+                travelMap.put(sysList.get(i),distance);
+            }
+        }
+        return travelMap;
+    }
+
+    /**
+     * Travels to new planet
+     * Sets ships proper fuel tank
+     * Sets currentSolarsytem/planet
+     * @param solarSystem is new solarsystem to travel to
+     * @param ship users current ship
+     */
+    public void Travel(SolarSystem solarSystem, Ship ship) {
+        int distance = travelMap.get(solarSystem);
+        ship.setCurrentMileage(ship.getCurrentMileage() - distance);
+        currentSolarsystem = solarSystem;
+        currentPlanet = solarSystem.getPlanet();
+    }
+    /**
      * Creates Array of All planet Travel Distances
+     * X is the planet you are on
+     * Y is the distance to that planet
      */
     public void generateTravelDistances() {
         for (int i = 0; i < distanceArray.length; i++) {
@@ -88,7 +122,6 @@ public class Universe {
             }
         }
     }
-
 
     /**
      * Getter for starMap

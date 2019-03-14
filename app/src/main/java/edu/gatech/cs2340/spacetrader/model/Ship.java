@@ -73,4 +73,8 @@ public class Ship {
         return currentsize;
     }
 
+    public int getCurrentMileage() {return currentMileage;}
+
+    public void setCurrentMileage(int travel) {currentMileage = travel;}
+
 }
