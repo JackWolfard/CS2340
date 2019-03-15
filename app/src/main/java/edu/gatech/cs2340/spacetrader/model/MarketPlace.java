@@ -34,7 +34,7 @@ public class MarketPlace
      * are made
      */
     public void initalize() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < Goods.values().length; i++) {
             Random rand = new Random();
             Goods item = Goods.values()[i];
             //calculate quantity
