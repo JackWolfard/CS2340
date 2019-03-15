@@ -68,6 +68,7 @@ public class Universe {
             starMap.put(solSys, coord);
         }
         generateTravelDistances();
+
     }
 
     /**
@@ -110,11 +111,11 @@ public class Universe {
             SolarSystem xplanetKey = sysList.get(i);
             int[] xcoord = starMap.get(xplanetKey);
             double x1 = (double) xcoord[0];
-            double x2 = (double) xcoord[1];
+            double y1 = (double) xcoord[1];
             for (int j = 0; j < distanceArray.length; j++) {
                 SolarSystem yplanetKey = sysList.get(j);
                 int[] ycoord = starMap.get(yplanetKey);
-                double y1 = (double) ycoord[0];
+                double x2 = (double) ycoord[0];
                 double y2 = (double) ycoord[1];
 
                 int distance = (int) Math.floor(Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2)));

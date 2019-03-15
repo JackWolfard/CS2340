@@ -36,7 +36,7 @@ public class Planet {
         Random rand = new Random();
         techLevel = rand.nextInt(7);
         resourceLevel = rand.nextInt(13);
-        market = new MarketPlace(TechLevel.values()[techLevel], ResourceLevel.values()[resourceLevel]);
+        market = new MarketPlace(TechLevel.values()[techLevel], ResourceLevel.values()[resourceLevel], false);
     }
 
     public Planet() {

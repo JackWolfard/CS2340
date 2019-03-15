@@ -13,15 +13,17 @@ public class MarketPlace
     private HashMap<Goods, Integer> sell = new HashMap<Goods, Integer>();
     private TechLevel tech;
     private ResourceLevel resource;
+    private boolean isTrader;
 
     /**
      * Constructor for the Market Place sets the market places techlevel and resource level
      * @param tech The tech level of the Marketplace
      * @param resource The resource level of the Marketplace
      */
-    public MarketPlace(TechLevel tech, ResourceLevel resource) {
+    public MarketPlace(TechLevel tech, ResourceLevel resource, boolean isTrader) {
         this.tech = tech;
         this.resource = resource;
+        this.isTrader = isTrader;
         initalize();
     }
 
@@ -88,6 +90,18 @@ public class MarketPlace
         }
         if (expensive != null && expensive.equals(resourceLevel)) {
             price = (int) java.lang.Math.floor(price * 1.5);
+        }
+        //calculate sell price
+        if (isTrader) {
+            int maxPrice = item.getMaxSpaceTrade();
+            int minPrice = item.getMinSpaceTrade();
+
+            if (price - minPrice < 0) {
+                price = minPrice;
+            }
+            if (price - maxPrice > 0) {
+                price = maxPrice;
+            }
         }
         //calculate sell price
         Integer sellPrice = (int) java.lang.Math.floor(price*.9);
