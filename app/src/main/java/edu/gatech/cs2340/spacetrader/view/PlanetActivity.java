@@ -48,4 +48,9 @@ public class PlanetActivity extends AppCompatActivity {
         Intent intent = new Intent(PlanetActivity.this, MarketActivity.class);
         PlanetActivity.this.startActivity(intent);
     }
+
+    public void onTravelPressed(View view) {
+        Intent intent = new Intent(PlanetActivity.this, TravelActivity.class);
+        PlanetActivity.this.startActivity(intent);
+    }
 }

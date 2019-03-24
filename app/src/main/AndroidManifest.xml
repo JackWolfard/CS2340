@@ -28,6 +28,11 @@
             android:label="Marketplace"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name="edu.gatech.cs2340.spacetrader.view.TravelActivity"
+            android:label="Travel"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

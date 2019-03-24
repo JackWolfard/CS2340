@@ -81,7 +81,7 @@ public class Universe {
         int index = sysList.indexOf(currentSolarsystem);
         for (int i=0; i<sysList.size(); i++) {
             int distance = distanceArray[index][i];
-            if (distance <= ship.getCurrentMileage()) {
+            if (distance <= ship.getCurrentMileage() && distance > 0) {
                 travelMap.put(sysList.get(i),distance);
             }
         }
@@ -95,7 +95,7 @@ public class Universe {
      * @param solarSystem is new solarsystem to travel to
      * @param ship users current ship
      */
-    public void Travel(SolarSystem solarSystem, Ship ship) {
+    public void travel(SolarSystem solarSystem, Ship ship) {
         int distance = travelMap.get(solarSystem);
         ship.setCurrentMileage(ship.getCurrentMileage() - distance);
         currentSolarsystem = solarSystem;
