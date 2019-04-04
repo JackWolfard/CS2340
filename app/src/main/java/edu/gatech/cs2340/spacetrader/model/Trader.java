@@ -23,4 +23,12 @@ public class Trader {
                 ResourceLevel.values()[resourceLevel], true);
 
     }
+
+    public int getTechLevel() {
+        return techLevel;
+    }
+
+    public MarketPlace getMarket() {
+        return market;
+    }
 }

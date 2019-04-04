@@ -1,7 +1,7 @@
 package edu.gatech.cs2340.spacetrader.entity;
 
 public enum ShipType {
-    GN ("Gnat", 50),
+    GN ("Gnat", 150), // originally 50, changed for demoing purposes
     AS ("Asus", 75),
     NV ("Nova", 100);
 

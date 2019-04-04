@@ -10,4 +10,12 @@ public class Pirate {
         this.power = power;
     }
 
+    public int getPower() {
+        return power;
+    }
+
+    public String getName() {
+        return name;
+    }
+
 }

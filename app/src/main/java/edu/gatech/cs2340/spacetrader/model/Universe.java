@@ -29,6 +29,11 @@ public class Universe {
     private int[][] distanceArray = new int[sysList.size()][sysList.size()];
     private SolarSystem currentSolarsystem;
     private Planet currentPlanet;
+    private Random randomEvent = new Random();
+    private Pirate[] pirateList;
+    private Trader[] traderList;
+    private Pirate currentPirate = null;
+    private Trader currentTrader = null;
 
     public SolarSystem getCurrentSolarsystem() {
         return currentSolarsystem;
@@ -68,6 +73,8 @@ public class Universe {
             starMap.put(solSys, coord);
         }
         generateTravelDistances();
+        generatePirateList(pirateList);
+        generateTraderList(traderList);
 
     }
 
@@ -91,12 +98,23 @@ public class Universe {
     /**
      * Travels to new planet
      * Sets ships proper fuel tank
-     * Sets currentSolarsytem/planet
-     * @param solarSystem is new solarsystem to travel to
+     * Sets current SolarSystem/planet
+     * @param solarSystem is new solar system to travel to
      * @param ship users current ship
      */
     public void travel(SolarSystem solarSystem, Ship ship) {
         int distance = travelMap.get(solarSystem);
+
+        int eventNum = randomEvent.nextInt(4);
+        if (eventNum == 0) {
+            int pirateNum = randomEvent.nextInt(10);
+            currentPirate = pirateList[pirateNum];
+
+        } else if (eventNum == 1) {
+            int traderNum = randomEvent.nextInt(8);
+            currentTrader = traderList[traderNum];
+        }
+
         ship.setCurrentMileage(ship.getCurrentMileage() - distance);
         currentSolarsystem = solarSystem;
         currentPlanet = solarSystem.getPlanet();
@@ -122,6 +140,34 @@ public class Universe {
                 distanceArray[i][j] = distance;
             }
         }
+    }
+
+    private void generatePirateList(Pirate[] list) {
+        Pirate pirate1 = new Pirate("Bubblebeard", 10);
+        Pirate pirate2 = new Pirate("'Crazy Eyes' Buxton", 20);
+        Pirate pirate3 = new Pirate("Unwin Lexx", 30);
+        Pirate pirate4 = new Pirate("Abigail 'Four-Teeth' Granger", 50);
+        Pirate pirate5 = new Pirate("Sewell 'The Cook' Shearman", 50);
+        Pirate pirate6 = new Pirate("'Big Boi' Blythe", 50);
+        Pirate pirate7 = new Pirate("Darlene 'Slayer' Soren", 75);
+        Pirate pirate8 = new Pirate("'Blunderbuss' Uberto", 75);
+        Pirate pirate9 = new Pirate("Tennie 'Intrepid' Tyndall", 100);
+        Pirate pirate10 = new Pirate("Blackbeard", 500);
+
+        list = new Pirate[] {pirate1, pirate2, pirate3, pirate4, pirate5, pirate6, pirate7, pirate8, pirate9, pirate10};
+    }
+
+    private void generateTraderList(Trader[] list) {
+        Trader trader1 = new Trader(0);
+        Trader trader2 = new Trader(1);
+        Trader trader3 = new Trader(2);
+        Trader trader4 = new Trader(3);
+        Trader trader5 = new Trader(4);
+        Trader trader6 = new Trader(5);
+        Trader trader7 = new Trader(6);
+        Trader trader8 = new Trader(7);
+
+        list = new Trader[] {trader1, trader2, trader3, trader4, trader5, trader6, trader7, trader8};
     }
 
     /**
