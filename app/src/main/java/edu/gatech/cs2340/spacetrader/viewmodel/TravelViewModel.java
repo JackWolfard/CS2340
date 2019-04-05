@@ -24,10 +24,10 @@ public class TravelViewModel extends AndroidViewModel {
 
     private ArrayList<SolarSystem> solarSystems = new ArrayList<>();
 
-    private Random randomEvent = new Random();
-
-    private Pirate currentPirate = null;
-    private Trader currentTrader = null;
+//    private Random randomEvent = new Random();
+//
+//    private Pirate currentPirate = null;
+//    private Trader currentTrader = null;
 
     public TravelViewModel(@NonNull Application application) {
         super(application);
@@ -74,20 +74,21 @@ public class TravelViewModel extends AndroidViewModel {
         Universe universe = game.getUniverse();
         Player player = game.getPlayer();
         Ship ship = player.getShip();
-        int randomNum = randomEvent();
+        //boolean randomNum = randomEvent();
         universe.travel(s, ship);
     }
 
-    public int randomEvent() {
-        int eventNum = randomEvent.nextInt(4);
-        if (eventNum == 0) {
-            int pirateNum = randomEvent.nextInt(10);
-            currentPirate = model.getGame().getUniverse().getPirateList().get(pirateNum);
-
-        } else if (eventNum == 1) {
-            int traderNum = randomEvent.nextInt(8);
-            currentTrader = model.getGame().getUniverse().getTraderList().get(traderNum);
-        }
-        return eventNum;
-    }
+//    public boolean randomEvent() {
+//        int eventNum = randomEvent.nextInt(4);
+//        if (eventNum == 0) {
+//            int pirateNum = randomEvent.nextInt(10);
+//            currentPirate = model.getGame().getUniverse().getPirateList().get(pirateNum);
+//            return true;
+//        } else if (eventNum == 1) {
+//            int traderNum = randomEvent.nextInt(8);
+//            currentTrader = model.getGame().getUniverse().getTraderList().get(traderNum);
+//            return true;
+//        }
+//        return false;
+//    }
 }
