@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.Random;
 import java.util.Set;
 import java.lang.Math.*;
+import java.util.ArrayList;
 
 
 /**
@@ -30,10 +31,10 @@ public class Universe {
     private SolarSystem currentSolarsystem;
     private Planet currentPlanet;
     private Random randomEvent = new Random();
-    private Pirate[] pirateList;
-    private Trader[] traderList;
-    private Pirate currentPirate = null;
-    private Trader currentTrader = null;
+    private ArrayList<Pirate> pirateList = new ArrayList<>();
+    private ArrayList<Trader> traderList = new ArrayList<>();
+//    private Pirate currentPirate = null;
+//    private Trader currentTrader = null;
 
     public SolarSystem getCurrentSolarsystem() {
         return currentSolarsystem;
@@ -73,8 +74,8 @@ public class Universe {
             starMap.put(solSys, coord);
         }
         generateTravelDistances();
-        generatePirateList(pirateList);
-        generateTraderList(traderList);
+        generatePirateList();
+        generateTraderList();
 
     }
 
@@ -104,17 +105,15 @@ public class Universe {
      */
     public void travel(SolarSystem solarSystem, Ship ship) {
         int distance = travelMap.get(solarSystem);
-
-        int eventNum = randomEvent.nextInt(4);
-        if (eventNum == 0) {
-            int pirateNum = randomEvent.nextInt(10);
-            currentPirate = pirateList[pirateNum];
-
-        } else if (eventNum == 1) {
-            int traderNum = randomEvent.nextInt(8);
-            currentTrader = traderList[traderNum];
-        }
-
+//        int eventNum = randomEvent.nextInt(4);
+//        if (eventNum == 0) {
+//            int pirateNum = randomEvent.nextInt(10);
+//            currentPirate = pirateList.get(pirateNum);
+//
+//        } else if (eventNum == 1) {
+//            int traderNum = randomEvent.nextInt(8);
+//            currentTrader = traderList.get(traderNum);
+//        }
         ship.setCurrentMileage(ship.getCurrentMileage() - distance);
         currentSolarsystem = solarSystem;
         currentPlanet = solarSystem.getPlanet();
@@ -142,32 +141,28 @@ public class Universe {
         }
     }
 
-    private void generatePirateList(Pirate[] list) {
-        Pirate pirate1 = new Pirate("Bubblebeard", 10);
-        Pirate pirate2 = new Pirate("'Crazy Eyes' Buxton", 20);
-        Pirate pirate3 = new Pirate("Unwin Lexx", 30);
-        Pirate pirate4 = new Pirate("Abigail 'Four-Teeth' Granger", 50);
-        Pirate pirate5 = new Pirate("Sewell 'The Cook' Shearman", 50);
-        Pirate pirate6 = new Pirate("'Big Boi' Blythe", 50);
-        Pirate pirate7 = new Pirate("Darlene 'Slayer' Soren", 75);
-        Pirate pirate8 = new Pirate("'Blunderbuss' Uberto", 75);
-        Pirate pirate9 = new Pirate("Tennie 'Intrepid' Tyndall", 100);
-        Pirate pirate10 = new Pirate("Blackbeard", 500);
-
-        list = new Pirate[] {pirate1, pirate2, pirate3, pirate4, pirate5, pirate6, pirate7, pirate8, pirate9, pirate10};
+    private void generatePirateList() {
+        pirateList.add(new Pirate("Bubblebeard", 10));
+        pirateList.add(new Pirate("'Crazy Eyes' Buxton", 20));
+        pirateList.add(new Pirate("Unwin Lexx", 30));
+        pirateList.add(new Pirate("Abigail 'Four-Teeth' Granger", 50));
+        pirateList.add(new Pirate("Sewell 'The Cook' Shearman", 50));
+        pirateList.add(new Pirate("'Big Boi' Blythe", 50));
+        pirateList.add(new Pirate("Darlene 'Slayer' Soren", 75));
+        pirateList.add(new Pirate("'Blunderbuss' Uberto", 75));
+        pirateList.add(new Pirate("Tennie 'Intrepid' Tyndall", 100));
+        pirateList.add(new Pirate("Blackbeard", 500));
     }
 
-    private void generateTraderList(Trader[] list) {
-        Trader trader1 = new Trader(0);
-        Trader trader2 = new Trader(1);
-        Trader trader3 = new Trader(2);
-        Trader trader4 = new Trader(3);
-        Trader trader5 = new Trader(4);
-        Trader trader6 = new Trader(5);
-        Trader trader7 = new Trader(6);
-        Trader trader8 = new Trader(7);
-
-        list = new Trader[] {trader1, trader2, trader3, trader4, trader5, trader6, trader7, trader8};
+    private void generateTraderList() {
+        traderList.add(new Trader(0));
+        traderList.add(new Trader(1));
+        traderList.add(new Trader(2));
+        traderList.add(new Trader(3));
+        traderList.add(new Trader(4));
+        traderList.add(new Trader(5));
+        traderList.add(new Trader(6));
+        traderList.add(new Trader(7));
     }
 
     /**
@@ -176,6 +171,14 @@ public class Universe {
      */
     public HashMap<SolarSystem, int[]> getStarMap() {
         return starMap;
+    }
+
+    public ArrayList<Pirate> getPirateList() {
+        return pirateList;
+    }
+
+    public ArrayList<Trader> getTraderList() {
+        return traderList;
     }
 
     @Override

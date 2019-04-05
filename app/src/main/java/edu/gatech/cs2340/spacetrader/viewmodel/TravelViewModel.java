@@ -6,13 +6,16 @@ import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Set;
 
 import edu.gatech.cs2340.spacetrader.model.Game;
 import edu.gatech.cs2340.spacetrader.model.Model;
+import edu.gatech.cs2340.spacetrader.model.Pirate;
 import edu.gatech.cs2340.spacetrader.model.Player;
 import edu.gatech.cs2340.spacetrader.model.Ship;
 import edu.gatech.cs2340.spacetrader.model.SolarSystem;
+import edu.gatech.cs2340.spacetrader.model.Trader;
 import edu.gatech.cs2340.spacetrader.model.Universe;
 
 public class TravelViewModel extends AndroidViewModel {
@@ -20,6 +23,11 @@ public class TravelViewModel extends AndroidViewModel {
     private Model model;
 
     private ArrayList<SolarSystem> solarSystems = new ArrayList<>();
+
+    private Random randomEvent = new Random();
+
+    private Pirate currentPirate = null;
+    private Trader currentTrader = null;
 
     public TravelViewModel(@NonNull Application application) {
         super(application);
@@ -66,8 +74,20 @@ public class TravelViewModel extends AndroidViewModel {
         Universe universe = game.getUniverse();
         Player player = game.getPlayer();
         Ship ship = player.getShip();
-
+        int randomNum = randomEvent();
         universe.travel(s, ship);
     }
 
+    public int randomEvent() {
+        int eventNum = randomEvent.nextInt(4);
+        if (eventNum == 0) {
+            int pirateNum = randomEvent.nextInt(10);
+            currentPirate = model.getGame().getUniverse().getPirateList().get(pirateNum);
+
+        } else if (eventNum == 1) {
+            int traderNum = randomEvent.nextInt(8);
+            currentTrader = model.getGame().getUniverse().getTraderList().get(traderNum);
+        }
+        return eventNum;
+    }
 }

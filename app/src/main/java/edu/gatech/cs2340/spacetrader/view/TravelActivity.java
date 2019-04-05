@@ -59,6 +59,8 @@ public class TravelActivity extends AppCompatActivity {
 
     public void travel(SolarSystem s) {
         viewModel.travel(s);
+
+
         Intent intent = new Intent(TravelActivity.this, PlanetActivity.class);
         TravelActivity.this.startActivity(intent);
     }
