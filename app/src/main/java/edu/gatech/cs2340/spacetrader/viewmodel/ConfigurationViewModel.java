@@ -24,17 +24,4 @@ public class ConfigurationViewModel extends AndroidViewModel {
         super(application);
         model = Model.getInstance();
     }
-
-    public void initGame(GameDifficulty difficulty, String name, int pilotPt, int engPt,
-                          int tradePt, int fightPt) {
-        Game game = model.getGame();
-        game.setDifficulty(difficulty);
-        Player player = new Player(name, pilotPt, engPt, tradePt, fightPt);
-        player.setShip(new Ship(ShipType.GN));
-        Universe universe = game.getUniverse();
-        game.setPlayer(player);
-        Log.d("Edit", player.toString());
-        Log.d("Edit", game.toString());
-        Log.d("Edit", universe.toString());
-    }
 }
