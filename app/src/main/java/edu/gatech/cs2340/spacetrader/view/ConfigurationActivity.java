@@ -49,6 +49,13 @@ public class ConfigurationActivity extends AppCompatActivity {
         viewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent resultIntent = new Intent();
+        setResult(RESULT_CANCELED, resultIntent);
+        super.onBackPressed();
+    }
+
     public void onAddPressed(View view) {
         Log.d("Edit", "Create Player Pressed");
         GameDifficulty difficulty = (GameDifficulty) difficultySpinner.getSelectedItem();

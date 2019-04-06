@@ -39,16 +39,18 @@ public class MainActivity extends AppCompatActivity {
         ChildActivity childActivity = ChildActivity.values()[requestCode];
         switch (childActivity) {
             case NEW:
-                GameDifficulty difficulty = (GameDifficulty) resultIntent.getSerializableExtra("difficulty");
-                String name = resultIntent.getStringExtra("name");
-                int pilotPt = resultIntent.getIntExtra("pilotPt", 0);
-                int engPt = resultIntent.getIntExtra("enggPt", 0);
-                int tradePt = resultIntent.getIntExtra("tradePt", 0);
-                int fightPt = resultIntent.getIntExtra("fightPt", 0);
-                viewModel.initGame(difficulty, name, pilotPt, engPt, tradePt, fightPt);
+                if (resultCode == RESULT_OK) {
+                    GameDifficulty difficulty = (GameDifficulty) resultIntent.getSerializableExtra("difficulty");
+                    String name = resultIntent.getStringExtra("name");
+                    int pilotPt = resultIntent.getIntExtra("pilotPt", 0);
+                    int engPt = resultIntent.getIntExtra("enggPt", 0);
+                    int tradePt = resultIntent.getIntExtra("tradePt", 0);
+                    int fightPt = resultIntent.getIntExtra("fightPt", 0);
+                    viewModel.initGame(difficulty, name, pilotPt, engPt, tradePt, fightPt);
 
-                Intent intent = new Intent(MainActivity.this, PlanetActivity.class);
-                startActivity(intent);
+                    Intent intent = new Intent(MainActivity.this, PlanetActivity.class);
+                    startActivity(intent);
+                }
                 break;
 
             default:

@@ -11,7 +11,8 @@
         <activity
             android:name="edu.gatech.cs2340.spacetrader.view.MainActivity"
             android:label="Main"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.VIEW" />
@@ -22,7 +23,8 @@
             android:name="edu.gatech.cs2340.spacetrader.view.ConfigurationActivity"
             android:label="Configure Player"
             android:screenOrientation="portrait"
-            android:parentActivityName=".view.MainActivity">
+            android:parentActivityName=".view.MainActivity"
+            android:launchMode="singleTask">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.MainActivity" />
@@ -31,7 +33,8 @@
             android:name="edu.gatech.cs2340.spacetrader.view.PlanetActivity"
             android:label="Current Planet"
             android:screenOrientation="portrait"
-            android:parentActivityName=".view.MainActivity">
+            android:parentActivityName=".view.MainActivity"
+            android:launchMode="singleTop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.MainActivity" />
@@ -49,7 +52,7 @@
             android:name="edu.gatech.cs2340.spacetrader.view.TravelActivity"
             android:label="Travel"
             android:screenOrientation="portrait"
-        android:parentActivityName=".view.PlanetActivity">
+            android:parentActivityName=".view.PlanetActivity">
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".view.PlanetActivity" />

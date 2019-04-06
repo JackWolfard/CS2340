@@ -29,9 +29,12 @@ public class PlanetActivity extends AppCompatActivity {
         planetName = findViewById(R.id.planetName);
         resourceLevelNum = findViewById(R.id.resourceLevelNum);
         techLevelNum = findViewById(R.id.techLevelNum);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
         initTextFields();
-
     }
 
     public void initTextFields() {

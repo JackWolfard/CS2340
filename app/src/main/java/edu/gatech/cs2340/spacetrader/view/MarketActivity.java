@@ -93,8 +93,7 @@ public class MarketActivity extends AppCompatActivity {
 
     public void onBackPressed(View view) {
         Log.d("Edit", "Go to planet screen pressed");
-        Intent intent = new Intent(MarketActivity.this, PlanetActivity.class);
-        MarketActivity.this.startActivity(intent);
+        finish();
     }
 
     public void onSellPressed(View view) {
