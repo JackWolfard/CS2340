@@ -1,6 +1,8 @@
 package edu.gatech.cs2340.spacetrader.model;
 
-public class Pirate {
+import java.io.Serializable;
+
+public class Pirate implements Serializable {
 
     private int power;
     private String name;

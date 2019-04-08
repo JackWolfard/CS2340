@@ -1,10 +1,11 @@
 package edu.gatech.cs2340.spacetrader.model;
 
+import java.io.Serializable;
 import java.util.LinkedList;
-import java.util.Random;
 import edu.gatech.cs2340.spacetrader.entity.TechLevel;
 import edu.gatech.cs2340.spacetrader.entity.ResourceLevel;
-public class SolarSystem {
+
+public class SolarSystem implements Serializable {
 
 
     /** the name of the Solar System */
@@ -18,7 +19,7 @@ public class SolarSystem {
     /** a Linked List representation of the 10 different Solar Systems, with each containing
      * one planet of the same name */
 
-    private static LinkedList<SolarSystem> sysStarMap = new LinkedList<SolarSystem>();
+    private static LinkedList<SolarSystem> sysStarMap = new LinkedList<>();
 
     /** the Tech Level of a Solar System */
 

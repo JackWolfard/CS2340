@@ -34,7 +34,7 @@
             android:label="Current Planet"
             android:screenOrientation="portrait"
             android:parentActivityName=".view.MainActivity"
-            android:launchMode="singleTop">
+            android:launchMode="singleTask">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.MainActivity" />

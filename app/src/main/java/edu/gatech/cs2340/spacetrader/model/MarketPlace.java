@@ -1,16 +1,16 @@
 package edu.gatech.cs2340.spacetrader.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Random;
 import edu.gatech.cs2340.spacetrader.entity.Goods;
 import edu.gatech.cs2340.spacetrader.entity.TechLevel;
 import edu.gatech.cs2340.spacetrader.entity.ResourceLevel;
 
-public class MarketPlace
-{
-    private HashMap<Goods, Integer> inventory = new HashMap<Goods, Integer>();
-    private HashMap<Goods, Integer> cost = new HashMap<Goods, Integer>();
-    private HashMap<Goods, Integer> sell = new HashMap<Goods, Integer>();
+public class MarketPlace implements Serializable {
+    private HashMap<Goods, Integer> inventory = new HashMap<>();
+    private HashMap<Goods, Integer> cost = new HashMap<>();
+    private HashMap<Goods, Integer> sell = new HashMap<>();
     private TechLevel tech;
     private ResourceLevel resource;
     private boolean isTrader;

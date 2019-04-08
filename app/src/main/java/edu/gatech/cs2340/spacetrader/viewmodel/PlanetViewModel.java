@@ -22,7 +22,7 @@ public class PlanetViewModel extends AndroidViewModel {
 
     public String[] initPlanetView() {
         String[] info = new String[3];
-        Game game = model.getGame();
+        Game game = Model.getInstance().getGame();
         Universe universe = game.getUniverse();
         Planet currentPlanet = universe.getCurrentPlanet();
         info[0] = currentPlanet.getName();

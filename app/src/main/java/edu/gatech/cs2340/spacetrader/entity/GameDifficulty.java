@@ -1,8 +1,8 @@
 package edu.gatech.cs2340.spacetrader.entity;
 
-import android.icu.lang.UCharacter;
+import java.io.Serializable;
 
-public enum GameDifficulty {
+public enum GameDifficulty implements Serializable {
     B ("Beginner"),
     E ("Easy"),
     N ("Normal"),
@@ -17,7 +17,7 @@ public enum GameDifficulty {
      *
      * @param difficulty   full name of the difficulty
      */
-    private GameDifficulty(String difficulty) {
+    GameDifficulty(String difficulty) {
         this.difficulty = difficulty;
     }
 

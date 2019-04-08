@@ -2,17 +2,19 @@ package edu.gatech.cs2340.spacetrader.viewmodel;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 import edu.gatech.cs2340.spacetrader.entity.GameDifficulty;
-import edu.gatech.cs2340.spacetrader.entity.ShipType;
-import edu.gatech.cs2340.spacetrader.model.Game;
 import edu.gatech.cs2340.spacetrader.model.Model;
-import edu.gatech.cs2340.spacetrader.model.Planet;
-import edu.gatech.cs2340.spacetrader.model.Player;
-import edu.gatech.cs2340.spacetrader.model.Ship;
-import edu.gatech.cs2340.spacetrader.model.Universe;
 
 
 public class MainViewModel extends AndroidViewModel {
@@ -30,31 +32,43 @@ public class MainViewModel extends AndroidViewModel {
     public void initGame(GameDifficulty difficulty, String name, int pilotPt, int engPt,
                           int tradePt, int fightPt) {
         Log.d("MainViewModel", "Initializing Game");
-        Game game = model.getGame();
-        game.setDifficulty(difficulty);
-        Player player = new Player(name, pilotPt, engPt, tradePt, fightPt);
-        player.setShip(new Ship(ShipType.GN));
-        Universe universe = game.getUniverse();
-        game.setPlayer(player);
-        Log.d("Edit", player.toString());
-        Log.d("Edit", game.toString());
-        Log.d("Edit", universe.toString());
+        model.initGame(difficulty, name, pilotPt, engPt, tradePt, fightPt);
         gameStarted = true;
     }
 
-    public void loadGame() {
+    public boolean loadGame(Context context) {
         Log.d("MainViewModel", "Loading Game");
-        gameStarted = false;
+        File root = context.getFilesDir();
+        File file = new File(root, "example.json");
+        try {
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+            Model.update((Model) in.readObject());
+            in.close();
+            gameStarted = true;
+            return true;
+        } catch (IOException e) {
+            Log.e("MainViewModel", "Error reading an entry from binary file", e);
+        } catch (ClassNotFoundException e) {
+            Log.e("MainViewModel", "Error casting a class from the binary file", e);
+        }
+        return false;
     }
 
     public boolean getGameStarted() {
         return gameStarted;
     }
 
-    public boolean saveGame() {
+    public boolean saveGame(Context context) {
         Log.d("MainViewModel", "Saving Game");
-        if (gameStarted) {
+        File root = context.getFilesDir();
+        File file = new File(root, "example.json");
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+            out.writeObject(model);
+            out.close();
             return true;
+        } catch (IOException e) {
+            Log.e("MainViewModel", "Error writing an entry from binary file", e);
         }
         return false;
     }

@@ -1,18 +1,19 @@
 package edu.gatech.cs2340.spacetrader.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import edu.gatech.cs2340.spacetrader.entity.Goods;
 import edu.gatech.cs2340.spacetrader.entity.ShipType;
 
-public class Ship {
+public class Ship implements Serializable {
 
     private String name;
     private ShipType shipType;
     private int cargoHold;
     private int currentsize;
     private int currentMileage;
-    private HashMap<Goods, Integer> inventory = new HashMap<Goods, Integer>();
+    private HashMap<Goods, Integer> inventory = new HashMap<>();
 
     public Ship(String name, ShipType shipType) {
         this.name = name;

@@ -43,12 +43,12 @@ public class MainActivity extends AppCompatActivity {
                     GameDifficulty difficulty = (GameDifficulty) resultIntent.getSerializableExtra("difficulty");
                     String name = resultIntent.getStringExtra("name");
                     int pilotPt = resultIntent.getIntExtra("pilotPt", 0);
-                    int engPt = resultIntent.getIntExtra("enggPt", 0);
+                    int engPt = resultIntent.getIntExtra("engPt", 0);
                     int tradePt = resultIntent.getIntExtra("tradePt", 0);
                     int fightPt = resultIntent.getIntExtra("fightPt", 0);
                     viewModel.initGame(difficulty, name, pilotPt, engPt, tradePt, fightPt);
 
-                    Intent intent = new Intent(MainActivity.this, PlanetActivity.class);
+                    Intent intent = new Intent(this, PlanetActivity.class);
                     startActivity(intent);
                 }
                 break;
@@ -66,12 +66,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void onLoadPressed(View view) {
         Log.d("MainActivity", "Load Game Pressed");
-        viewModel.loadGame();
+        if (viewModel.loadGame(this)) {
+            Toast toast = Toast.makeText(this, "Successfully Loaded Game", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.TOP, 0, 0);
+            toast.show();
+        } else {
+            Toast toast = Toast.makeText(this, "Cannot Load Game", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.TOP, 0, 0);
+            toast.show();
+        }
     }
 
     public void onSavePressed(View view) {
         Log.d("MainActivity", "Save Game Pressed");
-        if (viewModel.saveGame()) {
+        if (viewModel.saveGame(this)) {
             Toast toast = Toast.makeText(getApplicationContext(), "Successfully Saved Game", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.TOP, 0, 0);
             toast.show();
