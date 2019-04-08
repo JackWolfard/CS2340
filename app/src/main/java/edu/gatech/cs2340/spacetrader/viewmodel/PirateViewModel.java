@@ -26,4 +26,13 @@ public class PirateViewModel extends AndroidViewModel {
         randomInt = piratePicker.nextInt(10);
         currentPirate = pirateList.get(randomInt);
     }
+
+    public String[] initText() {
+        String[] text = new String[] {currentPirate.getName(), String.valueOf(currentPirate.getPower())};
+        return text;
+    }
+
+    public int getPiratePower() {
+        return currentPirate.getPower();
+    }
 }

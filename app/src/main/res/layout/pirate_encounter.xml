@@ -7,11 +7,12 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
+        android:id="@+id/pirateName"
+        android:layout_width="323dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="130dp"
         android:text='"Pirate name" approaches!'
+        android:textAlignment="center"
         android:textColor="#000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,24 +20,26 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/power"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/piratePower"
+        android:layout_width="285dp"
+        android:layout_height="21dp"
         android:layout_marginTop="9dp"
         android:text="Power level: null"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        app:layout_constraintTop_toBottomOf="@+id/pirateName" />
 
     <TextView
-        android:id="@+id/description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/pirateDescription"
+        android:layout_width="327dp"
+        android:layout_height="280dp"
         android:layout_marginTop="38dp"
         android:text="description"
+        android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/power" />
+        app:layout_constraintTop_toBottomOf="@+id/piratePower" />
 
     <Button
         android:id="@+id/fightButton"
@@ -56,6 +59,7 @@
         android:layout_marginStart="67dp"
         android:layout_marginEnd="86dp"
         android:layout_marginBottom="86dp"
+        android:onClick="onFleePressed"
         android:text="Flee"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,7 +72,7 @@
         android:layout_marginStart="86dp"
         android:layout_marginEnd="244dp"
         android:layout_marginBottom="14dp"
-        android:text="doesnt do\n anything yet"
+        android:text="doesn't do\n anything yet"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/fightButton"
         app:layout_constraintEnd_toEndOf="parent"
