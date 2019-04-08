@@ -1,8 +1,10 @@
 package edu.gatech.cs2340.spacetrader.model;
 
+import java.io.Serializable;
+
 import edu.gatech.cs2340.spacetrader.entity.ShipType;
 
-public class Player {
+public class Player implements Serializable {
 
     /** the player's name */
     private String name;

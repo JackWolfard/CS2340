@@ -1,6 +1,8 @@
 package edu.gatech.cs2340.spacetrader.entity;
+import java.io.Serializable;
 import java.util.Comparator;
-public enum Goods {
+
+public enum Goods implements Serializable {
     FIREARMS("Firearms", 1250, 3,1,5,-75,100, "WAR", "WARLIKE",null,600,1100),
     FOOD("Food",100, 1,0,1,5,5,"CROPFAIL","RICHSOIL","POORSOIL",90,160),
     FURS("Furs",250, 0,0,0,10,10,"COLD","RICHFAUNA","LIFELESS",230,280),
@@ -38,7 +40,7 @@ public enum Goods {
     /** the maximum price in a space trade*/
     private final int maxSpaceTrade;
 
-    private Goods(String name, int value, int minLevelProd, int minLevelUse, int highestTechFreq, int priceIncreasePerLevel, int variance,
+    Goods(String name, int value, int minLevelProd, int minLevelUse, int highestTechFreq, int priceIncreasePerLevel, int variance,
                   String priceIncreaseEvent, String priceDecreaseEvent, String expensiveEvent, int minSpaceTrade, int maxSpaceTrade) {
         this.name = name;
         this.value = value;
@@ -106,16 +108,15 @@ public enum Goods {
     public int getMaxSpaceTrade() {
         return maxSpaceTrade;
     }
-    public goodsComparator getComp() {
-        goodsComparator comp = new goodsComparator();
-        return comp;
+
+    public GoodsComparator getComp() {
+        return new GoodsComparator();
     }
 }
 
-class goodsComparator implements Comparator<Goods>
-{
+class GoodsComparator implements Comparator<Goods>  {
 
-    public int compare(Goods g1,Goods g2)
+    public int compare(Goods g1, Goods g2)
     {
         if (g1.getName().compareTo(g2.getName()) == 0) {
             return 0;

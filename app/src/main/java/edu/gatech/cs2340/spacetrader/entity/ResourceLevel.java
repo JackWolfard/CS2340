@@ -1,6 +1,8 @@
 package edu.gatech.cs2340.spacetrader.entity;
 
-public enum ResourceLevel {
+import java.io.Serializable;
+
+public enum ResourceLevel implements Serializable {
     NONE("NOSPECIALRESOURCES", 1),
     M_RICH("MINERALRICH", 2),
     M_POOR("MINERALPOOR", 3),
@@ -28,7 +30,7 @@ public enum ResourceLevel {
      * @param name   full name of the techLevel
      * @param value  value associated with tech level
      */
-    private ResourceLevel(String name, int value) {
+    ResourceLevel(String name, int value) {
         this.name = name;
         this.value = value;
     }

@@ -1,7 +1,6 @@
 package edu.gatech.cs2340.spacetrader.view;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +30,8 @@ public class MarketActivity extends AppCompatActivity {
     private ArrayList<String> sellPrices;
     private ArrayList<String> amountOwned;
 
+    private TextView credits;
+    private TextView inventory;
     private Button backButton;
     private Button buyButton;
     private Button sellButton;
@@ -48,12 +49,21 @@ public class MarketActivity extends AppCompatActivity {
 
         viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
 
-        TextView credits = findViewById(R.id.creditText);
+        credits = findViewById(R.id.creditText);
         backButton = findViewById(R.id.backButton);
         buyButton = findViewById(R.id.buyButton);
         sellButton = findViewById(R.id.sellButton);
-        TextView inventory = findViewById(R.id.inventoryText);
+        inventory = findViewById(R.id.inventoryText);
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        viewModel.refreshMarket();
+        refresh();
+    }
+
+    public void refresh() {
         ArrayList<ArrayList<String>> info = viewModel.initMarket();
 
         goodNames = info.get(0);
@@ -83,22 +93,13 @@ public class MarketActivity extends AppCompatActivity {
     }
 
     /**
-     * This method reload the current activity with updated data.
-     * The transition animation is canceled to reduce lag.
-     */
-    public void refresh() {
-
-        startActivity(new Intent(MarketActivity.this, MarketActivity.class));
-        this.overridePendingTransition(0, 0);
-    }
-
-    /**
      * This method initializes the contents of the recyclerView
      */
     private void initRecyclerView() {
         Log.d(TAG, "initRecyclerView: init recyclerview");
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, goodNames, quantities, prices, sellPrices, amountOwned, this);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, goodNames, quantities,
+                prices, sellPrices, amountOwned, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -110,8 +111,7 @@ public class MarketActivity extends AppCompatActivity {
      */
     public void onBackPressed(View view) {
         Log.d("Edit", "Go to planet screen pressed");
-        Intent intent = new Intent(MarketActivity.this, PlanetActivity.class);
-        MarketActivity.this.startActivity(intent);
+        finish();
     }
 
     /**
@@ -144,7 +144,6 @@ public class MarketActivity extends AppCompatActivity {
      * @param good
      */
     public void buyGood(Goods good) {
-        viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
         viewModel.buyGood(good);
     }
 
@@ -154,7 +153,6 @@ public class MarketActivity extends AppCompatActivity {
      * @param good
      */
     public void sellGood(Goods good) {
-        viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
         viewModel.sellGood(good);
     }
 

@@ -1,9 +1,11 @@
 package edu.gatech.cs2340.spacetrader.model;
 
+import java.io.Serializable;
+
 import edu.gatech.cs2340.spacetrader.entity.ResourceLevel;
 import edu.gatech.cs2340.spacetrader.entity.TechLevel;
 
-public class Trader {
+public class Trader implements Serializable {
 
     /** the Tech Level of a Space Trader */
 

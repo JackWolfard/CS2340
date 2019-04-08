@@ -1,10 +1,11 @@
 package edu.gatech.cs2340.spacetrader.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import edu.gatech.cs2340.spacetrader.entity.GameDifficulty;
 
-public class Game {
+public class Game implements Serializable {
 
     private Player player;
     private GameDifficulty difficulty;
@@ -14,18 +15,11 @@ public class Game {
      * Default empty constructor which initializes everything to dummy
      * values before the player is created or loaded
      */
-    public Game() {
-        player = null;
-        difficulty = GameDifficulty.B;
-        universe = new Universe();
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public void setDifficulty(GameDifficulty difficulty) {
+    public Game(GameDifficulty difficulty, String name, int pilotPt, int engPt, int tradePt,
+                int fightPt) {
         this.difficulty = difficulty;
+        this.universe = new Universe();
+        this.player = new Player(name, pilotPt, engPt, tradePt, fightPt);
     }
 
     public Universe getUniverse() {

@@ -32,9 +32,12 @@ public class PlanetActivity extends AppCompatActivity {
         planetName = findViewById(R.id.planetName);
         resourceLevelNum = findViewById(R.id.resourceLevelNum);
         techLevelNum = findViewById(R.id.techLevelNum);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
         initTextFields();
-
     }
 
     /**
@@ -56,8 +59,8 @@ public class PlanetActivity extends AppCompatActivity {
     public void onGoPressed(View view) {
         Log.d("Edit", "Go to marketplace pressed");
 
-        Intent intent = new Intent(PlanetActivity.this, MarketActivity.class);
-        PlanetActivity.this.startActivity(intent);
+        Intent intent = new Intent(this, MarketActivity.class);
+        startActivity(intent);
     }
 
     /**
@@ -66,7 +69,7 @@ public class PlanetActivity extends AppCompatActivity {
      * @param view
      */
     public void onTravelPressed(View view) {
-        Intent intent = new Intent(PlanetActivity.this, TravelActivity.class);
-        PlanetActivity.this.startActivity(intent);
+        Intent intent = new Intent(this, TravelActivity.class);
+        startActivity(intent);
     }
 }

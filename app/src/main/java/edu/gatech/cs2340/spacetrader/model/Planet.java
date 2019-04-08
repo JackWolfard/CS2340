@@ -1,12 +1,13 @@
 package edu.gatech.cs2340.spacetrader.model;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.Random;
 
 import edu.gatech.cs2340.spacetrader.entity.ResourceLevel;
 import edu.gatech.cs2340.spacetrader.entity.TechLevel;
 
-public class Planet {
+public class Planet implements Serializable {
 
     /** The name of the Planet */
 

@@ -1,6 +1,8 @@
 package edu.gatech.cs2340.spacetrader.entity;
 
-public enum ShipType {
+import java.io.Serializable;
+
+public enum ShipType implements Serializable {
     GN ("Gnat", 150), // originally 50, changed for demoing purposes
     AS ("Asus", 75),
     NV ("Nova", 100);
@@ -15,7 +17,7 @@ public enum ShipType {
      * @param name   full name of the ship type
      * @param travelCapacity maximum travel distance without refueling
      */
-    private ShipType(String name, int travelCapacity) {
+    ShipType(String name, int travelCapacity) {
         this.name = name;
         this.travelCapacity = travelCapacity;
     }

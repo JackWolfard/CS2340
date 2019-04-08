@@ -1,6 +1,8 @@
 package edu.gatech.cs2340.spacetrader.entity;
 
-public enum TechLevel {
+import java.io.Serializable;
+
+public enum TechLevel implements Serializable {
 
     PRE_AG("Pre-Agriculture",0),
     AGR("Agriculture", 1),
@@ -23,7 +25,7 @@ public enum TechLevel {
      * @param name   full name of the techLevel
      * @param value  value associated with tech level
      */
-    private TechLevel(String name, int value) {
+    TechLevel(String name, int value) {
         this.name = name;
         this.value = value;
     }

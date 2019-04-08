@@ -1,13 +1,12 @@
 package edu.gatech.cs2340.spacetrader.model;
 
-import edu.gatech.cs2340.spacetrader.model.Ship;
-import java.lang.reflect.Array;
+
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Set;
-import java.lang.Math.*;
 import java.util.ArrayList;
 
 
@@ -15,18 +14,18 @@ import java.util.ArrayList;
  * A Set of Solar Systems
  */
 
-public class Universe {
+public class Universe implements Serializable {
 
     /**
      * The actual "Universe" used in the game, a HashMap with the Planets as Keys and their
      *      coordinates as values.
      */
 
-    private HashMap<SolarSystem, int[]> starMap = new HashMap<SolarSystem, int[]>();
+    private HashMap<SolarSystem, int[]> starMap = new HashMap<>();
     /** the Linked List of created Solar Systems used to add them into the starMap */
     private LinkedList<SolarSystem> sysList = SolarSystem.generateSystem();
     /** Hashmap that is used for the travel UI*/
-    private HashMap<SolarSystem, Integer> travelMap = new HashMap<SolarSystem, Integer>();
+    private HashMap<SolarSystem, Integer> travelMap = new HashMap<>();
     private int[][] distanceArray = new int[sysList.size()][sysList.size()];
     private SolarSystem currentSolarsystem;
     private Planet currentPlanet;

@@ -49,13 +49,27 @@ public class ConfigurationActivity extends AppCompatActivity {
         viewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent resultIntent = new Intent();
+        setResult(RESULT_CANCELED, resultIntent);
+        super.onBackPressed();
+    }
+
     public void onAddPressed(View view) {
         Log.d("Edit", "Create Player Pressed");
         GameDifficulty difficulty = (GameDifficulty) difficultySpinner.getSelectedItem();
-        int totalPointsUsed = convertToInt(pilotField) +
-                convertToInt(engineerField) + convertToInt(traderField) + convertToInt(fighterField);
 
-        if (nameField.getText().toString().length() == 0) {
+        int pilotPt = convertToInt(pilotField);
+        int engPt = convertToInt(engineerField);
+        int tradePt = convertToInt(traderField);
+        int fightPt = convertToInt(fighterField);
+        String name = nameField.getText().toString();
+
+
+        int totalPointsUsed = pilotPt + engPt + tradePt + fightPt;
+
+        if (name.length() == 0) {
             Toast toast = Toast.makeText(getApplicationContext(), "Enter a valid name", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.TOP, 0, 0);
             toast.show();
@@ -64,15 +78,19 @@ public class ConfigurationActivity extends AppCompatActivity {
             toast.setGravity(Gravity.TOP, 0, 0);
             toast.show();
         } else {
-            viewModel.initGame(difficulty, nameField.getText().toString(), convertToInt(pilotField),
-                    convertToInt(engineerField), convertToInt(traderField), convertToInt(fighterField));
             Toast toast = Toast.makeText(getApplicationContext(), "Successfully created player", Toast.LENGTH_SHORT);
-
             toast.setGravity(Gravity.TOP, 0, 0);
             toast.show();
 
-            Intent intent = new Intent(ConfigurationActivity.this, PlanetActivity.class);
-            ConfigurationActivity.this.startActivity(intent);
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("difficulty", difficulty);
+            resultIntent.putExtra("name", name);
+            resultIntent.putExtra("pilotPt", pilotPt);
+            resultIntent.putExtra("engPt", engPt);
+            resultIntent.putExtra("tradePt", tradePt);
+            resultIntent.putExtra("fightPt", fightPt);
+            setResult(RESULT_OK, resultIntent);
+            finish();
         }
     }
 

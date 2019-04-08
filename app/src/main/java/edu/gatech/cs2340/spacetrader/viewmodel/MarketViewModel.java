@@ -30,6 +30,14 @@ public class MarketViewModel extends AndroidViewModel {
         model = Model.getInstance();
     }
 
+    public void refreshMarket() {
+        Game game = model.getGame();
+        Universe universe = game.getUniverse();
+        Planet currentPlanet = universe.getCurrentPlanet();
+        MarketPlace market = currentPlanet.getMarket();
+        market.update();
+    }
+
     public ArrayList<ArrayList<String>> initMarket() {
         ArrayList<ArrayList<String>> info = new ArrayList<>(5);
         Game game = model.getGame();

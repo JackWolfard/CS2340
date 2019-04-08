@@ -9,9 +9,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="edu.gatech.cs2340.spacetrader.view.ConfigurationActivity"
-            android:label="Configure Player"
-            android:screenOrientation="portrait">
+            android:name="edu.gatech.cs2340.spacetrader.view.MainActivity"
+            android:label="Main"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.VIEW" />
@@ -19,29 +20,60 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="edu.gatech.cs2340.spacetrader.view.ConfigurationActivity"
+            android:label="Configure Player"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".view.MainActivity"
+            android:launchMode="singleTask">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.MainActivity" />
+        </activity>
+        <activity
             android:name="edu.gatech.cs2340.spacetrader.view.PlanetActivity"
             android:label="Current Planet"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:parentActivityName=".view.MainActivity"
+            android:launchMode="singleTask">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.MainActivity" />
         </activity>
         <activity
             android:name="edu.gatech.cs2340.spacetrader.view.MarketActivity"
             android:label="Marketplace"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:parentActivityName=".view.PlanetActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.PlanetActivity" />
         </activity>
         <activity
             android:name="edu.gatech.cs2340.spacetrader.view.TravelActivity"
             android:label="Travel"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:parentActivityName=".view.PlanetActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".view.PlanetActivity" />
         </activity>
         <activity
             android:name="edu.gatech.cs2340.spacetrader.view.PirateActivity"
             android:label="Pirate encounter"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+        android:parentActivityName=".view.PlanetActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".view.PlanetActivity" />
         </activity>
         <activity
             android:name="edu.gatech.cs2340.spacetrader.view.TraderActivity"
             android:label="Trader encounter"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+        android:parentActivityName=".view.PlanetActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".view.PlanetActivity" />
         </activity>
     </application>
 

@@ -58,8 +58,7 @@ public class TravelActivity extends AppCompatActivity {
 
     public void onBackPressed(View view) {
         Log.d("Edit", "Back pressed");
-        Intent intent = new Intent(TravelActivity.this, PlanetActivity.class);
-        TravelActivity.this.startActivity(intent);
+        finish();
     }
 
     public void travel(SolarSystem s) {
@@ -76,8 +75,7 @@ public class TravelActivity extends AppCompatActivity {
             Intent intent = new Intent(TravelActivity.this, TraderActivity.class);
             TravelActivity.this.startActivity(intent);
         }*/else {
-            Intent intent = new Intent(TravelActivity.this, PlanetActivity.class);
-            TravelActivity.this.startActivity(intent);
+            finish();
         }
     }
 
