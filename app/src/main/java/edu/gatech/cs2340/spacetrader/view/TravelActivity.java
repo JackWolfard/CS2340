@@ -57,7 +57,7 @@ public class TravelActivity extends AppCompatActivity {
     }
 
     public void onBackPressed(View view) {
-        Log.d("Edit", "Back pressed");
+        Log.d("TravelActivity", "Back pressed");
         finish();
     }
 
@@ -69,14 +69,10 @@ public class TravelActivity extends AppCompatActivity {
         // when traders are implemented they will be based on a '1', and pirates will be a '0'
         // '2' and '3' are no events- 50% chance of traveling with no random events taking place
         if (eventNum == 0 || eventNum == 1) {
-            Intent intent = new Intent(TravelActivity.this, PirateActivity.class);
+            Intent intent = new Intent(this, PirateActivity.class);
             TravelActivity.this.startActivity(intent);
-        } /*else if (eventNum == 1) {
-            Intent intent = new Intent(TravelActivity.this, TraderActivity.class);
-            TravelActivity.this.startActivity(intent);
-        }*/else {
-            finish();
         }
+        finish();
     }
 
 //    public boolean randomEvent() {

@@ -63,10 +63,8 @@ public class PirateActivity extends AppCompatActivity {
     }
 
     public void onFleePressed(View view) {
-        Log.d("Edit", "Flee is pressed. Going to planet.");
-
-        Intent intent = new Intent(PirateActivity.this, PlanetActivity.class);
-        PirateActivity.this.startActivity(intent);
+        Log.d("PirateActivity", "Flee is pressed. Going to planet.");
+        finish();
     }
 
 }
