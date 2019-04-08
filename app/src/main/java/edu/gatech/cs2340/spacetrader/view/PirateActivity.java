@@ -1,8 +1,11 @@
 package edu.gatech.cs2340.spacetrader.view;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import edu.gatech.cs2340.spacetrader.R;
@@ -35,7 +38,7 @@ public class PirateActivity extends AppCompatActivity {
         String[] pirateInfo = viewModel.initText();
         int powerInt = viewModel.getPiratePower();
 
-        String tempText = pirateInfo[0] + "approaches!";
+        String tempText = "The pirate " + pirateInfo[0] + " approaches!";
         pirateName.setText(tempText);
 
         tempText = "Power: " + pirateInfo[1];
@@ -53,10 +56,17 @@ public class PirateActivity extends AppCompatActivity {
         } else {
             tempText = "A massive ship appears in the distance. You've heard rumors of this " +
                     "ship, and you already know how dangerous it is. You've been unlucky enough" +
-                    "to run into Blackbeard, the deadliest pirate in the galaxy. Will you " +
+                    " to run into Blackbeard, the deadliest pirate in the galaxy. Will you " +
                     "fight or flee?";
         }
+        description.setText(tempText);
+    }
 
+    public void onFleePressed(View view) {
+        Log.d("Edit", "Flee is pressed. Going to planet.");
+
+        Intent intent = new Intent(PirateActivity.this, PlanetActivity.class);
+        PirateActivity.this.startActivity(intent);
     }
 
 }
