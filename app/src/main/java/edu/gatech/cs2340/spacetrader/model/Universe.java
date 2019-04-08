@@ -84,15 +84,19 @@ public class Universe implements Serializable {
      * @return hashmap of reachable planets
      */
     public HashMap<SolarSystem, Integer> aboutToTravel(Ship ship) {
-        travelMap.clear();
-        int index = sysList.indexOf(currentSolarsystem);
-        for (int i=0; i<sysList.size(); i++) {
-            int distance = distanceArray[index][i];
-            if (distance <= ship.getCurrentMileage() && distance > 0) {
-                travelMap.put(sysList.get(i),distance);
+        if (ship != null) {
+            travelMap.clear();
+            int index = sysList.indexOf(currentSolarsystem);
+            for (int i=0; i<sysList.size(); i++) {
+                int distance = distanceArray[index][i];
+                if (distance <= ship.getCurrentMileage() && distance > 0) {
+                    travelMap.put(sysList.get(i),distance);
+                }
             }
+            return travelMap;
+        } else {
+            throw new IllegalArgumentException("There is no valid ship to travel with");
         }
-        return travelMap;
     }
 
     /**
