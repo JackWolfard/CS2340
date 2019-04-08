@@ -59,6 +59,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         viewHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
+            /**
+             * This code is run when a field in the recycler view is tapped by the user
+             */
             public void onClick(View v) {
                 if (MarketActivity.isBuy) {
                     try {

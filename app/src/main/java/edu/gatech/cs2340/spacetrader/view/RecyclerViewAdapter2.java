@@ -50,6 +50,9 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
 
         holder.travelLayout.setOnClickListener(new View.OnClickListener() {
             @Override
+            /**
+             * This code is run when a field in the recycler view is tapped by the user
+             */
             public void onClick(View v) {
                 //Toast.makeText(mContext, planetNames.get(i), Toast.LENGTH_SHORT).show();
                 travelActivity.travel(solarSystems.get(i));

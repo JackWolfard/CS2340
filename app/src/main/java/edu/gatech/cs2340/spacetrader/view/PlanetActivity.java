@@ -20,6 +20,9 @@ public class PlanetActivity extends AppCompatActivity {
     private TextView techLevelNum;
 
     @Override
+    /**
+     * This method gets called when the instance is changed to planet
+     */
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.planet);
@@ -34,6 +37,9 @@ public class PlanetActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Initializes the text fields that show planet name, tech level, and resource level
+     */
     public void initTextFields() {
         String[] info = viewModel.initPlanetView();
 
@@ -42,6 +48,11 @@ public class PlanetActivity extends AppCompatActivity {
         resourceLevelNum.setText(info[2]);
     }
 
+    /**
+     * Method runs when the go to marketplace button is pressed by the user.
+     * It changes the intent to MarketActivity
+     * @param view
+     */
     public void onGoPressed(View view) {
         Log.d("Edit", "Go to marketplace pressed");
 
@@ -49,6 +60,11 @@ public class PlanetActivity extends AppCompatActivity {
         PlanetActivity.this.startActivity(intent);
     }
 
+    /**
+     * Method runs when the travel button is pressed by the user.
+     * It changes the intent to TravelActivity
+     * @param view
+     */
     public void onTravelPressed(View view) {
         Intent intent = new Intent(PlanetActivity.this, TravelActivity.class);
         PlanetActivity.this.startActivity(intent);

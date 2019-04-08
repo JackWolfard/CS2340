@@ -18,6 +18,7 @@ import edu.gatech.cs2340.spacetrader.viewmodel.MarketViewModel;
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.entity.Goods;
 
+
 public class MarketActivity extends AppCompatActivity {
 
     private static final String TAG = "MarketActivity";
@@ -37,6 +38,10 @@ public class MarketActivity extends AppCompatActivity {
     public static boolean isBuy;
     public static boolean isSell;
 
+    /**
+     * Method gets called when the instance is changed to MarketActivity
+     * @param savedInstanceState
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.market);
@@ -77,12 +82,19 @@ public class MarketActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * This method reload the current activity with updated data.
+     * The transition animation is canceled to reduce lag.
+     */
     public void refresh() {
 
         startActivity(new Intent(MarketActivity.this, MarketActivity.class));
         this.overridePendingTransition(0, 0);
     }
 
+    /**
+     * This method initializes the contents of the recyclerView
+     */
     private void initRecyclerView() {
         Log.d(TAG, "initRecyclerView: init recyclerview");
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
@@ -91,12 +103,22 @@ public class MarketActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    /**
+     * This method is called when the back button is pressed.
+     * It changes the active intent to PlanetActivity
+     * @param view
+     */
     public void onBackPressed(View view) {
         Log.d("Edit", "Go to planet screen pressed");
         Intent intent = new Intent(MarketActivity.this, PlanetActivity.class);
         MarketActivity.this.startActivity(intent);
     }
 
+    /**
+     * This method is called when the sell button is pressed.
+     * It sets the button's color to green, indicating the sell mode is active
+     * @param view
+     */
     public void onSellPressed(View view) {
         isSell = true;
         isBuy = false;
@@ -104,6 +126,11 @@ public class MarketActivity extends AppCompatActivity {
         buyButton.setBackgroundResource(android.R.drawable.btn_default);
     }
 
+    /**
+     * This method is called when the buy button is pressed.
+     * It sets the button's color to green, indicating the buy mode is active
+     * @param view
+     */
     public void onBuyPressed(View view) {
         isBuy = true;
         isSell = false;
@@ -111,11 +138,21 @@ public class MarketActivity extends AppCompatActivity {
         sellButton.setBackgroundResource(android.R.drawable.btn_default);
     }
 
+    /**
+     * This method calls the MarketViewModel's buyGood method
+     * This method is called by the recyclerViewAdapter
+     * @param good
+     */
     public void buyGood(Goods good) {
         viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
         viewModel.buyGood(good);
     }
 
+    /**
+     * This method calls the MarketViewModel's sellGood method
+     * This method is called by the recyclerViewAdapter
+     * @param good
+     */
     public void sellGood(Goods good) {
         viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
         viewModel.sellGood(good);
