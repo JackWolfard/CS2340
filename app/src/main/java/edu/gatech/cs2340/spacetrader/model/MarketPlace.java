@@ -177,4 +177,8 @@ public class MarketPlace implements Serializable {
     public HashMap<Goods, Integer> getSell() {
         return sell;
     }
+
+    public int getGoodAmount(Goods good) {
+        return inventory.get(good);
+    }
 }
