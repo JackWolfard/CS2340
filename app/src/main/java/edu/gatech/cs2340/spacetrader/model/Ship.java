@@ -35,9 +35,13 @@ public class Ship implements Serializable {
     }
 
     public void addToCargo(Goods item) {
-        int currentInv = inventory.get(item);
-        inventory.put(item, currentInv + 1);
-        currentsize++;
+        if (currentsize >= cargoHold) {
+            throw new IndexOutOfBoundsException("The cargo hold is full");
+        } else {
+            int currentInv = inventory.get(item);
+            inventory.put(item, currentInv + 1);
+            currentsize++;
+        }
     }
 
     public void removeFromCargo(Goods item) {
