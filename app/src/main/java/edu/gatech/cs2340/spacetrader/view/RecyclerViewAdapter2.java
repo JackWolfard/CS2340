@@ -16,16 +16,31 @@ import java.util.ArrayList;
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.model.SolarSystem;
 
+/**
+ * RecyclerViewAdapter2 controls the recyclerview for the Travel screen
+ */
 public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.ViewHolder> {
 
-    private final ArrayList<String> planetNames;
-    private final ArrayList<String> fuelCosts;
-    private final ArrayList<SolarSystem> solarSystems;
-    private final TravelActivity travelActivity;
+    private static final String TAG = "RecyclerViewAdapter2";
 
-    public RecyclerViewAdapter2(ArrayList<String> planetNames,
+    private ArrayList<String> planetNames;
+    private ArrayList<String> fuelCosts;
+    private ArrayList<SolarSystem> solarSystems;
+    private Context mContext;
+    private TravelActivity travelActivity;
+
+    /**
+     * Constructor for RecyclerViewAdapter2
+     * @param mContext context
+     * @param planetNames arraylist of planet names
+     * @param fuelCosts arraylist of fuelcosts
+     * @param solarSystems arraylist of solarSystems
+     * @param travelActivity travelActivity passed in to call activity methods
+     */
+    public RecyclerViewAdapter2(Context mContext, ArrayList<String> planetNames,
                                 ArrayList<String> fuelCosts, ArrayList<SolarSystem> solarSystems,
                                 TravelActivity travelActivity) {
+        this.mContext = mContext;
         this.planetNames = planetNames;
         this.fuelCosts = fuelCosts;
         this.solarSystems = solarSystems;
@@ -67,11 +82,11 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        final TextView planetName;
-        final TextView fuelCost;
-        final RelativeLayout travelLayout;
+        TextView planetName;
+        TextView fuelCost;
+        RelativeLayout travelLayout;
 
-        ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             planetName = itemView.findViewById(R.id.planetName);

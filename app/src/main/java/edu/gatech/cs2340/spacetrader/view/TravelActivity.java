@@ -17,6 +17,9 @@ import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.model.SolarSystem;
 import edu.gatech.cs2340.spacetrader.viewmodel.TravelViewModel;
 
+/**
+ * TravelActivity supports the travel view
+ */
 public class TravelActivity extends AppCompatActivity {
 
     private TravelViewModel viewModel;
@@ -55,11 +58,19 @@ public class TravelActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    /**
+     * Gets called when the back button is pressed by the user
+     * @param view
+     */
     public void onBackPressed(View view) {
         Log.d("TravelActivity", "Back pressed");
         finish();
     }
 
+    /**
+     * Travel method that calls the viewModel's travel method and changes intent randomly
+     * @param s
+     */
     public void travel(SolarSystem s) {
         viewModel.travel(s);
 

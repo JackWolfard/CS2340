@@ -17,6 +17,9 @@ import edu.gatech.cs2340.spacetrader.model.Ship;
 import edu.gatech.cs2340.spacetrader.model.SolarSystem;
 import edu.gatech.cs2340.spacetrader.model.Universe;
 
+/**
+ * TravelViewModel initializes travel screen information
+ */
 public class TravelViewModel extends AndroidViewModel {
 
     private final Model model;
@@ -28,11 +31,19 @@ public class TravelViewModel extends AndroidViewModel {
 //    private Pirate currentPirate = null;
 //    private Trader currentTrader = null;
 
+    /**
+     * TravelViewModel constructor
+     * @param application
+     */
     public TravelViewModel(@NonNull Application application) {
         super(application);
         model = Model.getInstance();
     }
 
+    /**
+     * Initializes information to fill recyclerView
+     * @return
+     */
     public ArrayList<ArrayList<String>> initTravel() {
 
         ArrayList<ArrayList<String>> info = new ArrayList<>(3);
@@ -64,10 +75,18 @@ public class TravelViewModel extends AndroidViewModel {
 
     }
 
+    /**
+     * Getter for solarSystem arraylists
+     * @return
+     */
     public ArrayList<SolarSystem> getSolarSystems() {
         return solarSystems;
     }
 
+    /**
+     * Travel method calls the universe's travel method
+     * @param s solarSystem
+     */
     public void travel(SolarSystem s) {
         Game game = model.getGame();
         Universe universe = game.getUniverse();

@@ -19,15 +19,25 @@ import edu.gatech.cs2340.spacetrader.model.Planet;
 import edu.gatech.cs2340.spacetrader.model.MarketPlace;
 import edu.gatech.cs2340.spacetrader.model.Ship;
 
+/**
+ * ViewModel that supports the marketView
+ */
 public class MarketViewModel extends AndroidViewModel {
 
     private final Model model;
 
+    /**
+     * Constructor for MarketViewModel
+     * @param application
+     */
     public MarketViewModel(@NonNull Application application) {
         super(application);
         model = Model.getInstance();
     }
 
+    /**
+     * refreshMarket method reloads the market data
+     */
     public void refreshMarket() {
         Game game = model.getGame();
         Universe universe = game.getUniverse();
@@ -36,6 +46,10 @@ public class MarketViewModel extends AndroidViewModel {
         market.update();
     }
 
+    /**
+     * Initializes the data for market
+     * @return
+     */
     public ArrayList<ArrayList<String>> initMarket() {
         ArrayList<ArrayList<String>> info = new ArrayList<>(5);
         Game game = model.getGame();
@@ -79,13 +93,20 @@ public class MarketViewModel extends AndroidViewModel {
 
     }
 
-
+    /**
+     * Initializes the data for the credits text field
+     * @return
+     */
     public int initCredits() {
         Game game = model.getGame();
         Player player = game.getPlayer();
         return player.getCredits();
     }
 
+    /**
+     * Initializes data for the inventory text field
+     * @return
+     */
     public int[] initInventory() {
         int[] info = new int[2];
         Game game = model.getGame();
@@ -96,6 +117,10 @@ public class MarketViewModel extends AndroidViewModel {
         return info;
     }
 
+    /**
+     * Buy good function calls the market buy good function
+     * @param good
+     */
     public void buyGood(Goods good) {
         Game game = model.getGame();
         Player player = game.getPlayer();
@@ -105,6 +130,11 @@ public class MarketViewModel extends AndroidViewModel {
 
         market.buyGoods(player, good);
     }
+
+    /**
+     * Sell good function calls the market sell good function
+     * @param good
+     */
     public void sellGood(Goods good) {
         Game game = model.getGame();
         Player player = game.getPlayer();
