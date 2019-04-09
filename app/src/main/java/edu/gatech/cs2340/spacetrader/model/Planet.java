@@ -2,6 +2,7 @@ package edu.gatech.cs2340.spacetrader.model;
 
 import java.io.Serializable;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 import edu.gatech.cs2340.spacetrader.entity.ResourceLevel;
@@ -15,7 +16,7 @@ public class Planet implements Serializable {
 
     /** the Linked List Representation of the 10 Planets used in the Solar System */
 
-    private LinkedList<Planet> planetList = new LinkedList<>();
+    private List<Planet> planetList = new LinkedList<>();
 
     /** the Tech Level of a Solar System */
 
@@ -37,7 +38,8 @@ public class Planet implements Serializable {
         Random rand = new Random();
         techLevel = rand.nextInt(7);
         resourceLevel = rand.nextInt(13);
-        market = new MarketPlace(TechLevel.values()[techLevel], ResourceLevel.values()[resourceLevel], false);
+        market = new MarketPlace(TechLevel.values()[techLevel],
+                ResourceLevel.values()[resourceLevel], false);
     }
 
     public Planet() {
@@ -68,7 +70,7 @@ public class Planet implements Serializable {
      * @return A Linked List of Planets
      */
 
-    public LinkedList<Planet> getPlanetList() { return planetList; }
+    public List<Planet> getPlanetList() { return planetList; }
 
     /**
      * Returns the planet's Name

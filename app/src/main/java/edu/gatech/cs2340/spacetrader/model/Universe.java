@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class Universe implements Serializable {
 
     private HashMap<SolarSystem, int[]> starMap = new HashMap<>();
     /** the Linked List of created Solar Systems used to add them into the starMap */
-    private LinkedList<SolarSystem> sysList = SolarSystem.generateSystem();
+    private List<SolarSystem> sysList = SolarSystem.generateSystem();
     /** Hashmap that is used for the travel UI*/
     private HashMap<SolarSystem, Integer> travelMap = new HashMap<>();
     private int[][] distanceArray = new int[sysList.size()][sysList.size()];
