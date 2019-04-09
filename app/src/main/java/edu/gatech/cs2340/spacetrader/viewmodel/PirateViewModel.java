@@ -28,7 +28,8 @@ public class PirateViewModel extends AndroidViewModel {
     }
 
     public String[] initText() {
-        String[] text = new String[] {currentPirate.getName(), String.valueOf(currentPirate.getPower())};
+        String[] text = new String[] {currentPirate.getName(),
+                String.valueOf(currentPirate.getPower())};
         return text;
     }
 

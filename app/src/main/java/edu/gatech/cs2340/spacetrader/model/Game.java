@@ -32,6 +32,7 @@ public class Game implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("Game with Player: %s, Difficulty: %s.", player.getName(), difficulty.getDifficulty());
+        return String.format("Game with Player: %s, Difficulty: %s.", player.getName(),
+                difficulty.getDifficulty());
     }
 }

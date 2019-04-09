@@ -86,7 +86,8 @@ public class MarketActivity extends AppCompatActivity {
         }
 
         int[] inventoryInfo = viewModel.initInventory();
-        inventory.setText(String.valueOf(inventoryInfo[1]) + "/" + String.valueOf(inventoryInfo[0]));
+        inventory.setText(String.valueOf(inventoryInfo[1]) + "/"
+                + String.valueOf(inventoryInfo[0]));
 
         initRecyclerView();
 

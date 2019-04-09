@@ -26,7 +26,9 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
     private Context mContext;
     private TravelActivity travelActivity;
 
-    public RecyclerViewAdapter2(Context mContext, ArrayList<String> planetNames, ArrayList<String> fuelCosts, ArrayList<SolarSystem> solarSystems, TravelActivity travelActivity) {
+    public RecyclerViewAdapter2(Context mContext, ArrayList<String> planetNames,
+                                ArrayList<String> fuelCosts, ArrayList<SolarSystem> solarSystems,
+                                TravelActivity travelActivity) {
         this.mContext = mContext;
         this.planetNames = planetNames;
         this.fuelCosts = fuelCosts;
@@ -37,7 +39,8 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_travellistitem, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_travellistitem,
+                parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
