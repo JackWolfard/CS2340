@@ -24,7 +24,7 @@ public class buyGoodUnitTest {
     @Test
     public void initialize() {
         player.setCredits(10000);
-        assertEquals(0,testShip.getCurrentsize());
+        assertEquals(0,testShip.getCurrentSize());
     }
     @Test
     public void purchaseSuccessful() {
@@ -33,18 +33,18 @@ public class buyGoodUnitTest {
         boolean credits = player.getCredits() < 10000;
 
         assertTrue(credits);
-        assertEquals(1, testShip.getCurrentsize());
+        assertEquals(1, testShip.getCurrentSize());
         assertEquals(originalAmount-1, testMarket.getGoodAmount(Goods.FOOD));
     }
 
     @Test
     public void testMaxCargoSize() {
-        //fill up ship to max cargosize;
+        //fill up ship to max cargoSize;
         for (int i = 0; i < testShip.getCargoHold(); i++) {
             player.setCredits(10000);
             testMarket.update();
             testMarket.buyGoods(player, Goods.FOOD);
-            assertEquals(i + 1, testShip.getCurrentsize());
+            assertEquals(i + 1, testShip.getCurrentSize());
         }
         assertTrue(testShip.isFull());
 
@@ -52,12 +52,12 @@ public class buyGoodUnitTest {
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testExceedsMaxCargoSize() {
-        //fill up ship to max cargosize;
+        //fill up ship to max cargoSize;
         for (int i = 0; i < testShip.getCargoHold(); i++) {
             player.setCredits(10000);
             testMarket.update();
             testMarket.buyGoods(player, Goods.FOOD);
-            assertEquals(i + 1, testShip.getCurrentsize());
+            assertEquals(i + 1, testShip.getCurrentSize());
         }
         player.setCredits(10000);
         testMarket.update();
@@ -90,6 +90,6 @@ public class buyGoodUnitTest {
             testMarket.buyGoods(player, Goods.FOOD);
         }
         assertEquals(0, testMarket.getGoodAmount(Goods.FOOD));
-        assertEquals(originalAmount,testShip.getCurrentsize());
+        assertEquals(originalAmount,testShip.getCurrentSize());
     }
 }
