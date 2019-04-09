@@ -32,7 +32,7 @@ public class buyGoodUnitTest {
         testMarket.buyGoods(player, Goods.FOOD);
         boolean credits = player.getCredits() < 10000;
 
-        assertEquals(true, credits);
+        assertTrue(credits);
         assertEquals(1, testShip.getCurrentsize());
         assertEquals(originalAmount-1, testMarket.getGoodAmount(Goods.FOOD));
     }

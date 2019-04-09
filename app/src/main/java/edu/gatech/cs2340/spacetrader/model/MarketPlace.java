@@ -118,6 +118,7 @@ public class MarketPlace implements Serializable {
     public void sellGoods(Player player, Goods item) {
         //get price of good
         int price = sell.get(item);
+
         //make sure player has good in inventory
         Ship ship = player.getShip();
         HashMap<Goods, Integer> cargoList = ship.getCargoList();
