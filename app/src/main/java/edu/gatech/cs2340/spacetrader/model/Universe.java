@@ -124,7 +124,8 @@ public class Universe implements Serializable {
                 double x2 = (double) yCoordinate[0];
                 double y2 = (double) yCoordinate[1];
 
-                int distance = (int) Math.floor(Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2)));
+                int distance = (int) Math.floor(Math.sqrt(Math.pow(x1 - x2, 2)
+                        + Math.pow(y1 - y2, 2)));
                 distanceArray[i][j] = distance;
             }
         }
@@ -167,7 +168,8 @@ public class Universe implements Serializable {
         while (iterator.hasNext()) {
             SolarSystem ss = iterator.next();
             int[] coordinate = starMap.get(ss);
-            backHalf = backHalf + ss.toString() + " at location: (" + coordinate[0] + ", " + coordinate[1] + ").\n";
+            backHalf = backHalf + ss.toString() + " at location: (" + coordinate[0]
+                    + ", " + coordinate[1] + ").\n";
         }
         return String.format("A universe with the solar systems: \n" + backHalf);
     }

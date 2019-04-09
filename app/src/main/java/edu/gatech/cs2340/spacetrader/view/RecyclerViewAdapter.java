@@ -17,18 +17,31 @@ import java.util.ArrayList;
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.entity.Goods;
 
+/**
+ * RecyclerViewAdapter that controls the recyclerView for the market UI screen
+ */
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private static final String TAG = "RecyclerViewAdapter";
 
-    private final ArrayList<String> goodNames;
-    private final ArrayList<String> quantities;
-    private final ArrayList<String> prices;
-    private final ArrayList<String> sellPrices;
-    private final ArrayList<String> amountOwned;
-    private final Context mContext;
-    private final MarketActivity marketActivity;
+    private ArrayList<String> goodNames;
+    private ArrayList<String> quantities;
+    private ArrayList<String> prices;
+    private ArrayList<String> sellPrices;
+    private ArrayList<String> amountOwned;
+    private Context mContext;
+    private MarketActivity marketActivity;
 
+    /**
+     * Constructor for the RecyclerViewAdapter
+     * @param mContext context
+     * @param goodNames ArrayList of good names
+     * @param quantities ArrayList of quantities of each good
+     * @param prices ArrayList of the price of each good
+     * @param sellPrices ArrayList of sell prices
+     * @param amountOwned ArrayList of the amount owned of each good
+     * @param marketActivity marketActivity passed in to call activity methods
+     */
     public RecyclerViewAdapter(Context mContext, ArrayList<String> goodNames,
                                ArrayList<String> quantities, ArrayList<String> prices,
                                ArrayList<String> sellPrices, ArrayList<String> amountOwned,
@@ -112,14 +125,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        final TextView goodName;
-        final TextView quantityText;
-        final TextView priceText;
-        final TextView sellText;
-        final TextView amountOwnedText;
-        final RelativeLayout parentLayout;
+        TextView goodName;
+        TextView quantityText;
+        TextView priceText;
+        TextView sellText;
+        TextView amountOwnedText;
+        RelativeLayout parentLayout;
 
-        ViewHolder(@NonNull View itemView) {
+        /**
+         * ViewHolder constructor sets the variables to UI itemViews
+         * @param itemView
+         */
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             goodName = itemView.findViewById(R.id.goodName);
             quantityText = itemView.findViewById(R.id.quantityText);
