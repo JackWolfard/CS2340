@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class Pirate implements Serializable {
 
-    private int power;
-    private String name;
+    private final int power;
+    private final String name;
 
     public Pirate(String name, int power) {
         this.name = name;

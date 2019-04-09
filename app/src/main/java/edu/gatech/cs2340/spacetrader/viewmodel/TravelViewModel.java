@@ -15,14 +15,13 @@ import edu.gatech.cs2340.spacetrader.model.Pirate;
 import edu.gatech.cs2340.spacetrader.model.Player;
 import edu.gatech.cs2340.spacetrader.model.Ship;
 import edu.gatech.cs2340.spacetrader.model.SolarSystem;
-import edu.gatech.cs2340.spacetrader.model.Trader;
 import edu.gatech.cs2340.spacetrader.model.Universe;
 
 public class TravelViewModel extends AndroidViewModel {
 
-    private Model model;
+    private final Model model;
 
-    private ArrayList<SolarSystem> solarSystems = new ArrayList<>();
+    private final ArrayList<SolarSystem> solarSystems = new ArrayList<>();
 
 //    private Random randomEvent = new Random();
 //

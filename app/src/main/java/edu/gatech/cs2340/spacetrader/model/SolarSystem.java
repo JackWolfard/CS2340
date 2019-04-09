@@ -12,24 +12,24 @@ public class SolarSystem implements Serializable {
 
     /** the name of the Solar System */
 
-    private String name;
+    private final String name;
 
     /** the First planet in the solarsystem */
 
-    private Planet planet;
+    private final Planet planet;
 
     /** a Linked List representation of the 10 different Solar Systems, with each containing
      * one planet of the same name */
 
-    private static List<SolarSystem> sysStarMap = new LinkedList<>();
+    private static final List<SolarSystem> sysStarMap = new LinkedList<>();
 
     /** the Tech Level of a Solar System */
 
-    private int techLevel;
+    private final int techLevel;
 
     /** the Resource Level of a Solar System */
 
-    private int resourceLevel;
+    private final int resourceLevel;
 
 
     /**
@@ -37,7 +37,7 @@ public class SolarSystem implements Serializable {
      * @param planet the Planet contained in the Solar System
      */
 
-    public SolarSystem(Planet planet) {
+    private SolarSystem(Planet planet) {
         this.planet = planet;
         name = planet.getName();
         techLevel = planet.getTechLevel();
@@ -46,10 +46,6 @@ public class SolarSystem implements Serializable {
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     /**

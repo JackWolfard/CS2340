@@ -8,12 +8,12 @@ import edu.gatech.cs2340.spacetrader.entity.TechLevel;
 import edu.gatech.cs2340.spacetrader.entity.ResourceLevel;
 
 public class MarketPlace implements Serializable {
-    private HashMap<Goods, Integer> inventory = new HashMap<>();
-    private HashMap<Goods, Integer> cost = new HashMap<>();
-    private HashMap<Goods, Integer> sell = new HashMap<>();
-    private TechLevel tech;
-    private ResourceLevel resource;
-    private boolean isTrader;
+    private final HashMap<Goods, Integer> inventory = new HashMap<>();
+    private final HashMap<Goods, Integer> cost = new HashMap<>();
+    private final HashMap<Goods, Integer> sell = new HashMap<>();
+    private final TechLevel tech;
+    private final ResourceLevel resource;
+    private final boolean isTrader;
 
     /**
      * Constructor for the Market Place sets the market places tech level and resource level
@@ -33,12 +33,12 @@ public class MarketPlace implements Serializable {
      * It also calls the calculate pricing method for each item so that the prices for the items
      * are made
      */
-    public void initialize() {
+    private void initialize() {
         for (int i = 0; i < Goods.values().length; i++) {
             Random rand = new Random();
             Goods item = Goods.values()[i];
             //calculate quantity
-            Integer quantity = 0;
+            int quantity = 0;
             int planetTechLevel = tech.getTechLevel();
             //calculate quantity modifiers
             if (planetTechLevel >= item.getMinLevelProd()) {
@@ -69,11 +69,11 @@ public class MarketPlace implements Serializable {
      * Calculates the buy and sell price for each good
      * @param item The good to calculate the price for and used as the key for the hash map
      */
-    public void calculatePricing(Goods item) {
+    private void calculatePricing(Goods item) {
         Random rand = new Random();
         //calculate base price
         int variance = rand.nextInt(item.getVariance());
-        Integer price = item.getValue() + (item.getPriceIncreasePerLevel() * (tech.getTechLevel()
+        int price = item.getValue() + (item.getPriceIncreasePerLevel() * (tech.getTechLevel()
                 - item.getMinLevelProd())) + variance;
         //Grab strings needed for modifiers
         String resourceLevel = resource.toString();
@@ -119,9 +119,11 @@ public class MarketPlace implements Serializable {
         //get price of good
         int price = sell.get(item);
         //make sure player has good in inventory
-        if (player.getShip().getCargoList().get(item) > 0) {
+        Ship ship = player.getShip();
+        HashMap<Goods, Integer> cargoList = ship.getCargoList();
+        if (cargoList.get(item) > 0) {
             player.setCredits(player.getCredits() + price);
-            player.getShip().removeFromCargo(item);
+            ship.removeFromCargo(item);
             //get current inventory if 0 need to added item and create pricing for it
             int currentInventory = inventory.get(item);
             if (currentInventory == 0) {
@@ -146,8 +148,9 @@ public class MarketPlace implements Serializable {
     public void buyGoods(Player player, Goods item) {
         //get cost of the good
         int price = cost.get(item);
+        Ship ship = player.getShip();
         //check if their is space in cargo hold
-        if (player.getShip().isFull()) {
+        if (ship.isFull()) {
             throw new IndexOutOfBoundsException("You do not currently enough " +
                     "space in your cargo hold to purchase this item.");
         }
@@ -158,7 +161,7 @@ public class MarketPlace implements Serializable {
                 throw new IndexOutOfBoundsException("This market is out of stock on this good.");
             }
             player.setCredits(player.getCredits() - price);
-            player.getShip().addToCargo(item);
+            ship.addToCargo(item);
             inventory.put(item, currentInventory - 1);
         } else {
             throw new IndexOutOfBoundsException("You do not currently enough " +

@@ -14,9 +14,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import edu.gatech.cs2340.spacetrader.R;
-import edu.gatech.cs2340.spacetrader.model.Pirate;
 import edu.gatech.cs2340.spacetrader.model.SolarSystem;
-import edu.gatech.cs2340.spacetrader.model.Trader;
 import edu.gatech.cs2340.spacetrader.viewmodel.TravelViewModel;
 
 public class TravelActivity extends AppCompatActivity {
@@ -27,7 +25,7 @@ public class TravelActivity extends AppCompatActivity {
     private ArrayList<String> fuelCosts;
     private ArrayList<SolarSystem> solarSystems;
 
-    private Random randomEvent = new Random();
+    private final Random randomEvent = new Random();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,8 +49,8 @@ public class TravelActivity extends AppCompatActivity {
 
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.recyclerView2);
-        RecyclerViewAdapter2 adapter = new RecyclerViewAdapter2(
-                this, planetNames, fuelCosts, solarSystems, this);
+        RecyclerViewAdapter2 adapter = new RecyclerViewAdapter2(planetNames, fuelCosts,
+                solarSystems, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

@@ -8,14 +8,14 @@ import edu.gatech.cs2340.spacetrader.entity.ShipType;
 
 public class Ship implements Serializable {
 
-    private String name;
-    private ShipType shipType;
+    private final String name;
+    private final ShipType shipType;
     private int cargoHold;
     private int currentsize;
     private int currentMileage;
-    private HashMap<Goods, Integer> inventory = new HashMap<>();
+    private final HashMap<Goods, Integer> inventory = new HashMap<>();
 
-    public Ship(String name, ShipType shipType) {
+    private Ship(String name, ShipType shipType) {
         this.name = name;
         this.shipType = shipType;
         this.currentMileage = shipType.getTravelDistance();
@@ -23,7 +23,7 @@ public class Ship implements Serializable {
         currentsize = 0;
 
     }
-    public void initializeCargoHold() {
+    private void initializeCargoHold() {
         for (int i = 0; i < 10; i++) {
             Goods item = Goods.values()[i];
             inventory.put(item,0);
@@ -60,10 +60,6 @@ public class Ship implements Serializable {
 
     public boolean isFull() {
         return currentsize == cargoHold;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String toString() {

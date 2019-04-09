@@ -21,9 +21,7 @@ import edu.gatech.cs2340.spacetrader.model.Ship;
 
 public class MarketViewModel extends AndroidViewModel {
 
-    private static final String TAG = "MarketViewModel";
-
-    private Model model;
+    private final Model model;
 
     public MarketViewModel(@NonNull Application application) {
         super(application);

@@ -7,14 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.entity.GameDifficulty;
-import edu.gatech.cs2340.spacetrader.viewmodel.ConfigurationViewModel;
 import edu.gatech.cs2340.spacetrader.viewmodel.MainViewModel;
 
 public class MainActivity extends AppCompatActivity {

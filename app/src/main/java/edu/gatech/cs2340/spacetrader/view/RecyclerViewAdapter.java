@@ -21,13 +21,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private static final String TAG = "RecyclerViewAdapter";
 
-    private ArrayList<String> goodNames;
-    private ArrayList<String> quantities;
-    private ArrayList<String> prices;
-    private ArrayList<String> sellPrices;
-    private ArrayList<String> amountOwned;
-    private Context mContext;
-    private MarketActivity marketActivity;
+    private final ArrayList<String> goodNames;
+    private final ArrayList<String> quantities;
+    private final ArrayList<String> prices;
+    private final ArrayList<String> sellPrices;
+    private final ArrayList<String> amountOwned;
+    private final Context mContext;
+    private final MarketActivity marketActivity;
 
     public RecyclerViewAdapter(Context mContext, ArrayList<String> goodNames,
                                ArrayList<String> quantities, ArrayList<String> prices,
@@ -112,14 +112,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView goodName;
-        TextView quantityText;
-        TextView priceText;
-        TextView sellText;
-        TextView amountOwnedText;
-        RelativeLayout parentLayout;
+        final TextView goodName;
+        final TextView quantityText;
+        final TextView priceText;
+        final TextView sellText;
+        final TextView amountOwnedText;
+        final RelativeLayout parentLayout;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             goodName = itemView.findViewById(R.id.goodName);
             quantityText = itemView.findViewById(R.id.quantityText);

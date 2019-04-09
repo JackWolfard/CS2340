@@ -18,9 +18,9 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class buyGoodUnitTest {
-    Player player = new Player("TestPlayer", 3,4,4,4);
-    MarketPlace testMarket = new MarketPlace(TechLevel.values()[4], ResourceLevel.NONE, false);
-    Ship testShip = player.getShip();
+    private final Player player = new Player("TestPlayer", 3,4,4,4);
+    private final MarketPlace testMarket = new MarketPlace(TechLevel.values()[4], ResourceLevel.NONE, false);
+    private final Ship testShip = player.getShip();
     @Test
     public void initialize() {
         player.setCredits(10000);

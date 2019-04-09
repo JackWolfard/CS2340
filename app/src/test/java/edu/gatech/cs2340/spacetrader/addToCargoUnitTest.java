@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 
 public class addToCargoUnitTest {
 
-    Ship testShip = new Ship(ShipType.GN);
+    private final Ship testShip = new Ship(ShipType.GN);
 
     @Test
     public void initialize() {

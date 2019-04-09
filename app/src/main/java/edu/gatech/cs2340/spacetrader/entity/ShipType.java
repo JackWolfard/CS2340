@@ -3,9 +3,7 @@ package edu.gatech.cs2340.spacetrader.entity;
 import java.io.Serializable;
 
 public enum ShipType implements Serializable {
-    GN ("Gnat", 150), // originally 50, changed for demoing purposes
-    AS ("Asus", 75),
-    NV ("Nova", 100);
+    GN ("Gnat", 150);
 
     /** the full string representation of the difficulty */
     private final String name;

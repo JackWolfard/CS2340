@@ -18,18 +18,14 @@ import edu.gatech.cs2340.spacetrader.model.SolarSystem;
 
 public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.ViewHolder> {
 
-    private static final String TAG = "RecyclerViewAdapter2";
+    private final ArrayList<String> planetNames;
+    private final ArrayList<String> fuelCosts;
+    private final ArrayList<SolarSystem> solarSystems;
+    private final TravelActivity travelActivity;
 
-    private ArrayList<String> planetNames;
-    private ArrayList<String> fuelCosts;
-    private ArrayList<SolarSystem> solarSystems;
-    private Context mContext;
-    private TravelActivity travelActivity;
-
-    public RecyclerViewAdapter2(Context mContext, ArrayList<String> planetNames,
+    public RecyclerViewAdapter2(ArrayList<String> planetNames,
                                 ArrayList<String> fuelCosts, ArrayList<SolarSystem> solarSystems,
                                 TravelActivity travelActivity) {
-        this.mContext = mContext;
         this.planetNames = planetNames;
         this.fuelCosts = fuelCosts;
         this.solarSystems = solarSystems;
@@ -71,11 +67,11 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView planetName;
-        TextView fuelCost;
-        RelativeLayout travelLayout;
+        final TextView planetName;
+        final TextView fuelCost;
+        final RelativeLayout travelLayout;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             planetName = itemView.findViewById(R.id.planetName);

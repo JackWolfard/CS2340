@@ -19,7 +19,7 @@ import edu.gatech.cs2340.spacetrader.model.Model;
 
 public class MainViewModel extends AndroidViewModel {
 
-    private Model model;
+    private final Model model;
 
     private boolean gameStarted;
 

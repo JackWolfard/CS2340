@@ -7,9 +7,9 @@ import edu.gatech.cs2340.spacetrader.entity.GameDifficulty;
 
 public class Game implements Serializable {
 
-    private Player player;
-    private GameDifficulty difficulty;
-    private Universe universe;
+    private final Player player;
+    private final GameDifficulty difficulty;
+    private final Universe universe;
 
     /**
      * Default empty constructor which initializes everything to dummy

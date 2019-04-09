@@ -3,16 +3,16 @@ import java.io.Serializable;
 import java.util.Comparator;
 
 public enum Goods implements Serializable {
-    FIREARMS("Firearms", 1250, 3,1,5,-75,100, "WAR", "WARLIKE",null,600,1100),
-    FOOD("Food",100, 1,0,1,5,5,"CROPFAIL","RICHSOIL","POORSOIL",90,160),
-    FURS("Furs",250, 0,0,0,10,10,"COLD","RICHFAUNA","LIFELESS",230,280),
-    GAMES("Games",250,3,1,6,-10,5,"BOREDOM","ARTISTIC",null,160,270),
-    ORE("Ore",350,2,2,3,20,10,"WAR","MINERALRICH","MINERALPOOR",350,420),
-    NARCOTICS("Narcotics", 3500, 5,0,5,-125, 150, "BOREDOM", "WEIRDMUSHROOMS", null, 2000, 3000),
-    MACHINES("Machines", 900, 4,3,5, -30, 5, "LACKOFWORKERS", null, null, 600,800),
-    MEDICINE("Medicine", 650, 4, 1,6,-20, 10, "PLAGUE", "LOTSOFHERBS", null, 400,700),
-    ROBOTS("Robots", 5000, 6,4,7, -150, 100, "LACKOFWORKERS", null, null, 3500, 5000),
-    WATER("Water", 30, 0, 0, 2, 3, 4, "DROUGHT", "LOTSOFWATER", "DESERT", 30, 50);
+    FIREARMS("Firearms", 1250, 3,5,-75,100, "WAR", "WARLIKE",null,600,1100),
+    FOOD("Food",100, 1,1,5,5,"CROPFAIL","RICHSOIL","POORSOIL",90,160),
+    FURS("Furs",250, 0,0,10,10,"COLD","RICHFAUNA","LIFELESS",230,280),
+    GAMES("Games",250,3,6,-10,5,"BOREDOM","ARTISTIC",null,160,270),
+    ORE("Ore",350,2,3,20,10,"WAR","MINERALRICH","MINERALPOOR",350,420),
+    NARCOTICS("Narcotics", 3500, 5,5,-125, 150, "BOREDOM", "WEIRDMUSHROOMS", null, 2000, 3000),
+    MACHINES("Machines", 900, 4,5, -30, 5, "LACKOFWORKERS", null, null, 600,800),
+    MEDICINE("Medicine", 650, 4,6,-20, 10, "PLAGUE", "LOTSOFHERBS", null, 400,700),
+    ROBOTS("Robots", 5000, 6,7, -150, 100, "LACKOFWORKERS", null, null, 3500, 5000),
+    WATER("Water", 30, 0, 2, 3, 4, "DROUGHT", "LOTSOFWATER", "DESERT", 30, 50);
 
     /** the name of the good*/
     private final String name;
@@ -21,8 +21,6 @@ public enum Goods implements Serializable {
     private final int value;
     /** the minimum level to produce the good*/
     private final int minLevelProd;
-    /** the minimum level to use the good*/
-    private final int minLevelUse;
     /** the tech level that produces most of the good*/
     private final int highestTechFreq;
     /** the price increase of the good per Tech Level*/
@@ -40,13 +38,12 @@ public enum Goods implements Serializable {
     /** the maximum price in a space trade*/
     private final int maxSpaceTrade;
 
-    Goods(String name, int value, int minLevelProd, int minLevelUse, int highestTechFreq,
+    Goods(String name, int value, int minLevelProd, int highestTechFreq,
           int priceIncreasePerLevel, int variance, String priceIncreaseEvent,
           String priceDecreaseEvent, String expensiveEvent, int minSpaceTrade, int maxSpaceTrade) {
         this.name = name;
         this.value = value;
         this.minLevelProd = minLevelProd;
-        this.minLevelUse = minLevelUse;
         this.highestTechFreq = highestTechFreq;
         this.priceIncreaseEvent = priceIncreaseEvent;
         this.priceIncreasePerLevel = priceIncreasePerLevel;
@@ -72,10 +69,6 @@ public enum Goods implements Serializable {
 
     public int getMinLevelProd() {
         return minLevelProd;
-    }
-
-    public int getMinLevelUse() {
-        return minLevelUse;
     }
 
     public int getHighestTechFreq() {

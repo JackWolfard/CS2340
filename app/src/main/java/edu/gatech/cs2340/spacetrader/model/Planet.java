@@ -16,7 +16,7 @@ public class Planet implements Serializable {
 
     /** the Linked List Representation of the 10 Planets used in the Solar System */
 
-    private List<Planet> planetList = new LinkedList<>();
+    private final List<Planet> planetList = new LinkedList<>();
 
     /** the Tech Level of a Solar System */
 
@@ -33,7 +33,7 @@ public class Planet implements Serializable {
      * @param planetName The name given to the created Planet
      */
 
-    public Planet(String planetName) {
+    private Planet(String planetName) {
         this.name = planetName;
         Random rand = new Random();
         techLevel = rand.nextInt(7);
@@ -50,7 +50,7 @@ public class Planet implements Serializable {
      * Generates a Linked List representation of 10 different Planets
      */
 
-    public void generatePlanets() {
+    private void generatePlanets() {
 
         planetList.add(new Planet("Deshaan"));
         planetList.add(new Planet("Kumuro"));

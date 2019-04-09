@@ -13,14 +13,10 @@ import android.widget.Toast;
 import android.content.Intent;
 
 import edu.gatech.cs2340.spacetrader.entity.GameDifficulty;
-import edu.gatech.cs2340.spacetrader.viewmodel.ConfigurationViewModel;
 import edu.gatech.cs2340.spacetrader.R;
 
 public class ConfigurationActivity extends AppCompatActivity {
 
-    private ConfigurationViewModel viewModel;
-
-    private ConfigurationViewModel configVM;
 
     private EditText nameField;
     private EditText pilotField;
@@ -46,7 +42,6 @@ public class ConfigurationActivity extends AppCompatActivity {
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(difficultyAdapter);
 
-        viewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
     }
 
     @Override

@@ -43,7 +43,7 @@ public class PlanetActivity extends AppCompatActivity {
     /**
      * Initializes the text fields that show planet name, tech level, and resource level
      */
-    public void initTextFields() {
+    private void initTextFields() {
         String[] info = viewModel.initPlanetView();
 
         planetName.setText(info[0]);

@@ -14,7 +14,7 @@ public class Model implements Serializable {
 
     private Game game;
 
-    private static Model instance = new Model();
+    private static final Model instance = new Model();
 
     /**
      * getter for instance

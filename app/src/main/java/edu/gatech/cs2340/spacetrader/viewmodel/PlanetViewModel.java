@@ -13,7 +13,7 @@ import edu.gatech.cs2340.spacetrader.model.Planet;
 
 public class PlanetViewModel extends AndroidViewModel {
 
-    private Model model;
+    private final Model model;
 
     public PlanetViewModel(@NonNull Application application) {
         super(application);
@@ -22,7 +22,7 @@ public class PlanetViewModel extends AndroidViewModel {
 
     public String[] initPlanetView() {
         String[] info = new String[3];
-        Game game = Model.getInstance().getGame();
+        Game game = model.getGame();
         Universe universe = game.getUniverse();
         Planet currentPlanet = universe.getCurrentPlanet();
         info[0] = currentPlanet.getName();
