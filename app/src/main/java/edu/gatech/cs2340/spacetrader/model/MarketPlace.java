@@ -16,7 +16,7 @@ public class MarketPlace implements Serializable {
     private boolean isTrader;
 
     /**
-     * Constructor for the Market Place sets the market places techlevel and resource level
+     * Constructor for the Market Place sets the market places tech level and resource level
      * @param tech The tech level of the Marketplace
      * @param resource The resource level of the Marketplace
      */
@@ -24,16 +24,16 @@ public class MarketPlace implements Serializable {
         this.tech = tech;
         this.resource = resource;
         this.isTrader = isTrader;
-        initalize();
+        initialize();
     }
 
     /**
-     * The initalization method for the market place
+     * The initialization method for the market place
      * It randomly determines the quantity for all goods that the market place is allowed to sell
      * It also calls the calculate pricing method for each item so that the prices for the items
      * are made
      */
-    public void initalize() {
+    public void initialize() {
         for (int i = 0; i < Goods.values().length; i++) {
             Random rand = new Random();
             Goods item = Goods.values()[i];
@@ -62,12 +62,12 @@ public class MarketPlace implements Serializable {
         inventory.clear();
         cost.clear();
         sell.clear();
-        initalize();
+        initialize();
     }
 
     /**
      * Calculates the buy and sell price for each good
-     * @param item The good to calculate the price for and used as the key for the hashmap
+     * @param item The good to calculate the price for and used as the key for the hash map
      */
     public void calculatePricing(Goods item) {
         Random rand = new Random();
@@ -149,7 +149,7 @@ public class MarketPlace implements Serializable {
         //check if their is space in cargo hold
         if (player.getShip().isFull()) {
             throw new IndexOutOfBoundsException("You do not currently enough " +
-                    "space in your cargohold to purchase this item.");
+                    "space in your cargo hold to purchase this item.");
         }
         // make sure player has enough credit for purchase
         if (player.getCredits() >= price) {
