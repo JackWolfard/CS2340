@@ -34,5 +34,7 @@ public class removeFromCargoUnitTest {
             testShip.removeFromCargo(Goods.FIREARMS);
         }
         assertEquals(0, testShip.getCurrentsize());
+        testShip.removeFromCargo(Goods.FIREARMS);
+        assertEquals(0, testShip.getCurrentsize());
     }
 }
