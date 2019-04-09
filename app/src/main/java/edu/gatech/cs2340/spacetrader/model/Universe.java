@@ -25,10 +25,10 @@ public class Universe implements Serializable {
     private HashMap<SolarSystem, int[]> starMap = new HashMap<>();
     /** the Linked List of created Solar Systems used to add them into the starMap */
     private List<SolarSystem> sysList = SolarSystem.generateSystem();
-    /** Hashmap that is used for the travel UI*/
+    /** HashMap that is used for the travel UI*/
     private HashMap<SolarSystem, Integer> travelMap = new HashMap<>();
     private int[][] distanceArray = new int[sysList.size()][sysList.size()];
-    private SolarSystem currentSolarsystem;
+    private SolarSystem currentSolarSystem;
     private Planet currentPlanet;
     private Random randomEvent = new Random();
     private ArrayList<Pirate> pirateList = new ArrayList<>();
@@ -36,12 +36,12 @@ public class Universe implements Serializable {
 //    private Pirate currentPirate = null;
 //    private Trader currentTrader = null;
 
-    public SolarSystem getCurrentSolarsystem() {
-        return currentSolarsystem;
+    public SolarSystem getCurrentSolarSystem() {
+        return currentSolarSystem;
     }
 
-    public void setCurrentSolarsystem(SolarSystem currentSolarsystem) {
-        this.currentSolarsystem = currentSolarsystem;
+    public void setCurrentSolarSystem(SolarSystem currentSolarSystem) {
+        this.currentSolarSystem = currentSolarSystem;
     }
 
     public Planet getCurrentPlanet() {
@@ -62,16 +62,16 @@ public class Universe implements Serializable {
     // I used the constant of 1 for now just so it would compile
     public Universe() {
         generateUniverse();
-        currentSolarsystem = sysList.get(0);
+        currentSolarSystem = sysList.get(0);
         currentPlanet = sysList.get(0).getPlanet();
     }
 
     public void generateUniverse() {
         for (int j = 0; j < sysList.size(); j++) {
             Random rand = new Random();
-            int[] coord = new int[]{rand.nextInt(151), rand.nextInt(101)};
+            int[] coordinate = new int[]{rand.nextInt(151), rand.nextInt(101)};
             SolarSystem solSys = sysList.get(j);
-            starMap.put(solSys, coord);
+            starMap.put(solSys, coordinate);
         }
         generateTravelDistances();
         generatePirateList();
@@ -80,14 +80,14 @@ public class Universe implements Serializable {
     }
 
     /**
-     * updates a hashmap to contain all the planets that can be reached from current planet.
+     * updates a HashMap to contain all the planets that can be reached from current planet.
      * @param ship with specific remaining fuel left
-     * @return hashmap of reachable planets
+     * @return HashMap of reachable planets
      */
     public HashMap<SolarSystem, Integer> aboutToTravel(Ship ship) {
         if (ship != null) {
             travelMap.clear();
-            int index = sysList.indexOf(currentSolarsystem);
+            int index = sysList.indexOf(currentSolarSystem);
             for (int i=0; i<sysList.size(); i++) {
                 int distance = distanceArray[index][i];
                 if (distance <= ship.getCurrentMileage() && distance > 0) {
@@ -104,11 +104,11 @@ public class Universe implements Serializable {
      * Travels to new planet
      * Sets ships proper fuel tank
      * Sets current SolarSystem/planet
-     * @param solarSystem is new solar system to travel to
+     * @param SolarSystem is new solar system to travel to
      * @param ship users current ship
      */
-    public void travel(SolarSystem solarSystem, Ship ship) {
-        int distance = travelMap.get(solarSystem);
+    public void travel(SolarSystem SolarSystem, Ship ship) {
+        int distance = travelMap.get(SolarSystem);
 //        int eventNum = randomEvent.nextInt(4);
 //        if (eventNum == 0) {
 //            int pirateNum = randomEvent.nextInt(10);
@@ -119,8 +119,8 @@ public class Universe implements Serializable {
 //            currentTrader = traderList.get(traderNum);
 //        }
         ship.setCurrentMileage(ship.getCurrentMileage() - distance);
-        currentSolarsystem = solarSystem;
-        currentPlanet = solarSystem.getPlanet();
+        currentSolarSystem = SolarSystem;
+        currentPlanet = SolarSystem.getPlanet();
     }
     /**
      * Creates Array of All planet Travel Distances
@@ -129,15 +129,15 @@ public class Universe implements Serializable {
      */
     public void generateTravelDistances() {
         for (int i = 0; i < distanceArray.length; i++) {
-            SolarSystem xplanetKey = sysList.get(i);
-            int[] xcoord = starMap.get(xplanetKey);
-            double x1 = (double) xcoord[0];
-            double y1 = (double) xcoord[1];
+            SolarSystem xPlanetKey = sysList.get(i);
+            int[] xCoordinate = starMap.get(xPlanetKey);
+            double x1 = (double) xCoordinate[0];
+            double y1 = (double) xCoordinate[1];
             for (int j = 0; j < distanceArray.length; j++) {
-                SolarSystem yplanetKey = sysList.get(j);
-                int[] ycoord = starMap.get(yplanetKey);
-                double x2 = (double) ycoord[0];
-                double y2 = (double) ycoord[1];
+                SolarSystem yPlanetKey = sysList.get(j);
+                int[] yCoordinate = starMap.get(yPlanetKey);
+                double x2 = (double) yCoordinate[0];
+                double y2 = (double) yCoordinate[1];
 
                 int distance = (int) Math.floor(Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2)));
                 distanceArray[i][j] = distance;
@@ -187,14 +187,14 @@ public class Universe implements Serializable {
 
     @Override
     public String toString() {
-        String backhalf = "";
+        String backHalf = "";
         Set<SolarSystem> keys = starMap.keySet();
         Iterator<SolarSystem> iterator = keys.iterator();
         while (iterator.hasNext()) {
             SolarSystem ss = iterator.next();
-            int[] coord = starMap.get(ss);
-            backhalf = backhalf + ss.toString() + " at location: (" + coord[0] + ", " + coord[1] + ").\n";
+            int[] coordinate = starMap.get(ss);
+            backHalf = backHalf + ss.toString() + " at location: (" + coordinate[0] + ", " + coordinate[1] + ").\n";
         }
-        return String.format("A universe with the solar systems: \n" + backhalf);
+        return String.format("A universe with the solar systems: \n" + backHalf);
     }
 }
