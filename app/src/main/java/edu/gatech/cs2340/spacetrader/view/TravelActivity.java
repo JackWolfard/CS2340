@@ -52,7 +52,7 @@ public class TravelActivity extends AppCompatActivity {
 
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.recyclerView2);
-        RecyclerViewAdapter2 adapter = new RecyclerViewAdapter2(planetNames, fuelCosts,
+        RecyclerViewAdapter2 adapter = new RecyclerViewAdapter2(this, planetNames, fuelCosts,
                 solarSystems, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
