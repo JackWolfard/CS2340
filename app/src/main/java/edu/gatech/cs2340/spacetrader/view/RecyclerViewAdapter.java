@@ -29,7 +29,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Context mContext;
     private MarketActivity marketActivity;
 
-    public RecyclerViewAdapter(Context mContext, ArrayList<String> goodNames, ArrayList<String> quantities, ArrayList<String> prices, ArrayList<String> sellPrices, ArrayList<String> amountOwned, MarketActivity marketActivity) {
+    public RecyclerViewAdapter(Context mContext, ArrayList<String> goodNames,
+                               ArrayList<String> quantities, ArrayList<String> prices,
+                               ArrayList<String> sellPrices, ArrayList<String> amountOwned,
+                               MarketActivity marketActivity) {
         this.mContext = mContext;
         this.goodNames = goodNames;
         this.quantities = quantities;
@@ -42,7 +45,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_listitem, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_listitem,
+                parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
@@ -66,7 +70,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 if (MarketActivity.isBuy) {
                     try {
                         marketActivity.buyGood(Goods.valueOf(goodNames.get(i).toUpperCase()));
-                        Toast toast = Toast.makeText(mContext, goodNames.get(i) + " bought", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(mContext, goodNames.get(i) + " bought",
+                                Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.TOP, 0, 0);
                         toast.show();
                         marketActivity.refresh();
@@ -78,7 +83,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 } else if (MarketActivity.isSell) {
                     try {
                         marketActivity.sellGood(Goods.valueOf(goodNames.get(i).toUpperCase()));
-                        Toast toast = Toast.makeText(mContext, goodNames.get(i) + " sold", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(mContext, goodNames.get(i) + " sold",
+                                Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.TOP, 0, 0);
                         toast.show();
                         marketActivity.refresh();
@@ -88,7 +94,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                         toast.show();
                     }
                 } else {
-                    Toast toast = Toast.makeText(mContext, "Select buy or sell", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(mContext, "Select buy or sell",
+                            Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.TOP, 0, 0);
                     toast.show();
                 }

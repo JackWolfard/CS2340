@@ -70,15 +70,18 @@ public class ConfigurationActivity extends AppCompatActivity {
         int totalPointsUsed = pilotPt + engPt + tradePt + fightPt;
 
         if (name.length() == 0) {
-            Toast toast = Toast.makeText(getApplicationContext(), "Enter a valid name", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getApplicationContext(), "Enter a valid name",
+                    Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.TOP, 0, 0);
             toast.show();
         } else if (totalPointsUsed != 16) {
-            Toast toast = Toast.makeText(getApplicationContext(), "Point selection does not add up to 16", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "Point selection does not add up to 16", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.TOP, 0, 0);
             toast.show();
         } else {
-            Toast toast = Toast.makeText(getApplicationContext(), "Successfully created player", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "Successfully created player", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.TOP, 0, 0);
             toast.show();
 

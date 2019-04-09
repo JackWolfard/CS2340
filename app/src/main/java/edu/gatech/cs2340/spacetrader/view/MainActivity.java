@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
         switch (childActivity) {
             case NEW:
                 if (resultCode == RESULT_OK) {
-                    GameDifficulty difficulty = (GameDifficulty) resultIntent.getSerializableExtra("difficulty");
+                    GameDifficulty difficulty = (GameDifficulty) resultIntent.getSerializableExtra(
+                            "difficulty");
                     String name = resultIntent.getStringExtra("name");
                     int pilotPt = resultIntent.getIntExtra("pilotPt", 0);
                     int engPt = resultIntent.getIntExtra("engPt", 0);
@@ -80,11 +81,13 @@ public class MainActivity extends AppCompatActivity {
     public void onSavePressed(View view) {
         Log.d("MainActivity", "Save Game Pressed");
         if (viewModel.saveGame(this)) {
-            Toast toast = Toast.makeText(getApplicationContext(), "Successfully Saved Game", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getApplicationContext(), "Successfully Saved Game",
+                    Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.TOP, 0, 0);
             toast.show();
         } else {
-            Toast toast = Toast.makeText(getApplicationContext(), "Cannot Save Game", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getApplicationContext(), "Cannot Save Game",
+                    Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.TOP, 0, 0);
             toast.show();
         }
@@ -97,7 +100,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, PlanetActivity.class);
             startActivity(intent);
         } else {
-            Toast toast = Toast.makeText(getApplicationContext(), "No Game Available", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getApplicationContext(), "No Game Available",
+                    Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.TOP, 0, 0);
             toast.show();
         }

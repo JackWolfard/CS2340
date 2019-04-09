@@ -40,8 +40,9 @@ public enum Goods implements Serializable {
     /** the maximum price in a space trade*/
     private final int maxSpaceTrade;
 
-    Goods(String name, int value, int minLevelProd, int minLevelUse, int highestTechFreq, int priceIncreasePerLevel, int variance,
-                  String priceIncreaseEvent, String priceDecreaseEvent, String expensiveEvent, int minSpaceTrade, int maxSpaceTrade) {
+    Goods(String name, int value, int minLevelProd, int minLevelUse, int highestTechFreq,
+          int priceIncreasePerLevel, int variance, String priceIncreaseEvent,
+          String priceDecreaseEvent, String expensiveEvent, int minSpaceTrade, int maxSpaceTrade) {
         this.name = name;
         this.value = value;
         this.minLevelProd = minLevelProd;

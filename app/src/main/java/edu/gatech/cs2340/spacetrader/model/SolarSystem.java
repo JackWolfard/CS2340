@@ -69,8 +69,9 @@ public class SolarSystem implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("A Solar System called %s with technology level: %s and resource level: %s",
-                name, TechLevel.values()[techLevel], ResourceLevel.values()[resourceLevel]);
+        return String.format("A Solar System called %s with technology level: %s and"
+                        + " resource level: %s", name, TechLevel.values()[techLevel],
+                        ResourceLevel.values()[resourceLevel]);
     }
 
     public Planet getPlanet() {
