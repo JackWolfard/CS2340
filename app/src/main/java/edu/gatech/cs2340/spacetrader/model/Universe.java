@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import java.util.ArrayList;
@@ -23,10 +24,10 @@ public class Universe implements Serializable {
 
     private final HashMap<SolarSystem, int[]> starMap = new HashMap<>();
     /** the Linked List of created Solar Systems used to add them into the starMap */
-    private final List<SolarSystem> sysList = SolarSystem.generateSystem();
+    private final List<SolarSystem> sysList;
     /** HashMap that is used for the travel UI*/
     private final HashMap<SolarSystem, Integer> travelMap = new HashMap<>();
-    private final int[][] distanceArray = new int[sysList.size()][sysList.size()];
+    private final int[][] distanceArray;
     private SolarSystem currentSolarSystem;
     private Planet currentPlanet;
     private final ArrayList<Pirate> pirateList = new ArrayList<>();
@@ -46,22 +47,33 @@ public class Universe implements Serializable {
     // This Method needs implementation of the x,y location
     // I used the constant of 1 for now just so it would compile
     public Universe() {
-        generateUniverse();
+        this(SolarSystem.generateSystem());
+    }
+
+    public Universe(List<SolarSystem> sysList) {
+        this(sysList, generateRandomCoordinates(sysList.size()));
+    }
+
+    public Universe(List<SolarSystem> sysList, List<int[]> coordinates) {
+        this.sysList = sysList;
+        for (int i = 0; i < sysList.size(); i++) {
+            starMap.put(sysList.get(i), coordinates.get(i));
+        }
+        this.distanceArray = new int[sysList.size()][sysList.size()];
+        generateTravelDistances();
+        generatePirateList();
+        generateTraderList();
         currentSolarSystem = sysList.get(0);
         currentPlanet = sysList.get(0).getPlanet();
     }
 
-    private void generateUniverse() {
-        for (int j = 0; j < sysList.size(); j++) {
-            Random rand = new Random();
-            int[] coordinate = new int[]{rand.nextInt(151), rand.nextInt(101)};
-            SolarSystem solSys = sysList.get(j);
-            starMap.put(solSys, coordinate);
+    private static List<int[]> generateRandomCoordinates(int size) {
+        List<int[]> coordsList = new ArrayList<>();
+        Random rand = new Random();
+        for (int i = 0; i < size; i++) {
+            coordsList.add(new int[]{rand.nextInt(151), rand.nextInt(101)});
         }
-        generateTravelDistances();
-        generatePirateList();
-        generateTraderList();
-
+        return coordsList;
     }
 
     /**
@@ -73,10 +85,10 @@ public class Universe implements Serializable {
         if (ship != null) {
             travelMap.clear();
             int index = sysList.indexOf(currentSolarSystem);
-            for (int i=0; i<sysList.size(); i++) {
+            for (int i=0; i < sysList.size(); i++) {
                 int distance = distanceArray[index][i];
                 if (distance <= ship.getCurrentMileage() && distance > 0) {
-                    travelMap.put(sysList.get(i),distance);
+                    travelMap.put(sysList.get(i), distance);
                 }
             }
             return travelMap;
@@ -112,7 +124,7 @@ public class Universe implements Serializable {
      * X is the planet you are on
      * Y is the distance to that planet
      */
-    private void generateTravelDistances() {
+    public void generateTravelDistances() {
         for (int i = 0; i < distanceArray.length; i++) {
             SolarSystem xPlanetKey = sysList.get(i);
             int[] xCoordinate = starMap.get(xPlanetKey);
@@ -172,5 +184,9 @@ public class Universe implements Serializable {
                     + ", " + coordinate[1] + ").\n";
         }
         return String.format("A universe with the solar systems: \n" + backHalf);
+    }
+
+    public Map<SolarSystem, int[]> getStarMap() {
+        return starMap;
     }
 }

@@ -23,12 +23,14 @@ public class Ship implements Serializable {
         currentSize = 0;
 
     }
+
     private void initializeCargoHold() {
         for (int i = 0; i < 10; i++) {
             Goods item = Goods.values()[i];
             inventory.put(item,0);
         }
     }
+
     public Ship(ShipType shipType) {
         this(shipType.getShipType(), shipType);
         cargoHold = 15;

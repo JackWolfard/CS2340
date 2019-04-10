@@ -49,8 +49,8 @@ public class SolarSystem implements Serializable {
     }
 
     /**
-     * Generates a Linked List of Solar Systems used to represent the Universe
-     * @return a Linked List representation of the Solar Systems
+     * Generates a List of Solar Systems used to represent the Universe
+     * @return a List representation of the Solar Systems
      */
 
     public static List<SolarSystem> generateSystem() {
@@ -61,6 +61,24 @@ public class SolarSystem implements Serializable {
         }
         return sysStarMap;
     }
+
+    /**
+     * Generates a List of Solar Systems used to represent the Universe
+     * @param size the number of solar systems to generate in the list
+     * @return a List of the Solar Systems
+     */
+    public static List<SolarSystem> generateSystem(int size) {
+        Planet planet = new Planet();
+        List<Planet> listOfPlanets = planet.getPlanetList();
+        if (size > listOfPlanets.size()) {
+            throw new IllegalArgumentException("Size is larger than potential planets");
+        }
+        for (int i = 0; i < size; i++) {
+            sysStarMap.add(new SolarSystem(listOfPlanets.get(i)));
+        }
+        return sysStarMap;
+    }
+
 
 
     @Override
