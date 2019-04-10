@@ -13,7 +13,7 @@ public class removeFromCargoUnitTest {
 
     @Test
     public void initialize() {
-        assertEquals(0,testShip.getCurrentsize());
+        assertEquals(0,testShip.getCurrentSize());
     }
 
     @Test
@@ -21,7 +21,7 @@ public class removeFromCargoUnitTest {
         testShip.addToCargo(Goods.FOOD);
         testShip.removeFromCargo(Goods.FOOD);
 
-        assertEquals(0,testShip.getCurrentsize());
+        assertEquals(0,testShip.getCurrentSize());
     }
 
     @Test (expected = IndexOutOfBoundsException.class)
@@ -29,12 +29,12 @@ public class removeFromCargoUnitTest {
         for (int i = 0; i < 16; i++) {
             testShip.addToCargo(Goods.FIREARMS);
         }
-        assertEquals(15, testShip.getCurrentsize());
+        assertEquals(15, testShip.getCurrentSize());
         for (int j = 0; j < 16; j++) {
             testShip.removeFromCargo(Goods.FIREARMS);
         }
-        assertEquals(0, testShip.getCurrentsize());
+        assertEquals(0, testShip.getCurrentSize());
         testShip.removeFromCargo(Goods.FIREARMS);
-        assertEquals(0, testShip.getCurrentsize());
+        assertEquals(0, testShip.getCurrentSize());
     }
 }

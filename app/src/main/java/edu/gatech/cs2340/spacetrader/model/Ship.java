@@ -11,7 +11,7 @@ public class Ship implements Serializable {
     private final String name;
     private final ShipType shipType;
     private int cargoHold;
-    private int currentsize;
+    private int currentSize;
     private int currentMileage;
     private final HashMap<Goods, Integer> inventory = new HashMap<>();
 
@@ -20,7 +20,7 @@ public class Ship implements Serializable {
         this.shipType = shipType;
         this.currentMileage = shipType.getTravelDistance();
         initializeCargoHold();
-        currentsize = 0;
+        currentSize = 0;
 
     }
     private void initializeCargoHold() {
@@ -35,12 +35,12 @@ public class Ship implements Serializable {
     }
 
     public void addToCargo(Goods item) {
-        if (currentsize >= cargoHold) {
+        if (currentSize >= cargoHold) {
             throw new IndexOutOfBoundsException("The cargo hold is full");
         } else {
             int currentInv = inventory.get(item);
             inventory.put(item, currentInv + 1);
-            currentsize++;
+            currentSize++;
         }
     }
 
@@ -51,7 +51,7 @@ public class Ship implements Serializable {
             int currentInv = inventory.get(item);
             inventory.put(item, currentInv - 1);
         }
-        currentsize--;
+        currentSize--;
     }
 
     public HashMap<Goods, Integer> getCargoList() {
@@ -59,7 +59,7 @@ public class Ship implements Serializable {
     }
 
     public boolean isFull() {
-        return currentsize == cargoHold;
+        return currentSize == cargoHold;
     }
 
     public String toString() {
@@ -70,8 +70,8 @@ public class Ship implements Serializable {
         return cargoHold;
     }
 
-    public int getCurrentsize() {
-        return currentsize;
+    public int getCurrentSize() {
+        return currentSize;
     }
 
     public int getCurrentMileage() {return currentMileage;}

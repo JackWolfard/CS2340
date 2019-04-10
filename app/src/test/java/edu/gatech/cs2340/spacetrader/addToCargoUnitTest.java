@@ -15,14 +15,14 @@ public class addToCargoUnitTest {
 
     @Test
     public void initialize() {
-        assertEquals(0,testShip.getCurrentsize());
+        assertEquals(0,testShip.getCurrentSize());
     }
 
     @Test
     public void addSuccessful() {
         testShip.addToCargo(Goods.FOOD);
 
-        assertEquals(1,testShip.getCurrentsize());
+        assertEquals(1,testShip.getCurrentSize());
     }
 
     @Test (expected = IndexOutOfBoundsException.class)
@@ -30,7 +30,7 @@ public class addToCargoUnitTest {
         for (int i = 0; i < 16; i++) {
             testShip.addToCargo(Goods.FIREARMS);
         }
-        assertEquals(15, testShip.getCurrentsize());
+        assertEquals(15, testShip.getCurrentSize());
     }
 
 }

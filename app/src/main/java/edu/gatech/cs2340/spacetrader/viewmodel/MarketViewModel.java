@@ -113,7 +113,7 @@ public class MarketViewModel extends AndroidViewModel {
         Player player = game.getPlayer();
         Ship ship = player.getShip();
         info[0] = ship.getCargoHold();
-        info[1] = ship.getCurrentsize();
+        info[1] = ship.getCurrentSize();
         return info;
     }
 
