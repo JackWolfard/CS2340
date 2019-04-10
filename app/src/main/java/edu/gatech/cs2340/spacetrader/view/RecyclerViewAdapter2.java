@@ -17,7 +17,7 @@ import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.model.SolarSystem;
 
 /**
- * RecyclerViewAdapter2 controls the recyclerview for the Travel screen
+ * RecyclerViewAdapter2 controls the recyclerView for the Travel screen
  */
 public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.ViewHolder> {
 
@@ -32,9 +32,9 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
     /**
      * Constructor for RecyclerViewAdapter2
      * @param mContext context
-     * @param planetNames arraylist of planet names
-     * @param fuelCosts arraylist of fuelcosts
-     * @param solarSystems arraylist of solarSystems
+     * @param planetNames array list of planet names
+     * @param fuelCosts array list of fuel costs
+     * @param solarSystems array list of solarSystems
      * @param travelActivity travelActivity passed in to call activity methods
      */
     public RecyclerViewAdapter2(Context mContext, ArrayList<String> planetNames,

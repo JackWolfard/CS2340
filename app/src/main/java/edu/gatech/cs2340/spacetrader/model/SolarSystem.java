@@ -14,7 +14,7 @@ public class SolarSystem implements Serializable {
 
     private final String name;
 
-    /** the First planet in the solarsystem */
+    /** the First planet in the solar system */
 
     private final Planet planet;
 
