@@ -11,7 +11,7 @@
         android:id="@+id/goodName"
         android:textColor="#000"
         android:layout_centerVertical="true"
-        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
         android:textSize="15sp"
         />
 
@@ -22,7 +22,7 @@
         android:id="@+id/quantityText"
         android:textColor="#000"
         android:layout_centerVertical="true"
-        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
         android:textSize="15sp" />
 
     <TextView
@@ -32,7 +32,7 @@
         android:id="@+id/priceText"
         android:textColor="#000"
         android:layout_centerVertical="true"
-        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
         android:textSize="15sp" />
 
     <TextView
@@ -42,7 +42,7 @@
         android:id="@+id/sellText"
         android:textColor="#000"
         android:layout_centerVertical="true"
-        android:layout_marginStart="230dp"
+        android:layout_marginLeft="230dp"
         android:textSize="15sp" />
 
     <TextView
@@ -52,7 +52,7 @@
         android:id="@+id/amountOwnedText"
         android:textColor="#000"
         android:layout_centerVertical="true"
-        android:layout_marginStart="300dp"
+        android:layout_marginLeft="300dp"
         android:textSize="15sp" />
 
 </RelativeLayout>

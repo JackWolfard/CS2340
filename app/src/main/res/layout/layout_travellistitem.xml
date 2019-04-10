@@ -11,7 +11,7 @@
         android:id="@+id/planetName"
         android:textColor="#000"
         android:layout_centerVertical="true"
-        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
         android:textSize="15sp"
         />
 
@@ -22,7 +22,7 @@
         android:id="@+id/fuelCost"
         android:textColor="#000"
         android:layout_centerVertical="true"
-        android:layout_marginStart="135dp"
+        android:layout_marginLeft="135dp"
         android:textSize="15sp"
         />
 

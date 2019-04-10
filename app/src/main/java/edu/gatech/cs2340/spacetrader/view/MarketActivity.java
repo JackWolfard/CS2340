@@ -97,7 +97,7 @@ public class MarketActivity extends AppCompatActivity {
      * This method initializes the contents of the recyclerView
      */
     private void initRecyclerView() {
-        Log.d(TAG, "initRecyclerView: init recyclerView");
+        Log.d(TAG, "initRecyclerView: init recyclerview");
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, goodNames, quantities,
                 prices, sellPrices, amountOwned, this);

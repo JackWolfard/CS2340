@@ -17,7 +17,7 @@ public enum Goods implements Serializable {
     /** the name of the good*/
     private final String name;
 
-    /** the base price of the good*/
+    /** the baseprice of the good*/
     private final int value;
     /** the minimum level to produce the good*/
     private final int minLevelProd;
