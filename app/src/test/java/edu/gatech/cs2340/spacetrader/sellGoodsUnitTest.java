@@ -52,12 +52,6 @@ public class sellGoodsUnitTest {
     public void sellSuccessful() {
         int originalAmount = testMarket.getGoodAmount(Goods.FOOD);
         testMarket.buyGoods(player, Goods.FOOD);
-        boolean preCredits = player.getCredits() < 10000;
-
-//        assertTrue(preCredits);
-//        assertEquals(1, testShip.getCurrentSize());
-//        assertEquals(originalAmount-1, testMarket.getGoodAmount(Goods.FOOD));
-
 
         player.setCredits(0);
         testMarket.sellGoods(player, Goods.FOOD);
@@ -66,5 +60,10 @@ public class sellGoodsUnitTest {
         assertTrue(postCredits);
         assertEquals(0, testShip.getCurrentSize());
         assertEquals(originalAmount, testMarket.getGoodAmount(Goods.FOOD));
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void noCargo() {
+        testMarket.sellGoods(player, Goods.FOOD);
     }
 }
