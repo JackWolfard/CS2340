@@ -18,6 +18,8 @@
         android:text="0"
         android:textAlignment="textEnd"
         android:textSize="14sp"
+        android:hint="enter trader points here"
+        android:autofillHints="0"
         app:layout_constraintStart_toEndOf="@+id/trader_label"
         app:layout_constraintTop_toBottomOf="@+id/points_label" />
 
@@ -34,6 +36,8 @@
         android:text="0"
         android:textAlignment="textEnd"
         android:textSize="14sp"
+        android:hint="enter fighter points here"
+        android:autofillHints="0"
         app:layout_constraintStart_toEndOf="@+id/fighter_label"
         app:layout_constraintTop_toBottomOf="@+id/trader_point_entry" />
 
@@ -50,6 +54,8 @@
         android:text="0"
         android:textAlignment="textEnd"
         android:textSize="14sp"
+        android:hint="enter engineer points here"
+        android:autofillHints="0"
         app:layout_constraintStart_toEndOf="@+id/engineer_label"
         app:layout_constraintTop_toBottomOf="@+id/pilot_point_entry" />
 
@@ -75,6 +81,7 @@
         android:layout_marginTop="160dp"
         android:ems="10"
         android:hint="Name"
+        android:autofillHints="Name"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -188,6 +195,8 @@
         android:text="0"
         android:textAlignment="textEnd"
         android:textSize="14sp"
+        android:hint="enter pilot points here"
+        android:autofillHints="0"
         app:layout_constraintStart_toEndOf="@+id/pilot_label"
         app:layout_constraintTop_toBottomOf="@+id/points_label" />
 

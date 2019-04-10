@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.spacetrader.model;
 
 import java.io.Serializable;
+import java.util.Locale;
 
 import edu.gatech.cs2340.spacetrader.entity.ShipType;
 
@@ -69,7 +70,7 @@ public class Player implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("Player %s: Pilot Skill: %d, Engineer Skill: %d, Trade Skill: %d, " +
+        return String.format(Locale.US, "Player %s: Pilot Skill: %d, Engineer Skill: %d, Trade Skill: %d, " +
                 "Fight Skill: %d, Current Credits: %d, Current Ship: %s.", name, pilotSkill,
                 engSkill, tradeSkill, fightSkill, credits, ship);
     }

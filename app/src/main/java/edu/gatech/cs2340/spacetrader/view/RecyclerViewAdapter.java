@@ -65,14 +65,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
         Log.d(TAG, "onBindViewHolder: called.");
 
-        viewHolder.goodName.setText(goodNames.get(i));
-        viewHolder.quantityText.setText(quantities.get(i));
-        viewHolder.priceText.setText(prices.get(i));
-        viewHolder.sellText.setText(sellPrices.get(i));
-        viewHolder.amountOwnedText.setText(amountOwned.get(i));
+        viewHolder.goodName.setText(goodNames.get(viewHolder.getAdapterPosition()));
+        viewHolder.quantityText.setText(quantities.get(viewHolder.getAdapterPosition()));
+        viewHolder.priceText.setText(prices.get(viewHolder.getAdapterPosition()));
+        viewHolder.sellText.setText(sellPrices.get(viewHolder.getAdapterPosition()));
+        viewHolder.amountOwnedText.setText(amountOwned.get(viewHolder.getAdapterPosition()));
 
         viewHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,8 +82,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v) {
                 if (MarketActivity.isBuy) {
                     try {
-                        marketActivity.buyGood(Goods.valueOf(goodNames.get(i).toUpperCase()));
-                        Toast toast = Toast.makeText(mContext, goodNames.get(i) + " bought",
+                        marketActivity.buyGood(Goods.valueOf(goodNames.get(viewHolder.getAdapterPosition()).toUpperCase()));
+                        Toast toast = Toast.makeText(mContext, goodNames.get(viewHolder.getAdapterPosition()) + " bought",
                                 Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.TOP, 0, 0);
                         toast.show();
@@ -95,8 +95,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     }
                 } else if (MarketActivity.isSell) {
                     try {
-                        marketActivity.sellGood(Goods.valueOf(goodNames.get(i).toUpperCase()));
-                        Toast toast = Toast.makeText(mContext, goodNames.get(i) + " sold",
+                        marketActivity.sellGood(Goods.valueOf(goodNames.get(viewHolder.getAdapterPosition()).toUpperCase()));
+                        Toast toast = Toast.makeText(mContext, goodNames.get(viewHolder.getAdapterPosition()) + " sold",
                                 Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.TOP, 0, 0);
                         toast.show();

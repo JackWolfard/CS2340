@@ -57,10 +57,10 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int i) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int i) {
 
-        holder.planetName.setText(planetNames.get(i));
-        holder.fuelCost.setText(fuelCosts.get(i));
+        holder.planetName.setText(planetNames.get(holder.getAdapterPosition()));
+        holder.fuelCost.setText(fuelCosts.get(holder.getAdapterPosition()));
 
         holder.travelLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +69,7 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
              */
             public void onClick(View v) {
                 //Toast.makeText(mContext, planetNames.get(i), Toast.LENGTH_SHORT).show();
-                travelActivity.travel(solarSystems.get(i));
+                travelActivity.travel(solarSystems.get(holder.getAdapterPosition()));
             }
         });
 
