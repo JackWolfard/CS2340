@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.model.SolarSystem;
@@ -23,9 +24,9 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
 
     private static final String TAG = "RecyclerViewAdapter2";
 
-    private ArrayList<String> planetNames;
-    private ArrayList<String> fuelCosts;
-    private ArrayList<SolarSystem> solarSystems;
+    private List<String> planetNames;
+    private List<String> fuelCosts;
+    private List<SolarSystem> solarSystems;
     private Context mContext;
     private TravelActivity travelActivity;
 
@@ -37,8 +38,8 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
      * @param solarSystems array list of solarSystems
      * @param travelActivity travelActivity passed in to call activity methods
      */
-    public RecyclerViewAdapter2(Context mContext, ArrayList<String> planetNames,
-                                ArrayList<String> fuelCosts, ArrayList<SolarSystem> solarSystems,
+    public RecyclerViewAdapter2(Context mContext, List<String> planetNames,
+                                List<String> fuelCosts, List<SolarSystem> solarSystems,
                                 TravelActivity travelActivity) {
         this.mContext = mContext;
         this.planetNames = planetNames;

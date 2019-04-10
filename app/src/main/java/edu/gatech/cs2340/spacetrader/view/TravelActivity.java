@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import edu.gatech.cs2340.spacetrader.R;
@@ -24,9 +25,9 @@ public class TravelActivity extends AppCompatActivity {
 
     private TravelViewModel viewModel;
 
-    private ArrayList<String> planetNames;
-    private ArrayList<String> fuelCosts;
-    private ArrayList<SolarSystem> solarSystems;
+    private List<String> planetNames;
+    private List<String> fuelCosts;
+    private List<SolarSystem> solarSystems;
 
     private final Random randomEvent = new Random();
 
@@ -38,7 +39,7 @@ public class TravelActivity extends AppCompatActivity {
 
         TextView fuelRemaining = findViewById(R.id.fuelText);
 
-        ArrayList<ArrayList<String>> info = viewModel.initTravel();
+        List<List<String>> info = viewModel.initTravel();
 
         fuelRemaining.setText(info.get(2).get(0));
 

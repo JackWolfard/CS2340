@@ -63,8 +63,13 @@ public class Universe implements Serializable {
         generateTravelDistances();
         generatePirateList();
         generateTraderList();
-        currentSolarSystem = sysList.get(0);
-        currentPlanet = sysList.get(0).getPlanet();
+        if (sysList.size() > 0) {
+            currentSolarSystem = sysList.get(0);
+            currentPlanet = sysList.get(0).getPlanet();
+        } else {
+            currentSolarSystem = null;
+            currentPlanet = null;
+        }
     }
 
     private static List<int[]> generateRandomCoordinates(int size) {
@@ -81,7 +86,7 @@ public class Universe implements Serializable {
      * @param ship with specific remaining fuel left
      * @return HashMap of reachable planets
      */
-    public HashMap<SolarSystem, Integer> aboutToTravel(Ship ship) {
+    public Map<SolarSystem, Integer> aboutToTravel(Ship ship) {
         if (ship != null) {
             travelMap.clear();
             int index = sysList.indexOf(currentSolarSystem);

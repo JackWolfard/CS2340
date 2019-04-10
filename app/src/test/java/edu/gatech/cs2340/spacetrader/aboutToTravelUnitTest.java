@@ -54,7 +54,7 @@ public class aboutToTravelUnitTest {
 
     @Test
     public void testForCurrentPlanet() {
-        assertEquals(universe.getCurrentPlanet(), sysList.get(0).getPlanet());
+        assertEquals(sysList.get(0).getPlanet(), universe.getCurrentPlanet());
     }
 
     @Test
@@ -81,11 +81,19 @@ public class aboutToTravelUnitTest {
         assertMapEquals(travelMap, expectedTravelMap);
     }
 
-    private <K, V> void assertMapEquals(Map<K, V> actual, Map<K, V> expected) {
-        assertEquals(actual.size(), expected.size());
-        for (K key: actual.keySet()) {
-            assertTrue(expected.containsKey(key));
-            assertEquals(actual.get(key), expected.get(key));
+    @Test
+    public void testEmptySystem() {
+        testShip.setCurrentMileage(100);
+        Universe emptyUniverse = new Universe(new ArrayList<SolarSystem>(), new ArrayList<int[]>());
+        Map<SolarSystem, Integer> travelMap = emptyUniverse.aboutToTravel(testShip);
+        assertMapEquals(travelMap, new HashMap<SolarSystem, Integer>());
+    }
+
+    private <K, V> void assertMapEquals(Map<K, V> expected, Map<K, V> actual) {
+        assertEquals(expected.size(), actual.size());
+        for (K key: expected.keySet()) {
+            assertTrue(actual.containsKey(key));
+            assertEquals(expected.get(key), actual.get(key));
         }
     }
 }

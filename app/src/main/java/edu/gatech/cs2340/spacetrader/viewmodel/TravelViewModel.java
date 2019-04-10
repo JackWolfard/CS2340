@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
@@ -44,20 +46,20 @@ public class TravelViewModel extends AndroidViewModel {
      * Initializes information to fill recyclerView
      * @return
      */
-    public ArrayList<ArrayList<String>> initTravel() {
+    public List<List<String>> initTravel() {
 
-        ArrayList<ArrayList<String>> info = new ArrayList<>(3);
+        List<List<String>> info = new ArrayList<>(3);
         Game game = model.getGame();
         Universe universe = game.getUniverse();
         Player player = game.getPlayer();
         Ship ship = player.getShip();
 
-        HashMap<SolarSystem, Integer> travelInfo = universe.aboutToTravel(ship);
+        Map<SolarSystem, Integer> travelInfo = universe.aboutToTravel(ship);
         Set<SolarSystem> planetSet = travelInfo.keySet();
 
-        ArrayList<String> planetNames = new ArrayList<>();
-        ArrayList<String> fuelCosts = new ArrayList<>();
-        ArrayList<String> fuelRemaining = new ArrayList<>();
+        List<String> planetNames = new ArrayList<>();
+        List<String> fuelCosts = new ArrayList<>();
+        List<String> fuelRemaining = new ArrayList<>();
 
         fuelRemaining.add(String.valueOf(ship.getCurrentMileage()));
 
