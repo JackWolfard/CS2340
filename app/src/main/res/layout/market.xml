@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android=
-    "http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -121,7 +119,7 @@
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"></LinearLayout>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:layout_width="395dp"
@@ -140,7 +138,7 @@
             android:layout_marginTop="75dp"
             android:text="Credit Balance: "
             android:textColor="#000"
-            android:textSize="18sp"></TextView>
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/creditText"
@@ -150,7 +148,7 @@
             android:text="null"
             android:textColor="#000"
             android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/techLevel"></TextView>
+            app:layout_constraintStart_toEndOf="@+id/techLevel"/>
 
         <TextView
             android:id="@+id/inventoryName"
@@ -160,7 +158,7 @@
             android:layout_marginTop="75dp"
             android:text="Ship Cargo: "
             android:textColor="#000"
-            android:textSize="18sp"></TextView>
+            android:textSize="18sp"/>
 
         <TextView
             android:id="@+id/inventoryText"
@@ -170,7 +168,7 @@
             android:text="0/0"
             android:textColor="#000"
             android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/techLevel"></TextView>
+            app:layout_constraintStart_toEndOf="@+id/techLevel"/>
 
     </LinearLayout>
 

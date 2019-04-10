@@ -76,7 +76,7 @@ public class TravelViewModel extends AndroidViewModel {
     }
 
     /**
-     * Getter for solarSystem arraylists
+     * Getter for solarSystem array lists
      * @return
      */
     public ArrayList<SolarSystem> getSolarSystems() {

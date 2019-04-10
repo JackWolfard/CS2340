@@ -17,7 +17,7 @@ import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.model.SolarSystem;
 
 /**
- * RecyclerViewAdapter2 controls the recyclerview for the Travel screen
+ * RecyclerViewAdapter2 controls the recyclerView for the Travel screen
  */
 public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.ViewHolder> {
 
@@ -32,9 +32,9 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
     /**
      * Constructor for RecyclerViewAdapter2
      * @param mContext context
-     * @param planetNames arraylist of planet names
-     * @param fuelCosts arraylist of fuelcosts
-     * @param solarSystems arraylist of solarSystems
+     * @param planetNames ArrayList of planet names
+     * @param fuelCosts ArrayList of fuelCosts
+     * @param solarSystems ArrayList of solarSystems
      * @param travelActivity travelActivity passed in to call activity methods
      */
     public RecyclerViewAdapter2(Context mContext, ArrayList<String> planetNames,
@@ -57,10 +57,10 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int i) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int i) {
 
-        holder.planetName.setText(planetNames.get(i));
-        holder.fuelCost.setText(fuelCosts.get(i));
+        holder.planetName.setText(planetNames.get(holder.getAdapterPosition()));
+        holder.fuelCost.setText(fuelCosts.get(holder.getAdapterPosition()));
 
         holder.travelLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +69,7 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
              */
             public void onClick(View v) {
                 //Toast.makeText(mContext, planetNames.get(i), Toast.LENGTH_SHORT).show();
-                travelActivity.travel(solarSystems.get(i));
+                travelActivity.travel(solarSystems.get(holder.getAdapterPosition()));
             }
         });
 
