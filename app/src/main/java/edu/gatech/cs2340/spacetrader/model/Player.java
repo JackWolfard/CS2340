@@ -70,8 +70,8 @@ public class Player implements Serializable {
 
     @Override
     public String toString() {
-        return String.format(Locale.US, "Player %s: Pilot Skill: %d, Engineer Skill: %d, Trade Skill: %d, " +
-                "Fight Skill: %d, Current Credits: %d, Current Ship: %s.", name, pilotSkill,
-                engSkill, tradeSkill, fightSkill, credits, ship);
+        return String.format(Locale.US, "Player %s: Pilot Skill: %d, Engineer Skill: %d, " +
+                        "Trade Skill: %d, Fight Skill: %d, Current Credits: %d, Current Ship: %s.",
+                name, pilotSkill, engSkill, tradeSkill, fightSkill, credits, ship);
     }
 }

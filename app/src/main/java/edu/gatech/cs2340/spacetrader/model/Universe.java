@@ -30,8 +30,8 @@ public class Universe implements Serializable {
     private final int[][] distanceArray;
     private SolarSystem currentSolarSystem;
     private Planet currentPlanet;
-    private final ArrayList<Pirate> pirateList = new ArrayList<>();
-    private final ArrayList<Trader> traderList = new ArrayList<>();
+    private final List<Pirate> pirateList = new ArrayList<>();
+    private final List<Trader> traderList = new ArrayList<>();
 
     public Planet getCurrentPlanet() {
         return currentPlanet;
@@ -173,7 +173,7 @@ public class Universe implements Serializable {
     }
 
 
-    public ArrayList<Pirate> getPirateList() {
+    public List<Pirate> getPirateList() {
         return pirateList;
     }
 

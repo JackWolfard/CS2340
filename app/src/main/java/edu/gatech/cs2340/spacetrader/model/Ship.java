@@ -2,6 +2,7 @@ package edu.gatech.cs2340.spacetrader.model;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Map;
 
 import edu.gatech.cs2340.spacetrader.entity.Goods;
 import edu.gatech.cs2340.spacetrader.entity.ShipType;
@@ -13,7 +14,7 @@ public class Ship implements Serializable {
     private int cargoHold;
     private int currentSize;
     private int currentMileage;
-    private final HashMap<Goods, Integer> inventory = new HashMap<>();
+    private final Map<Goods, Integer> inventory = new HashMap<>();
 
     private Ship(String name, ShipType shipType) {
         this.name = name;
@@ -56,7 +57,7 @@ public class Ship implements Serializable {
         currentSize--;
     }
 
-    public HashMap<Goods, Integer> getCargoList() {
+    public Map<Goods, Integer> getCargoList() {
         return inventory;
     }
 

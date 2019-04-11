@@ -2,15 +2,16 @@ package edu.gatech.cs2340.spacetrader.model;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import edu.gatech.cs2340.spacetrader.entity.Goods;
 import edu.gatech.cs2340.spacetrader.entity.TechLevel;
 import edu.gatech.cs2340.spacetrader.entity.ResourceLevel;
 
 public class MarketPlace implements Serializable {
-    private final HashMap<Goods, Integer> inventory = new HashMap<>();
-    private final HashMap<Goods, Integer> cost = new HashMap<>();
-    private final HashMap<Goods, Integer> sell = new HashMap<>();
+    private final Map<Goods, Integer> inventory = new HashMap<>();
+    private final Map<Goods, Integer> cost = new HashMap<>();
+    private final Map<Goods, Integer> sell = new HashMap<>();
     private final TechLevel tech;
     private final ResourceLevel resource;
     private final boolean isTrader;
@@ -121,7 +122,7 @@ public class MarketPlace implements Serializable {
 
         //make sure player has good in inventory
         Ship ship = player.getShip();
-        HashMap<Goods, Integer> cargoList = ship.getCargoList();
+        Map<Goods, Integer> cargoList = ship.getCargoList();
         if (cargoList.get(item) > 0) {
             player.setCredits(player.getCredits() + price);
             ship.removeFromCargo(item);
@@ -170,15 +171,15 @@ public class MarketPlace implements Serializable {
         }
     }
 
-    public HashMap<Goods, Integer> getInventory() {
+    public Map<Goods, Integer> getInventory() {
         return inventory;
     }
 
-    public HashMap<Goods, Integer> getCost() {
+    public Map<Goods, Integer> getCost() {
         return cost;
     }
 
-    public HashMap<Goods, Integer> getSell() {
+    public Map<Goods, Integer> getSell() {
         return sell;
     }
 

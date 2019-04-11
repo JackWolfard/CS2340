@@ -3,13 +3,14 @@ package edu.gatech.cs2340.spacetrader.viewmodel;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
-import java.util.Collections;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
 import edu.gatech.cs2340.spacetrader.entity.Goods;
 import edu.gatech.cs2340.spacetrader.model.Game;
 import edu.gatech.cs2340.spacetrader.model.Model;
@@ -50,8 +51,8 @@ public class MarketViewModel extends AndroidViewModel {
      * Initializes the data for market
      * @return
      */
-    public ArrayList<ArrayList<String>> initMarket() {
-        ArrayList<ArrayList<String>> info = new ArrayList<>(5);
+    public List<List<String>> initMarket() {
+        List<List<String>> info = new ArrayList<>(5);
         Game game = model.getGame();
         Universe universe = game.getUniverse();
         Player player = game.getPlayer();
@@ -59,22 +60,19 @@ public class MarketViewModel extends AndroidViewModel {
         MarketPlace market = currentPlanet.getMarket();
         Ship ship = player.getShip();
 
-        ArrayList<String> goodNames = new ArrayList<>();
-        ArrayList<String> quantities = new ArrayList<>();
-        ArrayList<String> prices = new ArrayList<>();
-        ArrayList<String> sellPrices = new ArrayList<>();
-        ArrayList<String> amountOwned = new ArrayList<>();
+        List<String> goodNames = new ArrayList<>();
+        List<String> quantities = new ArrayList<>();
+        List<String> prices = new ArrayList<>();
+        List<String> sellPrices = new ArrayList<>();
+        List<String> amountOwned = new ArrayList<>();
 
-        HashMap<Goods, Integer> inventory = market.getInventory();
-        HashMap<Goods, Integer> cost = market.getCost();
-        HashMap<Goods, Integer> sell = market.getSell();
-        HashMap<Goods, Integer> shipCargo = ship.getCargoList();
+        Map<Goods, Integer> inventory = market.getInventory();
+        Map<Goods, Integer> cost = market.getCost();
+        Map<Goods, Integer> sell = market.getSell();
+        Map<Goods, Integer> shipCargo = ship.getCargoList();
 
         Set<Goods> goodsSet = inventory.keySet();
-        ArrayList<Goods> sortedSet = new ArrayList<>(goodsSet);
-        Goods getComp = sortedSet.get(0);
-        Comparator<Goods> goodsComp = getComp.getComp();
-        sortedSet.sort(goodsComp);
+        SortedSet<Goods> sortedSet = new TreeSet<>(goodsSet);
         for (Goods good : sortedSet) {
             goodNames.add(good.getName());
             quantities.add(String.valueOf(inventory.get(good)));

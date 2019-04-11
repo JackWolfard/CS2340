@@ -5,15 +5,12 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
 
 import edu.gatech.cs2340.spacetrader.model.Game;
 import edu.gatech.cs2340.spacetrader.model.Model;
-import edu.gatech.cs2340.spacetrader.model.Pirate;
 import edu.gatech.cs2340.spacetrader.model.Player;
 import edu.gatech.cs2340.spacetrader.model.Ship;
 import edu.gatech.cs2340.spacetrader.model.SolarSystem;
@@ -26,7 +23,7 @@ public class TravelViewModel extends AndroidViewModel {
 
     private final Model model;
 
-    private final ArrayList<SolarSystem> solarSystems = new ArrayList<>();
+    private final List<SolarSystem> solarSystems = new ArrayList<>();
 
 //    private Random randomEvent = new Random();
 //
@@ -81,7 +78,7 @@ public class TravelViewModel extends AndroidViewModel {
      * Getter for solarSystem array lists
      * @return
      */
-    public ArrayList<SolarSystem> getSolarSystems() {
+    public List<SolarSystem> getSolarSystems() {
         return solarSystems;
     }
 

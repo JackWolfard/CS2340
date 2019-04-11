@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.spacetrader.entity;
 import java.io.Serializable;
-import java.util.Comparator;
 
 public enum Goods implements Serializable {
     FIREARMS("Firearms", 1250, 3,5,-75,100, "WAR", "WARLIKE",null,600,1100),
@@ -103,21 +102,4 @@ public enum Goods implements Serializable {
         return maxSpaceTrade;
     }
 
-    public GoodsComparator getComp() {
-        return new GoodsComparator();
-    }
-}
-
-class GoodsComparator implements Comparator<Goods>  {
-
-    public int compare(Goods g1, Goods g2)
-    {
-        if (g1.getName().compareTo(g2.getName()) == 0) {
-            return 0;
-        } else if (g1.getName().compareTo(g2.getName()) < 0) {
-            return -1;
-        } else {
-            return 1;
-        }
-    }
 }

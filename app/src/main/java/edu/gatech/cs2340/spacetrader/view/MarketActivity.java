@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import edu.gatech.cs2340.spacetrader.viewmodel.MarketViewModel;
 import edu.gatech.cs2340.spacetrader.R;
@@ -20,15 +20,13 @@ import edu.gatech.cs2340.spacetrader.entity.Goods;
 
 public class MarketActivity extends AppCompatActivity {
 
-    private static final String TAG = "MarketActivity";
-
     private MarketViewModel viewModel;
 
-    private ArrayList<String> goodNames;
-    private ArrayList<String> quantities;
-    private ArrayList<String> prices;
-    private ArrayList<String> sellPrices;
-    private ArrayList<String> amountOwned;
+    private List<String> goodNames;
+    private List<String> quantities;
+    private List<String> prices;
+    private List<String> sellPrices;
+    private List<String> amountOwned;
 
     private TextView credits;
     private TextView inventory;
@@ -36,8 +34,8 @@ public class MarketActivity extends AppCompatActivity {
     private Button buyButton;
     private Button sellButton;
 
-    public static boolean isBuy;
-    public static boolean isSell;
+    public boolean isBuy;
+    public boolean isSell;
 
     /**
      * Method gets called when the instance is changed to MarketActivity
@@ -64,7 +62,7 @@ public class MarketActivity extends AppCompatActivity {
     }
 
     public void refresh() {
-        ArrayList<ArrayList<String>> info = viewModel.initMarket();
+        List<List<String>> info = viewModel.initMarket();
 
         goodNames = info.get(0);
         quantities = info.get(1);
@@ -97,7 +95,7 @@ public class MarketActivity extends AppCompatActivity {
      * This method initializes the contents of the recyclerView
      */
     private void initRecyclerView() {
-        Log.d(TAG, "initRecyclerView: init recyclerView");
+        Log.d("MarketActivity", "initRecyclerView: init recyclerView");
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, goodNames, quantities,
                 prices, sellPrices, amountOwned, this);
