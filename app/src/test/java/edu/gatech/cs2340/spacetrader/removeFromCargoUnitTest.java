@@ -9,7 +9,7 @@ import edu.gatech.cs2340.spacetrader.model.Ship;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Author: Noah Boerner
+ * @author Noah Boerner
  */
 
 
