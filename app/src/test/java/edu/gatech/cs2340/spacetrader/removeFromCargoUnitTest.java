@@ -8,13 +8,31 @@ import edu.gatech.cs2340.spacetrader.model.Ship;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Author: Noah Boerner
+ */
+
+
+
 public class removeFromCargoUnitTest {
+
+    /**
+     * Creates a ship to be used for testing
+     */
     Ship testShip = new Ship(ShipType.GN);
 
+
+    /**
+     * Tests an empty Ship Cargohold to make sure it is valid
+     */
     @Test
     public void initialize() {
         assertEquals(0,testShip.getCurrentSize());
     }
+
+    /**
+     * Adds and then removes an item from the Cargohold, testing basic functionality
+     */
 
     @Test
     public void removeSuccessful() {
@@ -23,6 +41,11 @@ public class removeFromCargoUnitTest {
 
         assertEquals(0,testShip.getCurrentSize());
     }
+
+    /**
+     * Fills the Cargohold, empties it, and then tries to remove while empty, testing advanced
+     * functionality
+     */
 
     @Test (expected = IndexOutOfBoundsException.class)
     public void cargoFullRemove() {
@@ -37,4 +60,5 @@ public class removeFromCargoUnitTest {
         testShip.removeFromCargo(Goods.FIREARMS);
         assertEquals(0, testShip.getCurrentSize());
     }
+
 }
