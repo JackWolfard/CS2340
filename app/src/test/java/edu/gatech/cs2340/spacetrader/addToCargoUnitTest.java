@@ -8,7 +8,11 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-
+/**
+ * Patrick Ufer
+ * JUnit Test for addToCargo method in Ship.java
+ * Achieves branch coverage because it has tests cases for when the if statement is true and false
+ */
 public class addToCargoUnitTest {
 
     private final Ship testShip = new Ship(ShipType.GN);
