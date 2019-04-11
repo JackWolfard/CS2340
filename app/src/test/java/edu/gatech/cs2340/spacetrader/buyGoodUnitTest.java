@@ -21,11 +21,19 @@ public class buyGoodUnitTest {
     private final Player player = new Player("TestPlayer", 3,4,4,4);
     private final MarketPlace testMarket = new MarketPlace(TechLevel.values()[4], ResourceLevel.NONE, false);
     private final Ship testShip = player.getShip();
+
+    /**
+     * Check that initialized players cargoSize starts empty.
+     */
     @Test
     public void initialize() {
-        player.setCredits(10000);
         assertEquals(0,testShip.getCurrentSize());
     }
+
+    /**
+     * Confirm that the buying one good decreases the players money, adds one to the ships cargoHold
+     * and decreases one from the markets inventory
+     */
     @Test
     public void purchaseSuccessful() {
         int originalAmount = testMarket.getGoodAmount(Goods.FOOD);
@@ -37,6 +45,10 @@ public class buyGoodUnitTest {
         assertEquals(originalAmount-1, testMarket.getGoodAmount(Goods.FOOD));
     }
 
+    /**
+     * Checks to make sure that the cargoHold can be filled up to max size without throwing any
+     * errors
+     */
     @Test
     public void testMaxCargoSize() {
         //fill up ship to max cargoSize;
@@ -50,6 +62,10 @@ public class buyGoodUnitTest {
 
     }
 
+    /**
+     * Checks to make sure that an error is thrown if the player attempts to buy a good when their
+     * cargoHold is full
+     */
     @Test(expected = IndexOutOfBoundsException.class)
     public void testExceedsMaxCargoSize() {
         //fill up ship to max cargoSize;
@@ -64,13 +80,20 @@ public class buyGoodUnitTest {
         testMarket.buyGoods(player, Goods.FOOD);
     }
 
+    /**
+     * Checks to make sure that an error is thrown if the player attempts to buy a good when they
+     * don't have enough money
+     */
     @Test(expected = IndexOutOfBoundsException.class)
     public void playerDoesNotHaveEnoughMoney() {
         player.setCredits(0);
         testMarket.update();
         testMarket.buyGoods(player, Goods.FOOD);
     }
-
+    /**
+     * Checks to make sure that an error is thrown if the player attempts to buy a good when the
+     * marketplace does not have it in stock
+     */
     @Test(expected = IndexOutOfBoundsException.class)
     public void MarketOutOfStock() {
         int originalAmount = testMarket.getGoodAmount(Goods.FOOD);
@@ -81,7 +104,10 @@ public class buyGoodUnitTest {
         assertEquals(0, testMarket.getGoodAmount(Goods.FOOD));
         testMarket.buyGoods(player, Goods.FOOD);
     }
-
+    /**
+     * Checks to make sure that buying all of the stock in the market place does not throw the same
+     * error as above
+     */
     @Test
     public void BuyMarketToZero() {
         int originalAmount = testMarket.getGoodAmount(Goods.FOOD);
