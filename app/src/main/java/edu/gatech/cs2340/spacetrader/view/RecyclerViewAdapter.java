@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import edu.gatech.cs2340.spacetrader.R;
 import edu.gatech.cs2340.spacetrader.entity.Goods;
@@ -24,11 +24,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private static final String TAG = "RecyclerViewAdapter";
 
-    private ArrayList<String> goodNames;
-    private ArrayList<String> quantities;
-    private ArrayList<String> prices;
-    private ArrayList<String> sellPrices;
-    private ArrayList<String> amountOwned;
+    private List<String> goodNames;
+    private List<String> quantities;
+    private List<String> prices;
+    private List<String> sellPrices;
+    private List<String> amountOwned;
     private Context mContext;
     private MarketActivity marketActivity;
 
@@ -42,9 +42,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
      * @param amountOwned ArrayList of the amount owned of each good
      * @param marketActivity marketActivity passed in to call activity methods
      */
-    public RecyclerViewAdapter(Context mContext, ArrayList<String> goodNames,
-                               ArrayList<String> quantities, ArrayList<String> prices,
-                               ArrayList<String> sellPrices, ArrayList<String> amountOwned,
+    public RecyclerViewAdapter(Context mContext, List<String> goodNames,
+                               List<String> quantities, List<String> prices,
+                               List<String> sellPrices, List<String> amountOwned,
                                MarketActivity marketActivity) {
         this.mContext = mContext;
         this.goodNames = goodNames;
@@ -80,7 +80,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
              * This code is run when a field in the recycler view is tapped by the user
              */
             public void onClick(View v) {
-                if (MarketActivity.isBuy) {
+                if (marketActivity.isBuy) {
                     try {
                         marketActivity.buyGood(Goods.valueOf(goodNames.get(viewHolder.getAdapterPosition()).toUpperCase()));
                         Toast toast = Toast.makeText(mContext, goodNames.get(viewHolder.getAdapterPosition()) + " bought",
@@ -93,7 +93,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                         toast.setGravity(Gravity.TOP, 0, 0);
                         toast.show();
                     }
-                } else if (MarketActivity.isSell) {
+                } else if (marketActivity.isSell) {
                     try {
                         marketActivity.sellGood(Goods.valueOf(goodNames.get(viewHolder.getAdapterPosition()).toUpperCase()));
                         Toast toast = Toast.makeText(mContext, goodNames.get(viewHolder.getAdapterPosition()) + " sold",
