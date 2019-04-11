@@ -18,6 +18,14 @@ import edu.gatech.cs2340.spacetrader.model.Universe;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * JUnit for Testing aboutToTravel method in model.Universe
+ *
+ * Full branch coverage including thrown exceptions, for loop (all, partial, none),
+ * and if statements
+ *
+ * @author Jack Wolfard (jwolfard3)
+ */
 public class aboutToTravelUnitTest {
     private static Ship testShip;
     private static Universe universe;
