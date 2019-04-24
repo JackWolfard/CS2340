@@ -1,8 +1,12 @@
 from model import model
 from view.activity import Activity
 from view.marketplace import MarketPlaceActivity
+from view.pirateencounter import PirateEncounterActivity
 from view.travel import TravelActivity
 from terminal.textbutton import TextButton
+
+
+import random
 
 
 class PlanetActivity(Activity):
@@ -38,6 +42,10 @@ class PlanetActivity(Activity):
 
     def resume(self, ret, cls):
         print(self.term.clear(), end="")
+        if cls is TravelActivity:
+            if random.random() > 0.5:
+                self.launch(PirateEncounterActivity)
+                return
         self.start()
 
     def draw(self):

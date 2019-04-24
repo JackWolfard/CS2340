@@ -14,6 +14,11 @@ class Names(enum.Enum):
                    "Cancri", "Sun", "Csilla", "Tython", "Kuat", "Hapes", "Lah'mu"]
     GALAXY = ["Milky Way", "Messier 63", "Whirlpool", "Andromeda", "Tadpole",
               "Cygnus A"]
+    PIRATE = [("Bubblebeard", 10), ("'Crazy Eyes' Buxton", 20),
+              ("Unwin Lexx", 30), ("Abigail 'Four-Teeth' Granger", 50),
+              ("Sewell 'The Cook' Shearman", 50), ("'Big Boi' Blythe", 50),
+              ("Darlene 'Slayer' Soren", 75), ("'Blunderbuss' Uberto", 75),
+              ("Tennie 'Intrepid' Tyndall", 100), ("Blackbeard", 500)]
 
     def random(self):
         return random.choice(self.value)

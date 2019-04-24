@@ -2,7 +2,7 @@ package edu.gatech.cs2340.spacetrader.entity;
 
 import java.io.Serializable;
 
-public enum GameDifficulty implements Serializable {
+public enum gGameDifficulty implements Serializable {
     B ("Beginner"),
     E ("Easy"),
     N ("Normal"),
