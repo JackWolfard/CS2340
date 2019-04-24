@@ -3,3 +3,4 @@
 .gradle/
 local.properties
 .pyc
+__pycache__
